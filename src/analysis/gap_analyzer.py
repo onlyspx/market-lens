@@ -7,12 +7,15 @@ from datetime import datetime
 import os
 
 class GapAnalyzer:
-    def __init__(self, ticker: str, data_path: str):
+    def __init__(self, ticker: str, data_path: str, spx_data_path: str = None):
         """Initialize the gap analyzer for a specific ticker."""
         self.ticker = ticker
         self.data = self._load_data(data_path)
         self.gaps = None
         self.gap_stats = None
+        self.spx_data = None
+        if spx_data_path and ticker != 'SPX':
+            self.spx_data = self._load_data(spx_data_path)
         
     def _load_data(self, data_path: str) -> pd.DataFrame:
         """Load and prepare the historical data."""
@@ -133,8 +136,71 @@ class GapAnalyzer:
             'day_stats': self._analyze_day_of_week()
         }
         
+        # Add SPX correlation analysis if SPX data is available
+        if self.spx_data is not None:
+            spx_gaps = self.calculate_spx_gaps()
+            stats['spx_correlation'] = self._analyze_spx_correlation(spx_gaps)
+        
         self.gap_stats = stats
         return stats
+
+    def calculate_spx_gaps(self):
+        """Calculate gaps for SPX data for correlation analysis."""
+        df = self.spx_data.copy()
+        df['prev_close'] = df['close'].shift(-1)
+        df['gap'] = df['open'] - df['prev_close']
+        df['gap_filled'] = df.apply(self._check_gap_fill, axis=1)
+        df['gap_fill_percent'] = df.apply(self._calculate_fill_percent, axis=1)
+        df = df.iloc[:-1].copy()  # Remove last row as it won't have a previous close
+        return df
+
+    def _analyze_spx_correlation(self, spx_gaps):
+        """Analyze correlation between this ticker and SPX gaps."""
+        # Merge SPX and ticker data on date
+        merged = pd.merge(
+            self.gaps[['date', 'gap', 'gap_filled', 'gap_fill_percent']], 
+            spx_gaps[['date', 'gap', 'gap_filled', 'gap_fill_percent']], 
+            on='date', 
+            suffixes=('', '_spx')
+        )
+        
+        # Calculate correlations
+        gap_corr = merged['gap'].corr(merged['gap_spx'])
+        fill_agreement = (merged['gap_filled'] == merged['gap_filled_spx']).mean() * 100
+        direction_agreement = (
+            (merged['gap'] > 0) == (merged['gap_spx'] > 0)
+        ).mean() * 100
+        
+        # Recent correlation (last 20 days)
+        recent = merged.head(20)
+        recent_gap_corr = recent['gap'].corr(recent['gap_spx'])
+        recent_fill_agreement = (recent['gap_filled'] == recent['gap_filled_spx']).mean() * 100
+        recent_direction_agreement = (
+            (recent['gap'] > 0) == (recent['gap_spx'] > 0)
+        ).mean() * 100
+        
+        # Daily comparison for recent days
+        daily_comparison = []
+        for _, row in recent.iterrows():
+            daily_comparison.append({
+                'date': row['date'],
+                'ticker_gap': row['gap'],
+                'spx_gap': row['gap_spx'],
+                'same_direction': (row['gap'] > 0) == (row['gap_spx'] > 0),
+                'both_filled': row['gap_filled'] and row['gap_filled_spx'],
+                'ticker_filled': row['gap_filled'],
+                'spx_filled': row['gap_filled_spx']
+            })
+        
+        return {
+            'gap_correlation': gap_corr,
+            'fill_agreement': fill_agreement,
+            'direction_agreement': direction_agreement,
+            'recent_gap_correlation': recent_gap_corr,
+            'recent_fill_agreement': recent_fill_agreement,
+            'recent_direction_agreement': recent_direction_agreement,
+            'daily_comparison': daily_comparison
+        }
     
     def _analyze_day_of_week(self) -> dict:
         """Analyze gap patterns by day of the week."""
