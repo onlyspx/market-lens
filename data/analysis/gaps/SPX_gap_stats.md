@@ -74,126 +74,28 @@ Recent Gap Down Count: 7
 
 ## Recent Daily Summary (Last 20 Trading Days)
 
-Feb 11, 2025:
-  - Gap: -17.12 points (DOWN)
-  - Status: Filled (100% filled)
-  - Previous Close: 6066.44
-  - Open: 6049.32
-
-Feb 10, 2025:
-  - Gap: +20.41 points (UP)
-  - Status: Not Filled (8% filled)
-  - Previous Close: 6025.99
-  - Open: 6046.40
-
-Feb 07, 2025:
-  - Gap: -0.44 points (DOWN)
-  - Status: Filled (100% filled)
-  - Previous Close: 6083.57
-  - Open: 6083.13
-
-Feb 06, 2025:
-  - Gap: +10.74 points (UP)
-  - Status: Filled (100% filled)
-  - Previous Close: 6061.48
-  - Open: 6072.22
-
-Feb 05, 2025:
-  - Gap: -17.43 points (DOWN)
-  - Status: Filled (100% filled)
-  - Previous Close: 6037.88
-  - Open: 6020.45
-
-Feb 04, 2025:
-  - Gap: +3.57 points (UP)
-  - Status: Filled (100% filled)
-  - Previous Close: 5994.57
-  - Open: 5998.14
-
-Feb 03, 2025:
-  - Gap: -70.88 points (DOWN)
-  - Status: Not Filled (74% filled)
-  - Previous Close: 6040.53
-  - Open: 5969.65
-
-Jan 31, 2025:
-  - Gap: +25.62 points (UP)
-  - Status: Filled (100% filled)
-  - Previous Close: 6071.17
-  - Open: 6096.79
-
-Jan 30, 2025:
-  - Gap: +11.44 points (UP)
-  - Status: Filled (100% filled)
-  - Previous Close: 6039.31
-  - Open: 6050.75
-
-Jan 29, 2025:
-  - Gap: -10.00 points (DOWN)
-  - Status: Not Filled (51% filled)
-  - Previous Close: 6067.70
-  - Open: 6057.70
-
-Jan 28, 2025:
-  - Gap: +14.69 points (UP)
-  - Status: Filled (100% filled)
-  - Previous Close: 6012.28
-  - Open: 6026.97
-
-Jan 27, 2025:
-  - Gap: -132.20 points (DOWN)
-  - Status: Not Filled (36% filled)
-  - Previous Close: 6101.24
-  - Open: 5969.04
-
-Jan 24, 2025:
-  - Gap: +2.72 points (UP)
-  - Status: Filled (100% filled)
-  - Previous Close: 6118.71
-  - Open: 6121.43
-
-Jan 23, 2025:
-  - Gap: -10.05 points (DOWN)
-  - Status: Filled (100% filled)
-  - Previous Close: 6086.37
-  - Open: 6076.32
-
-Jan 22, 2025:
-  - Gap: +32.15 points (UP)
-  - Status: Not Filled (16% filled)
-  - Previous Close: 6049.24
-  - Open: 6081.39
-
-Jan 21, 2025:
-  - Gap: +17.46 points (UP)
-  - Status: Not Filled (41% filled)
-  - Previous Close: 5996.66
-  - Open: 6014.12
-
-Jan 17, 2025:
-  - Gap: +58.06 points (UP)
-  - Status: Not Filled (29% filled)
-  - Previous Close: 5937.34
-  - Open: 5995.40
-
-Jan 16, 2025:
-  - Gap: +13.70 points (UP)
-  - Status: Filled (100% filled)
-  - Previous Close: 5949.91
-  - Open: 5963.61
-
-Jan 15, 2025:
-  - Gap: +62.30 points (UP)
-  - Status: Not Filled (0% filled)
-  - Previous Close: 5842.91
-  - Open: 5905.21
-
-Jan 14, 2025:
-  - Gap: +23.05 points (UP)
-  - Status: Filled (100% filled)
-  - Previous Close: 5836.22
-  - Open: 5859.27
-
+| Date | Gap | Direction | Status | Fill % | Prev Close | Open |
+|------|-----|-----------|---------|---------|------------|-------|
+| Feb 11, 2025 | -17.12 | DOWN | Filled | 100% | 6066.44 | 6049.32 |
+| Feb 10, 2025 | +20.41 | UP | Not Filled | 8% | 6025.99 | 6046.40 |
+| Feb 07, 2025 | -0.44 | DOWN | Filled | 100% | 6083.57 | 6083.13 |
+| Feb 06, 2025 | +10.74 | UP | Filled | 100% | 6061.48 | 6072.22 |
+| Feb 05, 2025 | -17.43 | DOWN | Filled | 100% | 6037.88 | 6020.45 |
+| Feb 04, 2025 | +3.57 | UP | Filled | 100% | 5994.57 | 5998.14 |
+| Feb 03, 2025 | -70.88 | DOWN | Not Filled | 74% | 6040.53 | 5969.65 |
+| Jan 31, 2025 | +25.62 | UP | Filled | 100% | 6071.17 | 6096.79 |
+| Jan 30, 2025 | +11.44 | UP | Filled | 100% | 6039.31 | 6050.75 |
+| Jan 29, 2025 | -10.00 | DOWN | Not Filled | 51% | 6067.70 | 6057.70 |
+| Jan 28, 2025 | +14.69 | UP | Filled | 100% | 6012.28 | 6026.97 |
+| Jan 27, 2025 | -132.20 | DOWN | Not Filled | 36% | 6101.24 | 5969.04 |
+| Jan 24, 2025 | +2.72 | UP | Filled | 100% | 6118.71 | 6121.43 |
+| Jan 23, 2025 | -10.05 | DOWN | Filled | 100% | 6086.37 | 6076.32 |
+| Jan 22, 2025 | +32.15 | UP | Not Filled | 16% | 6049.24 | 6081.39 |
+| Jan 21, 2025 | +17.46 | UP | Not Filled | 41% | 5996.66 | 6014.12 |
+| Jan 17, 2025 | +58.06 | UP | Not Filled | 29% | 5937.34 | 5995.40 |
+| Jan 16, 2025 | +13.70 | UP | Filled | 100% | 5949.91 | 5963.61 |
+| Jan 15, 2025 | +62.30 | UP | Not Filled | 0% | 5842.91 | 5905.21 |
+| Jan 14, 2025 | +23.05 | UP | Filled | 100% | 5836.22 | 5859.27 |
 ## Day of Week Analysis
 
 
