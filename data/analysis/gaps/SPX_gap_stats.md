@@ -3,196 +3,196 @@
 ## Overall Statistics
 
 Total Gaps Analyzed: 249
-Average Gap Size: -4.40 points
-Median Gap Size: -8.93 points
-Gap Standard Deviation: 57.23 points
-Maximum Gap Up: 191.28 points
-Maximum Gap Down: -206.61 points
-Overall Fill Rate: 38.96%
-Average Fill Percentage: 70.96%
+Average Gap Size: 4.43 points
+Median Gap Size: 5.07 points
+Gap Standard Deviation: 26.99 points
+Maximum Gap Up: 84.37 points
+Maximum Gap Down: -195.42 points
+Overall Fill Rate: 63.45%
+Average Fill Percentage: 74.75%
 
 ## Percentile Analysis (All Gaps)
 
-10th percentile: -72.02 points
-25th percentile: -40.46 points
-50th percentile: -8.93 points
-75th percentile: 24.64 points
-90th percentile: 58.22 points
+10th percentile: -19.06 points
+25th percentile: -5.77 points
+50th percentile: 5.07 points
+75th percentile: 17.45 points
+90th percentile: 31.91 points
 
 ## Percentile Analysis (Up Gaps)
 
-10th percentile: 5.40 points
-25th percentile: 10.79 points
-50th percentile: 35.32 points
-75th percentile: 55.96 points
-90th percentile: 103.79 points
+10th percentile: 2.24 points
+25th percentile: 5.97 points
+50th percentile: 13.70 points
+75th percentile: 22.81 points
+90th percentile: 36.23 points
 
 ## Percentile Analysis (Down Gaps)
 
-10th percentile: -84.49 points
-25th percentile: -59.84 points
-50th percentile: -37.32 points
-75th percentile: -22.16 points
-90th percentile: -9.75 points
+10th percentile: -42.93 points
+25th percentile: -21.71 points
+50th percentile: -10.90 points
+75th percentile: -5.13 points
+90th percentile: -2.03 points
 
 ## Gap Direction Distribution
 
-Gap Up Count: 112
-Gap Down Count: 137
+Gap Up Count: 161
+Gap Down Count: 88
 
 ## Recent Market Analysis (Last 20 Trading Days)
 
 Total Recent Gaps: 20
-Average Recent Gap Size: -14.59 points
-Recent Fill Rate: 45.00%
-Recent Gap Up Count: 9
-Recent Gap Down Count: 11
+Average Recent Gap Size: 1.89 points
+Recent Fill Rate: 60.00%
+Recent Gap Up Count: 13
+Recent Gap Down Count: 7
 
 ### Recent Percentile Analysis (All Gaps)
 
-10th percentile: -54.29 points
-25th percentile: -49.49 points
-50th percentile: -15.75 points
-75th percentile: 10.22 points
-90th percentile: 47.10 points
+10th percentile: -22.78 points
+25th percentile: -10.01 points
+50th percentile: 11.09 points
+75th percentile: 21.07 points
+90th percentile: 34.74 points
 
 ### Recent Percentile Analysis (Up Gaps)
 
-10th percentile: 5.58 points
-25th percentile: 7.52 points
-50th percentile: 14.82 points
-75th percentile: 46.52 points
-90th percentile: 53.00 points
+10th percentile: 5.00 points
+25th percentile: 11.44 points
+50th percentile: 17.46 points
+75th percentile: 25.62 points
+90th percentile: 52.88 points
 
 ### Recent Percentile Analysis (Down Gaps)
 
-10th percentile: -63.31 points
-25th percentile: -52.51 points
-50th percentile: -49.33 points
-75th percentile: -31.72 points
-90th percentile: -29.07 points
+10th percentile: -95.41 points
+25th percentile: -44.16 points
+50th percentile: -17.12 points
+75th percentile: -10.03 points
+90th percentile: -6.18 points
 
 ## Recent Daily Summary (Last 20 Trading Days)
 
-Feb 13, 2024:
-  - Gap: -32.68 points (DOWN)
-  - Status: Not Filled (10% filled)
-  - Previous Close: 5000.62
-  - Open: 4967.94
-
-Feb 14, 2024:
-  - Gap: -53.29 points (DOWN)
-  - Status: Not Filled (49% filled)
-  - Previous Close: 5029.73
-  - Open: 4976.44
-
-Feb 15, 2024:
-  - Gap: -2.43 points (DOWN)
+Feb 11, 2025:
+  - Gap: -17.12 points (DOWN)
   - Status: Filled (100% filled)
-  - Previous Close: 5005.57
-  - Open: 5003.14
+  - Previous Close: 6066.44
+  - Open: 6049.32
 
-Feb 16, 2024:
-  - Gap: +55.62 points (UP)
-  - Status: Not Filled (57% filled)
-  - Previous Close: 4975.51
-  - Open: 5031.13
+Feb 10, 2025:
+  - Gap: +20.41 points (UP)
+  - Status: Not Filled (8% filled)
+  - Previous Close: 6025.99
+  - Open: 6046.40
 
-Feb 20, 2024:
-  - Gap: +7.52 points (UP)
+Feb 07, 2025:
+  - Gap: -0.44 points (DOWN)
   - Status: Filled (100% filled)
-  - Previous Close: 4981.80
-  - Open: 4989.32
+  - Previous Close: 6083.57
+  - Open: 6083.13
 
-Feb 21, 2024:
-  - Gap: -124.00 points (DOWN)
+Feb 06, 2025:
+  - Gap: +10.74 points (UP)
+  - Status: Filled (100% filled)
+  - Previous Close: 6061.48
+  - Open: 6072.22
+
+Feb 05, 2025:
+  - Gap: -17.43 points (DOWN)
+  - Status: Filled (100% filled)
+  - Previous Close: 6037.88
+  - Open: 6020.45
+
+Feb 04, 2025:
+  - Gap: +3.57 points (UP)
+  - Status: Filled (100% filled)
+  - Previous Close: 5994.57
+  - Open: 5998.14
+
+Feb 03, 2025:
+  - Gap: -70.88 points (DOWN)
+  - Status: Not Filled (74% filled)
+  - Previous Close: 6040.53
+  - Open: 5969.65
+
+Jan 31, 2025:
+  - Gap: +25.62 points (UP)
+  - Status: Filled (100% filled)
+  - Previous Close: 6071.17
+  - Open: 6096.79
+
+Jan 30, 2025:
+  - Gap: +11.44 points (UP)
+  - Status: Filled (100% filled)
+  - Previous Close: 6039.31
+  - Open: 6050.75
+
+Jan 29, 2025:
+  - Gap: -10.00 points (DOWN)
+  - Status: Not Filled (51% filled)
+  - Previous Close: 6067.70
+  - Open: 6057.70
+
+Jan 28, 2025:
+  - Gap: +14.69 points (UP)
+  - Status: Filled (100% filled)
+  - Previous Close: 6012.28
+  - Open: 6026.97
+
+Jan 27, 2025:
+  - Gap: -132.20 points (DOWN)
+  - Status: Not Filled (36% filled)
+  - Previous Close: 6101.24
+  - Open: 5969.04
+
+Jan 24, 2025:
+  - Gap: +2.72 points (UP)
+  - Status: Filled (100% filled)
+  - Previous Close: 6118.71
+  - Open: 6121.43
+
+Jan 23, 2025:
+  - Gap: -10.05 points (DOWN)
+  - Status: Filled (100% filled)
+  - Previous Close: 6086.37
+  - Open: 6076.32
+
+Jan 22, 2025:
+  - Gap: +32.15 points (UP)
   - Status: Not Filled (16% filled)
-  - Previous Close: 5087.03
-  - Open: 4963.03
+  - Previous Close: 6049.24
+  - Open: 6081.39
 
-Feb 22, 2024:
-  - Gap: -49.97 points (DOWN)
+Jan 21, 2025:
+  - Gap: +17.46 points (UP)
+  - Status: Not Filled (41% filled)
+  - Previous Close: 5996.66
+  - Open: 6014.12
+
+Jan 17, 2025:
+  - Gap: +58.06 points (UP)
+  - Status: Not Filled (29% filled)
+  - Previous Close: 5937.34
+  - Open: 5995.40
+
+Jan 16, 2025:
+  - Gap: +13.70 points (UP)
   - Status: Filled (100% filled)
-  - Previous Close: 5088.80
-  - Open: 5038.83
+  - Previous Close: 5949.91
+  - Open: 5963.61
 
-Feb 23, 2024:
-  - Gap: +31.39 points (UP)
-  - Status: Not Filled (62% filled)
-  - Previous Close: 5069.53
-  - Open: 5100.92
+Jan 15, 2025:
+  - Gap: +62.30 points (UP)
+  - Status: Not Filled (0% filled)
+  - Previous Close: 5842.91
+  - Open: 5905.21
 
-Feb 26, 2024:
-  - Gap: +14.82 points (UP)
+Jan 14, 2025:
+  - Gap: +23.05 points (UP)
   - Status: Filled (100% filled)
-  - Previous Close: 5078.18
-  - Open: 5093.00
-
-Feb 27, 2024:
-  - Gap: +4.84 points (UP)
-  - Status: Filled (100% filled)
-  - Previous Close: 5069.76
-  - Open: 5074.60
-
-Feb 28, 2024:
-  - Gap: -29.07 points (DOWN)
-  - Status: Not Filled (35% filled)
-  - Previous Close: 5096.27
-  - Open: 5067.20
-
-Feb 29, 2024:
-  - Gap: -51.72 points (DOWN)
-  - Status: Not Filled (38% filled)
-  - Previous Close: 5137.08
-  - Open: 5085.36
-
-Mar 01, 2024:
-  - Gap: -32.44 points (DOWN)
-  - Status: Filled (100% filled)
-  - Previous Close: 5130.95
-  - Open: 5098.51
-
-Mar 04, 2024:
-  - Gap: +52.34 points (UP)
-  - Status: Not Filled (7% filled)
-  - Previous Close: 5078.65
-  - Open: 5130.99
-
-Mar 05, 2024:
-  - Gap: +5.76 points (UP)
-  - Status: Filled (100% filled)
-  - Previous Close: 5104.76
-  - Open: 5110.52
-
-Mar 06, 2024:
-  - Gap: -49.33 points (DOWN)
-  - Status: Not Filled (40% filled)
-  - Previous Close: 5157.36
-  - Open: 5108.03
-
-Mar 07, 2024:
-  - Gap: +8.69 points (UP)
-  - Status: Not Filled (48% filled)
-  - Previous Close: 5123.69
-  - Open: 5132.38
-
-Mar 08, 2024:
-  - Gap: +46.52 points (UP)
-  - Status: Filled (100% filled)
-  - Previous Close: 5117.94
-  - Open: 5164.46
-
-Mar 11, 2024:
-  - Gap: -63.31 points (DOWN)
-  - Status: Not Filled (20% filled)
-  - Previous Close: 5175.27
-  - Open: 5111.96
-
-Mar 12, 2024:
-  - Gap: -31.01 points (DOWN)
-  - Status: Filled (100% filled)
-  - Previous Close: 5165.31
-  - Open: 5134.30
+  - Previous Close: 5836.22
+  - Open: 5859.27
 
 ## Day of Week Analysis
 
@@ -200,34 +200,34 @@ Mar 12, 2024:
 ### Tuesday
 
   Count: 52
-  Average Gap: -8.46 points
-  Fill Rate: 40.38%
-  Average Fill Percentage: 67.82%
-
-### Wednesday
-
-  Count: 49
-  Average Gap: -5.81 points
-  Fill Rate: 30.61%
-  Average Fill Percentage: 64.74%
-
-### Thursday
-
-  Count: 49
-  Average Gap: 5.05 points
-  Fill Rate: 40.82%
-  Average Fill Percentage: 75.00%
-
-### Friday
-
-  Count: 51
-  Average Gap: 0.12 points
-  Fill Rate: 45.10%
-  Average Fill Percentage: 75.55%
+  Average Gap: 2.49 points
+  Fill Rate: 67.31%
+  Average Fill Percentage: 76.67%
 
 ### Monday
 
   Count: 48
-  Average Gap: -12.98 points
-  Fill Rate: 37.50%
-  Average Fill Percentage: 71.71%
+  Average Gap: -2.20 points
+  Fill Rate: 60.42%
+  Average Fill Percentage: 77.46%
+
+### Friday
+
+  Count: 51
+  Average Gap: 4.21 points
+  Fill Rate: 54.90%
+  Average Fill Percentage: 66.49%
+
+### Thursday
+
+  Count: 49
+  Average Gap: 12.98 points
+  Fill Rate: 77.55%
+  Average Fill Percentage: 82.61%
+
+### Wednesday
+
+  Count: 49
+  Average Gap: 4.64 points
+  Fill Rate: 57.14%
+  Average Fill Percentage: 70.77%

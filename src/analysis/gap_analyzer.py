@@ -19,13 +19,13 @@ class GapAnalyzer:
         df = pd.read_csv(data_path)
         df['date'] = pd.to_datetime(df['date'])
         df['day_of_week'] = df['date'].dt.day_name()
-        df = df.sort_values('date')
+        df = df.sort_values('date', ascending=False)  # Sort in reverse chronological order
         return df
     
     def calculate_gaps(self):
         """Calculate gaps between each day's open and previous day's close."""
         df = self.data.copy()
-        df['prev_close'] = df['close'].shift(-1)  # Shift because data is in reverse chronological order
+        df['prev_close'] = df['close'].shift(-1)  # Shift to get previous day's close
         df['gap'] = df['open'] - df['prev_close']
         df['gap_percent'] = (df['gap'] / df['prev_close']) * 100
         df['gap_filled'] = df.apply(self._check_gap_fill, axis=1)
