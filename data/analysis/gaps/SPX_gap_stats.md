@@ -11,67 +11,6 @@ Maximum Gap Down: -195.42 points
 Overall Fill Rate: 63.45%
 Average Fill Percentage: 74.75%
 
-## Percentile Analysis (All Gaps)
-
-10th percentile: -19.06 points
-25th percentile: -5.77 points
-50th percentile: 5.07 points
-75th percentile: 17.45 points
-90th percentile: 31.91 points
-
-## Percentile Analysis (Up Gaps)
-
-10th percentile: 2.24 points
-25th percentile: 5.97 points
-50th percentile: 13.70 points
-75th percentile: 22.81 points
-90th percentile: 36.23 points
-
-## Percentile Analysis (Down Gaps)
-
-10th percentile: -42.93 points
-25th percentile: -21.71 points
-50th percentile: -10.90 points
-75th percentile: -5.13 points
-90th percentile: -2.03 points
-
-## Gap Direction Distribution
-
-Gap Up Count: 161
-Gap Down Count: 88
-
-## Recent Market Analysis (Last 20 Trading Days)
-
-Total Recent Gaps: 20
-Average Recent Gap Size: 1.89 points
-Recent Fill Rate: 60.00%
-Recent Gap Up Count: 13
-Recent Gap Down Count: 7
-
-### Recent Percentile Analysis (All Gaps)
-
-10th percentile: -22.78 points
-25th percentile: -10.01 points
-50th percentile: 11.09 points
-75th percentile: 21.07 points
-90th percentile: 34.74 points
-
-### Recent Percentile Analysis (Up Gaps)
-
-10th percentile: 5.00 points
-25th percentile: 11.44 points
-50th percentile: 17.46 points
-75th percentile: 25.62 points
-90th percentile: 52.88 points
-
-### Recent Percentile Analysis (Down Gaps)
-
-10th percentile: -95.41 points
-25th percentile: -44.16 points
-50th percentile: -17.12 points
-75th percentile: -10.03 points
-90th percentile: -6.18 points
-
 ## Recent Daily Summary (Last 20 Trading Days)
 
 | Date | Gap | Direction | Status | Fill % | Prev Close | Open |
@@ -96,40 +35,13 @@ Recent Gap Down Count: 7
 | Jan 16, 2025 | +13.70 | UP | Filled | 100% | 5949.91 | 5963.61 |
 | Jan 15, 2025 | +62.30 | UP | Not Filled | 0% | 5842.91 | 5905.21 |
 | Jan 14, 2025 | +23.05 | UP | Filled | 100% | 5836.22 | 5859.27 |
+
 ## Day of Week Analysis
 
-
-### Tuesday
-
-  Count: 52
-  Average Gap: 2.49 points
-  Fill Rate: 67.31%
-  Average Fill Percentage: 76.67%
-
-### Monday
-
-  Count: 48
-  Average Gap: -2.20 points
-  Fill Rate: 60.42%
-  Average Fill Percentage: 77.46%
-
-### Friday
-
-  Count: 51
-  Average Gap: 4.21 points
-  Fill Rate: 54.90%
-  Average Fill Percentage: 66.49%
-
-### Thursday
-
-  Count: 49
-  Average Gap: 12.98 points
-  Fill Rate: 77.55%
-  Average Fill Percentage: 82.61%
-
-### Wednesday
-
-  Count: 49
-  Average Gap: 4.64 points
-  Fill Rate: 57.14%
-  Average Fill Percentage: 70.77%
+| Day | Count | Avg Gap | Fill Rate | Avg Fill % |
+|-----|-------|----------|-----------|------------|
+| Tuesday | 52 | 2.49 | 67.31% | 76.67% |
+| Monday | 48 | -2.20 | 60.42% | 77.46% |
+| Friday | 51 | 4.21 | 54.90% | 66.49% |
+| Thursday | 49 | 12.98 | 77.55% | 82.61% |
+| Wednesday | 49 | 4.64 | 57.14% | 70.77% |
