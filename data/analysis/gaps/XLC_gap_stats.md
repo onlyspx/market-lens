@@ -1,5 +1,42 @@
 # Gap Analysis Summary for XLC
 
+## SPX Correlation Analysis
+
+Gap Size Correlation: 0.78
+Fill Pattern Agreement: 72.69%
+Direction Agreement: 75.10%
+
+### Recent Correlation (Last 20 Days)
+
+Recent Gap Correlation: 0.83
+Recent Fill Agreement: 70.00%
+Recent Direction Agreement: 85.00%
+
+### Daily Comparison with SPX (Last 20 Days)
+
+| Date | Ticker Gap | SPX Gap | Same Direction | Both Filled | Ticker Filled | SPX Filled |
+|------|------------|---------|----------------|-------------|---------------|------------|
+| Feb 11, 2025 | -0.54 | -17.12 | Yes | Yes | Yes | Yes |
+| Feb 10, 2025 | +0.88 | +20.41 | Yes | No | No | No |
+| Feb 07, 2025 | +0.54 | -0.44 | No | Yes | Yes | Yes |
+| Feb 06, 2025 | +0.09 | +10.74 | Yes | Yes | Yes | Yes |
+| Feb 05, 2025 | -1.25 | -17.43 | Yes | No | No | Yes |
+| Feb 04, 2025 | +0.47 | +3.57 | Yes | No | No | Yes |
+| Feb 03, 2025 | -1.26 | -70.88 | Yes | No | Yes | No |
+| Jan 31, 2025 | +0.75 | +25.62 | Yes | No | No | Yes |
+| Jan 30, 2025 | +0.52 | +11.44 | Yes | Yes | Yes | Yes |
+| Jan 29, 2025 | +0.63 | -10.00 | No | No | No | No |
+| Jan 28, 2025 | +0.08 | +14.69 | Yes | Yes | Yes | Yes |
+| Jan 27, 2025 | -1.43 | -132.20 | Yes | No | Yes | No |
+| Jan 24, 2025 | +0.18 | +2.72 | Yes | No | No | Yes |
+| Jan 23, 2025 | -0.62 | -10.05 | Yes | Yes | Yes | Yes |
+| Jan 22, 2025 | +1.23 | +32.15 | Yes | No | No | No |
+| Jan 21, 2025 | +0.68 | +17.46 | Yes | No | No | No |
+| Jan 17, 2025 | +1.25 | +58.06 | Yes | No | No | No |
+| Jan 16, 2025 | -0.16 | +13.70 | No | Yes | Yes | Yes |
+| Jan 15, 2025 | +1.39 | +62.30 | Yes | No | No | No |
+| Jan 14, 2025 | +0.09 | +23.05 | Yes | Yes | Yes | Yes |
+
 ## Overall Statistics
 
 Total Gaps Analyzed: 249

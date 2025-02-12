@@ -1,5 +1,42 @@
 # Gap Analysis Summary for AAPL
 
+## SPX Correlation Analysis
+
+Gap Size Correlation: 0.57
+Fill Pattern Agreement: 63.05%
+Direction Agreement: 63.05%
+
+### Recent Correlation (Last 20 Days)
+
+Recent Gap Correlation: 0.27
+Recent Fill Agreement: 70.00%
+Recent Direction Agreement: 55.00%
+
+### Daily Comparison with SPX (Last 20 Days)
+
+| Date | Ticker Gap | SPX Gap | Same Direction | Both Filled | Ticker Filled | SPX Filled |
+|------|------------|---------|----------------|-------------|---------------|------------|
+| Feb 11, 2025 | +0.55 | -17.12 | No | No | No | Yes |
+| Feb 10, 2025 | +1.94 | +20.41 | Yes | No | Yes | No |
+| Feb 07, 2025 | -0.62 | -0.44 | Yes | Yes | Yes | Yes |
+| Feb 06, 2025 | -1.19 | +10.74 | No | Yes | Yes | Yes |
+| Feb 05, 2025 | -4.27 | -17.43 | Yes | No | No | Yes |
+| Feb 04, 2025 | -0.76 | +3.57 | No | Yes | Yes | Yes |
+| Feb 03, 2025 | -6.01 | -70.88 | Yes | No | No | No |
+| Jan 31, 2025 | +9.60 | +25.62 | Yes | Yes | Yes | Yes |
+| Jan 30, 2025 | -0.70 | +11.44 | No | Yes | Yes | Yes |
+| Jan 29, 2025 | -4.14 | -10.00 | Yes | No | Yes | No |
+| Jan 28, 2025 | +0.99 | +14.69 | Yes | No | No | Yes |
+| Jan 27, 2025 | +1.24 | -132.20 | No | No | No | No |
+| Jan 24, 2025 | +1.12 | +2.72 | Yes | Yes | Yes | Yes |
+| Jan 23, 2025 | +0.91 | -10.05 | No | Yes | Yes | Yes |
+| Jan 22, 2025 | -2.85 | +32.15 | No | No | Yes | No |
+| Jan 21, 2025 | -5.98 | +17.46 | No | No | No | No |
+| Jan 17, 2025 | +3.86 | +58.06 | Yes | No | No | No |
+| Jan 16, 2025 | -0.52 | +13.70 | No | Yes | Yes | Yes |
+| Jan 15, 2025 | +1.35 | +62.30 | Yes | No | No | No |
+| Jan 14, 2025 | +0.35 | +23.05 | Yes | Yes | Yes | Yes |
+
 ## Overall Statistics
 
 Total Gaps Analyzed: 249

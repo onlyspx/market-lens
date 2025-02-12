@@ -1,5 +1,42 @@
 # Gap Analysis Summary for RUT
 
+## SPX Correlation Analysis
+
+Gap Size Correlation: 0.79
+Fill Pattern Agreement: 64.26%
+Direction Agreement: 77.11%
+
+### Recent Correlation (Last 20 Days)
+
+Recent Gap Correlation: 0.76
+Recent Fill Agreement: 65.00%
+Recent Direction Agreement: 70.00%
+
+### Daily Comparison with SPX (Last 20 Days)
+
+| Date | Ticker Gap | SPX Gap | Same Direction | Both Filled | Ticker Filled | SPX Filled |
+|------|------------|---------|----------------|-------------|---------------|------------|
+| Feb 11, 2025 | -9.78 | -17.12 | Yes | No | No | Yes |
+| Feb 10, 2025 | +9.67 | +20.41 | Yes | No | No | No |
+| Feb 07, 2025 | +1.07 | -0.44 | No | Yes | Yes | Yes |
+| Feb 06, 2025 | +7.07 | +10.74 | Yes | Yes | Yes | Yes |
+| Feb 05, 2025 | +7.54 | -17.43 | No | No | No | Yes |
+| Feb 04, 2025 | -1.23 | +3.57 | No | Yes | Yes | Yes |
+| Feb 03, 2025 | -42.87 | -70.88 | Yes | No | No | No |
+| Jan 31, 2025 | +0.25 | +25.62 | Yes | Yes | Yes | Yes |
+| Jan 30, 2025 | +16.72 | +11.44 | Yes | No | No | Yes |
+| Jan 29, 2025 | -2.29 | -10.00 | Yes | No | Yes | No |
+| Jan 28, 2025 | +3.09 | +14.69 | Yes | Yes | Yes | Yes |
+| Jan 27, 2025 | -17.59 | -132.20 | Yes | No | Yes | No |
+| Jan 24, 2025 | -2.22 | +2.72 | No | Yes | Yes | Yes |
+| Jan 23, 2025 | -7.61 | -10.05 | Yes | Yes | Yes | Yes |
+| Jan 22, 2025 | -1.83 | +32.15 | No | No | Yes | No |
+| Jan 21, 2025 | +10.52 | +17.46 | Yes | No | No | No |
+| Jan 17, 2025 | +14.87 | +58.06 | Yes | No | No | No |
+| Jan 16, 2025 | -1.32 | +13.70 | No | Yes | Yes | Yes |
+| Jan 15, 2025 | +37.32 | +62.30 | Yes | No | No | No |
+| Jan 14, 2025 | +11.76 | +23.05 | Yes | No | No | Yes |
+
 ## Overall Statistics
 
 Total Gaps Analyzed: 249

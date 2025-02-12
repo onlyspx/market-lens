@@ -1,5 +1,42 @@
 # Gap Analysis Summary for XLK
 
+## SPX Correlation Analysis
+
+Gap Size Correlation: 0.95
+Fill Pattern Agreement: 83.13%
+Direction Agreement: 87.15%
+
+### Recent Correlation (Last 20 Days)
+
+Recent Gap Correlation: 0.97
+Recent Fill Agreement: 85.00%
+Recent Direction Agreement: 80.00%
+
+### Daily Comparison with SPX (Last 20 Days)
+
+| Date | Ticker Gap | SPX Gap | Same Direction | Both Filled | Ticker Filled | SPX Filled |
+|------|------------|---------|----------------|-------------|---------------|------------|
+| Feb 11, 2025 | -1.31 | -17.12 | Yes | Yes | Yes | Yes |
+| Feb 10, 2025 | +1.84 | +20.41 | Yes | No | No | No |
+| Feb 07, 2025 | +0.95 | -0.44 | No | Yes | Yes | Yes |
+| Feb 06, 2025 | +0.00 | +10.74 | No | No | No | Yes |
+| Feb 05, 2025 | +0.21 | -17.43 | No | Yes | Yes | Yes |
+| Feb 04, 2025 | +0.78 | +3.57 | Yes | No | No | Yes |
+| Feb 03, 2025 | -5.11 | -70.88 | Yes | No | No | No |
+| Jan 31, 2025 | +2.16 | +25.62 | Yes | Yes | Yes | Yes |
+| Jan 30, 2025 | -0.41 | +11.44 | No | Yes | Yes | Yes |
+| Jan 29, 2025 | -0.46 | -10.00 | Yes | No | No | No |
+| Jan 28, 2025 | +1.54 | +14.69 | Yes | Yes | Yes | Yes |
+| Jan 27, 2025 | -10.72 | -132.20 | Yes | No | No | No |
+| Jan 24, 2025 | +0.76 | +2.72 | Yes | Yes | Yes | Yes |
+| Jan 23, 2025 | -1.86 | -10.05 | Yes | Yes | Yes | Yes |
+| Jan 22, 2025 | +3.19 | +32.15 | Yes | No | No | No |
+| Jan 21, 2025 | +0.78 | +17.46 | Yes | No | Yes | No |
+| Jan 17, 2025 | +4.16 | +58.06 | Yes | No | No | No |
+| Jan 16, 2025 | +1.89 | +13.70 | Yes | Yes | Yes | Yes |
+| Jan 15, 2025 | +3.11 | +62.30 | Yes | No | No | No |
+| Jan 14, 2025 | +1.76 | +23.05 | Yes | Yes | Yes | Yes |
+
 ## Overall Statistics
 
 Total Gaps Analyzed: 249

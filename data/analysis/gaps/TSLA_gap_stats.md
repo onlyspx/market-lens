@@ -1,5 +1,42 @@
 # Gap Analysis Summary for TSLA
 
+## SPX Correlation Analysis
+
+Gap Size Correlation: 0.51
+Fill Pattern Agreement: 55.82%
+Direction Agreement: 70.28%
+
+### Recent Correlation (Last 20 Days)
+
+Recent Gap Correlation: 0.62
+Recent Fill Agreement: 50.00%
+Recent Direction Agreement: 65.00%
+
+### Daily Comparison with SPX (Last 20 Days)
+
+| Date | Ticker Gap | SPX Gap | Same Direction | Both Filled | Ticker Filled | SPX Filled |
+|------|------------|---------|----------------|-------------|---------------|------------|
+| Feb 11, 2025 | -4.93 | -17.12 | Yes | No | No | Yes |
+| Feb 10, 2025 | -5.41 | +20.41 | No | No | Yes | No |
+| Feb 07, 2025 | -4.13 | -0.44 | Yes | Yes | Yes | Yes |
+| Feb 06, 2025 | -5.14 | +10.74 | No | No | No | Yes |
+| Feb 05, 2025 | -4.70 | -17.43 | Yes | No | No | Yes |
+| Feb 04, 2025 | -1.05 | +3.57 | No | Yes | Yes | Yes |
+| Feb 03, 2025 | -17.92 | -70.88 | Yes | No | No | No |
+| Jan 31, 2025 | +1.25 | +25.62 | Yes | No | No | Yes |
+| Jan 30, 2025 | +21.68 | +11.44 | Yes | Yes | Yes | Yes |
+| Jan 29, 2025 | -2.88 | -10.00 | Yes | No | Yes | No |
+| Jan 28, 2025 | -0.24 | +14.69 | No | Yes | Yes | Yes |
+| Jan 27, 2025 | -11.78 | -132.20 | Yes | No | Yes | No |
+| Jan 24, 2025 | +2.07 | +2.72 | Yes | Yes | Yes | Yes |
+| Jan 23, 2025 | +0.95 | -10.05 | No | Yes | Yes | Yes |
+| Jan 22, 2025 | -7.26 | +32.15 | No | No | Yes | No |
+| Jan 21, 2025 | +6.14 | +17.46 | Yes | No | Yes | No |
+| Jan 17, 2025 | +7.68 | +58.06 | Yes | No | No | No |
+| Jan 16, 2025 | -4.73 | +13.70 | No | No | No | Yes |
+| Jan 15, 2025 | +13.54 | +62.30 | Yes | No | No | No |
+| Jan 14, 2025 | +11.03 | +23.05 | Yes | Yes | Yes | Yes |
+
 ## Overall Statistics
 
 Total Gaps Analyzed: 249
