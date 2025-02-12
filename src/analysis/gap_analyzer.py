@@ -302,16 +302,13 @@ class GapAnalyzer:
             f.write("\n")
             
             f.write("## Recent Daily Summary (Last 20 Trading Days)\n\n")
+            f.write("| Date | Gap | Direction | Status | Fill % | Prev Close | Open |\n")
+            f.write("|------|-----|-----------|---------|---------|------------|-------|\n")
             recent_gaps = self.gaps.head(20)
             for _, row in recent_gaps.iterrows():
                 gap_direction = "UP" if row['gap'] > 0 else "DOWN"
                 fill_status = "Filled" if row['gap_filled'] else "Not Filled"
-                f.write(f"{row['date'].strftime('%b %d, %Y')}:\n")
-                f.write(f"  - Gap: {row['gap']:+.2f} points ({gap_direction})\n")
-                f.write(f"  - Status: {fill_status} ({row['gap_fill_percent']:.0f}% filled)\n")
-                f.write(f"  - Previous Close: {row['prev_close']:.2f}\n")
-                f.write(f"  - Open: {row['open']:.2f}\n")
-                f.write("\n")
+                f.write(f"| {row['date'].strftime('%b %d, %Y')} | {row['gap']:+.2f} | {gap_direction} | {fill_status} | {row['gap_fill_percent']:.0f}% | {row['prev_close']:.2f} | {row['open']:.2f} |\n")
             
             f.write("## Day of Week Analysis\n\n")
             for day, stats in self.gap_stats['day_stats'].items():
