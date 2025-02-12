@@ -150,95 +150,12 @@ class GapAnalyzer:
         return day_stats
     
     def generate_report(self, output_dir: str):
-        """Generate an HTML report with interactive visualizations."""
+        """Generate a markdown report with gap statistics."""
         if self.gap_stats is None:
             self.analyze_gaps()
             
-        # Create the main figure with subplots
-        fig = make_subplots(
-            rows=3, cols=2,
-            subplot_titles=(
-                'Gap Size Distribution',
-                'Gap Size Box Plot',
-                'Average Gap Size by Day',
-                'Recent Gaps Analysis',
-                'Gap Sizes Over Time',
-                'Fill Percentages by Gap Size'
-            )
-        )
-        
-        # 1. Gap Size Distribution
-        fig.add_trace(
-            go.Histogram(x=self.gaps['gap'], name='Gap Size Distribution (Points)'),
-            row=1, col=1
-        )
-        
-        # 2. Box Plot of Gap Sizes
-        fig.add_trace(
-            go.Box(
-                y=self.gaps['gap'],
-                name='Gap Size Distribution',
-                boxpoints='outliers'
-            ),
-            row=1, col=2
-        )
-        
-        # 3. Average Gap Size by Day
-        day_fill_rates = pd.DataFrame.from_dict(self.gap_stats['day_stats'], orient='index')
-        fig.add_trace(
-            go.Bar(
-                x=day_fill_rates.index,
-                y=day_fill_rates['avg_gap'],
-                name='Avg Gap Size by Day (Points)'
-            ),
-            row=2, col=1
-        )
-        
-        # 4. Recent Gaps Analysis
-        recent_gaps = self.gaps.head(20)
-        fig.add_trace(
-            go.Scatter(
-                x=recent_gaps['date'],
-                y=recent_gaps['gap'],
-                mode='lines+markers',
-                name='Recent Gaps (Last 20 Days)',
-                line=dict(color='red')
-            ),
-            row=2, col=2
-        )
-        
-        # 5. Gap Sizes Over Time
-        fig.add_trace(
-            go.Scatter(
-                x=self.gaps['date'],
-                y=self.gaps['gap'],
-                mode='lines+markers',
-                name='Gap Sizes Over Time'
-            ),
-            row=3, col=1
-        )
-        
-        # 6. Fill Percentages Distribution
-        fig.add_trace(
-            go.Histogram(
-                x=self.gaps['gap_fill_percent'],
-                name='Fill Percentage Distribution'
-            ),
-            row=3, col=2
-        )
-        
-        # Update layout
-        fig.update_layout(
-            title_text=f"Gap Analysis for {self.ticker}",
-            height=1200,
-            showlegend=False
-        )
-        
         # Create output directory if it doesn't exist
         os.makedirs(output_dir, exist_ok=True)
-        
-        # Save the plot
-        fig.write_html(os.path.join(output_dir, f"{self.ticker}_gap_analysis.html"))
         
         # Generate summary statistics file
         self._save_summary_stats(output_dir, self.gap_stats['recent_stats'])
