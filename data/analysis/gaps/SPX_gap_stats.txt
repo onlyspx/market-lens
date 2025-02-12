@@ -1,0 +1,48 @@
+Gap Analysis Summary for SPX
+==================================================
+
+Overall Statistics:
+Total Gaps Analyzed: 249
+Average Gap Size: -0.07%
+Median Gap Size: -0.16%
+Gap Standard Deviation: 1.03%
+Maximum Gap Up: 3.67%
+Maximum Gap Down: -3.48%
+Overall Fill Rate: 38.96%
+Average Fill Percentage: 70.96%
+
+Gap Direction Distribution:
+Gap Up Count: 112
+Gap Down Count: 137
+
+Day of Week Analysis:
+
+Tuesday:
+  Count: 52
+  Average Gap: -0.14%
+  Fill Rate: 40.38%
+  Average Fill Percentage: 67.82%
+
+Wednesday:
+  Count: 49
+  Average Gap: -0.11%
+  Fill Rate: 30.61%
+  Average Fill Percentage: 64.74%
+
+Thursday:
+  Count: 49
+  Average Gap: 0.09%
+  Fill Rate: 40.82%
+  Average Fill Percentage: 75.00%
+
+Friday:
+  Count: 51
+  Average Gap: 0.01%
+  Fill Rate: 45.10%
+  Average Fill Percentage: 75.55%
+
+Monday:
+  Count: 48
+  Average Gap: -0.23%
+  Fill Rate: 37.50%
+  Average Fill Percentage: 71.71%

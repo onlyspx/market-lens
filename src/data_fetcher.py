@@ -31,9 +31,9 @@ class DataFetcher:
         # Determine asset class based on ticker type
         def get_asset_class(ticker: str) -> str:
             ticker = ticker.upper()
-            if ticker in ["SPX", "NDX"]:
+            if ticker in ["SPX", "NDX", "RUT"]:
                 return "index"
-            elif ticker in ["SPY", "QQQ"]:
+            elif ticker in ["XLK", "XLC", "XLV", "XLY", "XLE", "XLF"]:  # Updated ETF list
                 return "etf"
             else:
                 return "stocks"
