@@ -4,6 +4,7 @@ from flask import Flask, render_template, request, jsonify
 import sys
 import os
 from pathlib import Path
+from datetime import datetime
 
 # Add parent directory to path to import range_analyzer
 sys.path.append(str(Path(__file__).parent.parent))
@@ -41,15 +42,35 @@ def analyze():
             if abs(day_change - threshold) <= tolerance:
                 next_days = analyzer.data.iloc[idx+1:idx+4]
                 next_changes = next_days['daily_change'].tolist()
+                next_dates = next_days['Date'].tolist()
                 cum_change = sum(next_changes)
+                
+                # Format dates with day names
+                def format_date(date):
+                    return {
+                        'date': date.strftime('%Y-%m-%d'),
+                        'day': date.strftime('%A')
+                    }
                 
                 similar_moves.append({
                     'date': analyzer.data.loc[idx, 'Date'].strftime('%Y-%m-%d'),
+                    'day': analyzer.data.loc[idx, 'Date'].strftime('%A'),
                     'spx_close': round(analyzer.data.loc[idx, 'Close'], 2),
                     'trigger_change': round(day_change, 2),
-                    'next_day_1': round(next_changes[0], 2),
-                    'next_day_2': round(next_changes[1], 2),
-                    'next_day_3': round(next_changes[2], 2),
+                    'next_days': [
+                        {
+                            'date': format_date(next_dates[0]),
+                            'change': round(next_changes[0], 2)
+                        },
+                        {
+                            'date': format_date(next_dates[1]),
+                            'change': round(next_changes[1], 2)
+                        },
+                        {
+                            'date': format_date(next_dates[2]),
+                            'change': round(next_changes[2], 2)
+                        }
+                    ],
                     'cumulative_3d': round(cum_change, 2)
                 })
         

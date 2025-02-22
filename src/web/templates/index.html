@@ -15,15 +15,29 @@
         }
         .positive {
             color: #198754;
+            font-weight: 500;
         }
         .negative {
             color: #dc3545;
+            font-weight: 500;
         }
         .loading {
             display: none;
         }
         #results {
             display: none;
+        }
+        .day-name {
+            color: #6c757d;
+            font-size: 0.9em;
+        }
+        .info-icon {
+            cursor: help;
+            color: #6c757d;
+        }
+        .tooltip {
+            position: relative;
+            display: inline-block;
         }
     </style>
 </head>
@@ -75,7 +89,13 @@
                                     <p id="totalInstances" class="h4">-</p>
                                 </div>
                                 <div class="col">
-                                    <h6>Success Rate</h6>
+                                    <h6>
+                                        Success Rate
+                                        <span class="info-icon" data-bs-toggle="tooltip" 
+                                              title="Percentage of instances where the cumulative 3-day return after the move was positive. This indicates how often the market showed net positive movement in the 3 days following similar moves.">
+                                            ⓘ
+                                        </span>
+                                    </h6>
                                     <p id="successRate" class="h4">-</p>
                                 </div>
                                 <div class="col">
@@ -102,6 +122,14 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        // Initialize tooltips
+        document.addEventListener('DOMContentLoaded', function() {
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+            var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl)
+            });
+        });
+
         document.getElementById('analysisForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             
@@ -141,7 +169,10 @@
                         card.innerHTML = `
                             <div class="card result-card h-100">
                                 <div class="card-body">
-                                    <h5 class="card-title">${move.date}</h5>
+                                    <h5 class="card-title">
+                                        ${move.date}
+                                        <span class="day-name">(${move.day})</span>
+                                    </h5>
                                     <p class="card-text mb-2">SPX: ${move.spx_close}</p>
                                     <p class="card-text mb-3">
                                         Trigger: <span class="${move.trigger_change >= 0 ? 'positive' : 'negative'}">
@@ -150,21 +181,21 @@
                                     </p>
                                     <h6 class="mb-3">Next 3 Days:</h6>
                                     <div class="d-flex justify-content-between mb-2">
-                                        <span>Day 1:</span>
-                                        <span class="${move.next_day_1 >= 0 ? 'positive' : 'negative'}">
-                                            ${move.next_day_1 > 0 ? '+' : ''}${move.next_day_1}
+                                        <span>${move.next_days[0].date.date} <span class="day-name">(${move.next_days[0].date.day})</span>:</span>
+                                        <span class="${move.next_days[0].change >= 0 ? 'positive' : 'negative'}">
+                                            ${move.next_days[0].change > 0 ? '+' : ''}${move.next_days[0].change}
                                         </span>
                                     </div>
                                     <div class="d-flex justify-content-between mb-2">
-                                        <span>Day 2:</span>
-                                        <span class="${move.next_day_2 >= 0 ? 'positive' : 'negative'}">
-                                            ${move.next_day_2 > 0 ? '+' : ''}${move.next_day_2}
+                                        <span>${move.next_days[1].date.date} <span class="day-name">(${move.next_days[1].date.day})</span>:</span>
+                                        <span class="${move.next_days[1].change >= 0 ? 'positive' : 'negative'}">
+                                            ${move.next_days[1].change > 0 ? '+' : ''}${move.next_days[1].change}
                                         </span>
                                     </div>
                                     <div class="d-flex justify-content-between mb-2">
-                                        <span>Day 3:</span>
-                                        <span class="${move.next_day_3 >= 0 ? 'positive' : 'negative'}">
-                                            ${move.next_day_3 > 0 ? '+' : ''}${move.next_day_3}
+                                        <span>${move.next_days[2].date.date} <span class="day-name">(${move.next_days[2].date.day})</span>:</span>
+                                        <span class="${move.next_days[2].change >= 0 ? 'positive' : 'negative'}">
+                                            ${move.next_days[2].change > 0 ? '+' : ''}${move.next_days[2].change}
                                         </span>
                                     </div>
                                     <hr>
