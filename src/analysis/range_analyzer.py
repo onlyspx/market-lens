@@ -137,6 +137,64 @@ class RangeAnalyzer:
         }
         
         return pd.Series(stats)
+    
+    def generate_markdown_report(self, sig_moves, stats):
+        """Generate a markdown report of the analysis."""
+        report = [
+            "# SPX Range Analysis Report",
+            "\n## Analysis Period",
+            f"- From: {self.data['Date'].min().strftime('%Y-%m-%d')}",
+            f"- To: {self.data['Date'].max().strftime('%Y-%m-%d')}",
+            f"- Total Trading Days: {len(self.data)}",
+            
+            "\n## Daily Range Statistics",
+            "| Metric | Value |",
+            "|--------|-------|",
+            f"| Average Daily Range | {stats['avg_daily_range']:.2f} points |",
+            f"| Median Daily Range | {stats['median_daily_range']:.2f} points |",
+            f"| Maximum Daily Range | {stats['max_daily_range']:.2f} points |",
+            f"| Minimum Daily Range | {stats['min_daily_range']:.2f} points |",
+            f"| Standard Deviation | {stats['std_daily_range']:.2f} points |",
+            
+            "\n## Significant Down Moves (-100 points or more)",
+            f"Total Count: {len(sig_moves)} moves",
+            
+            "\n### Detailed Analysis of Each Move"
+        ]
+        
+        # Add each significant move analysis
+        for _, move in sig_moves.iterrows():
+            report.extend([
+                f"\n#### {move['trigger_date'].strftime('%Y-%m-%d')}",
+                f"- SPX Close: {move['trigger_close']:.2f}",
+                f"- Day's Change: {move['trigger_change']:.2f} points",
+                "\nNext 3 Days Price Action:",
+                "| Day | Point Change | Cumulative |",
+                "|-----|--------------|------------|",
+                f"| 1 | {move['next_day_1']:+.2f} | {move['next_day_1']:+.2f} |",
+                f"| 2 | {move['next_day_2']:+.2f} | {move['next_day_1'] + move['next_day_2']:+.2f} |",
+                f"| 3 | {move['next_day_3']:+.2f} | {move['cumulative_3d']:+.2f} |"
+            ])
+        
+        # Add pattern analysis
+        positive_after = len(sig_moves[sig_moves['cumulative_3d'] > 0])
+        negative_after = len(sig_moves[sig_moves['cumulative_3d'] < 0])
+        
+        report.extend([
+            "\n## Pattern Analysis",
+            f"- Moves leading to positive 3-day returns: {positive_after}",
+            f"- Moves leading to negative 3-day returns: {negative_after}",
+            f"- Success rate of positive returns: {(positive_after/len(sig_moves))*100:.1f}%",
+            
+            "\n## Average Magnitude",
+            f"- Average trigger move: {sig_moves['trigger_change'].mean():.2f} points",
+            f"- Average 3-day return: {sig_moves['cumulative_3d'].mean():.2f} points",
+            
+            "\n## Interactive Analysis",
+            "For interactive charts and visualizations, see: SPX_range_analysis.html"
+        ])
+        
+        return "\n".join(report)
 
 def main():
     """Example usage of the RangeAnalyzer class."""
@@ -157,27 +215,17 @@ def main():
     # Create visualization
     fig = analyzer.plot_analysis()
     
+    # Generate markdown report
+    markdown_report = analyzer.generate_markdown_report(sig_moves, stats)
+    
     # Save results
     fig.write_html("data/analysis/ranges/SPX_range_analysis.html")
+    with open("data/analysis/ranges/SPX_range_analysis.md", "w") as f:
+        f.write(markdown_report)
     
-    # Format significant moves for better readability
-    if not sig_moves.empty:
-        print("\nSignificant Down Moves (-100 points or more) Analysis:")
-        print("\nTrigger Day Analysis:")
-        for _, row in sig_moves.iterrows():
-            print(f"\nDate: {row['trigger_date'].strftime('%Y-%m-%d')}")
-            print(f"SPX Close: {row['trigger_close']:.2f}")
-            print(f"Day's Change: {row['trigger_change']:.2f} points")
-            print("Next 3 Days:")
-            print(f"  Day 1: {row['next_day_1']:+.2f} points")
-            print(f"  Day 2: {row['next_day_2']:+.2f} points")
-            print(f"  Day 3: {row['next_day_3']:+.2f} points")
-            print(f"3-Day Cumulative: {row['cumulative_3d']:+.2f} points")
-    else:
-        print("\nNo significant down moves (-100 points or more) found in the period.")
-    
-    print("\nSummary Statistics:")
-    print(stats)
+    print("\nAnalysis complete. Results saved to data/analysis/ranges/")
+    print("- SPX_range_analysis.html (Interactive visualization)")
+    print("- SPX_range_analysis.md (Markdown report)")
 
 if __name__ == "__main__":
     main()
