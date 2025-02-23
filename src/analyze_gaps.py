@@ -50,6 +50,18 @@ def generate_summary(all_stats, output_dir):
                 else:
                     fill_rates.append("N/A")
             f.write(f"| {ticker} | {' | '.join(fill_rates)} |\n")
+        f.write("\n")
+        
+        # SPX Correlation Analysis
+        f.write("## SPX Correlation Analysis\n\n")
+        f.write("| Ticker | Gap Correlation | Fill Agreement | Direction Agreement | Recent Gap Corr | Recent Fill Agr | Recent Dir Agr |\n")
+        f.write("|--------|-----------------|----------------|-------------------|----------------|----------------|---------------|\n")
+        for ticker, stats in all_stats.items():
+            if ticker != 'SPX' and 'spx_correlation' in stats:
+                corr = stats['spx_correlation']
+                f.write(f"| {ticker} | {corr['gap_correlation']:.2f} | {corr['fill_agreement']:.1f}% | ")
+                f.write(f"{corr['direction_agreement']:.1f}% | {corr['recent_gap_correlation']:.2f} | ")
+                f.write(f"{corr['recent_fill_agreement']:.1f}% | {corr['recent_direction_agreement']:.1f}% |\n")
 
 def main():
     output_dir = os.path.join('data', 'analysis', 'gaps')
@@ -58,12 +70,21 @@ def main():
     tickers = load_tickers()
     all_stats = {}
     
-    for ticker in tickers:
+    # First analyze SPX
+    spx_data_path = os.path.join('data', 'historical', 'SPX.csv')
+    print(f"\nAnalyzing gaps for SPX...")
+    spx_analyzer = GapAnalyzer('SPX', spx_data_path)
+    spx_analyzer.calculate_gaps()
+    spx_stats = spx_analyzer.analyze_gaps()
+    all_stats['SPX'] = spx_stats
+    
+    # Then analyze other tickers with SPX correlation
+    for ticker in [t for t in tickers if t != 'SPX']:
         print(f"\nAnalyzing gaps for {ticker}...")
         data_path = os.path.join('data', 'historical', f'{ticker}.csv')
         
-        # Initialize analyzer and calculate stats
-        analyzer = GapAnalyzer(ticker, data_path)
+        # Initialize analyzer with SPX data for correlation analysis
+        analyzer = GapAnalyzer(ticker, data_path, spx_data_path)
         analyzer.calculate_gaps()
         stats = analyzer.analyze_gaps()
         all_stats[ticker] = stats
@@ -72,6 +93,27 @@ def main():
         stats_file = os.path.join(output_dir, f'{ticker}_gap_stats.md')
         with open(stats_file, 'w') as f:
             f.write(f"# Gap Analysis Summary for {ticker}\n\n")
+            
+            if 'spx_correlation' in stats:
+                f.write("## SPX Correlation Analysis\n\n")
+                corr = stats['spx_correlation']
+                f.write(f"Gap Size Correlation: {corr['gap_correlation']:.2f}\n")
+                f.write(f"Fill Pattern Agreement: {corr['fill_agreement']:.2f}%\n")
+                f.write(f"Direction Agreement: {corr['direction_agreement']:.2f}%\n\n")
+                
+                f.write("### Recent Correlation (Last 20 Days)\n\n")
+                f.write(f"Recent Gap Correlation: {corr['recent_gap_correlation']:.2f}\n")
+                f.write(f"Recent Fill Agreement: {corr['recent_fill_agreement']:.2f}%\n")
+                f.write(f"Recent Direction Agreement: {corr['recent_direction_agreement']:.2f}%\n\n")
+                
+                f.write("### Daily Comparison with SPX (Last 20 Days)\n\n")
+                f.write("| Date | Ticker Gap | SPX Gap | Same Direction | Both Filled | Ticker Filled | SPX Filled |\n")
+                f.write("|------|------------|---------|----------------|-------------|---------------|------------|\n")
+                for day in corr['daily_comparison']:
+                    f.write(f"| {day['date'].strftime('%b %d, %Y')} | {day['ticker_gap']:+.2f} | {day['spx_gap']:+.2f} | ")
+                    f.write(f"{'Yes' if day['same_direction'] else 'No'} | {'Yes' if day['both_filled'] else 'No'} | ")
+                    f.write(f"{'Yes' if day['ticker_filled'] else 'No'} | {'Yes' if day['spx_filled'] else 'No'} |\n")
+                f.write("\n")
             
             f.write("## Overall Statistics\n\n")
             f.write(f"Total Gaps Analyzed: {stats['total_gaps']}\n")
