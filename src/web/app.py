@@ -49,13 +49,13 @@ def analyze():
                 # Format dates with day names
                 def format_date(date):
                     return {
-                        'date': date.strftime('%Y-%m-%d'),
-                        'day': date.strftime('%A')
+                        'date': date.strftime('%m/%d/%y'),
+                        'day': date.strftime('%a')
                     }
                 
                 similar_moves.append({
-                    'date': analyzer.data.loc[idx, 'Date'].strftime('%Y-%m-%d'),
-                    'day': analyzer.data.loc[idx, 'Date'].strftime('%A'),
+                    'date': analyzer.data.loc[idx, 'Date'].strftime('%m/%d/%y'),
+                    'day': analyzer.data.loc[idx, 'Date'].strftime('%a'),
                     'spx_close': round(analyzer.data.loc[idx, 'Close'], 2),
                     'trigger_change': round(day_change, 2),
                     'next_days': [
