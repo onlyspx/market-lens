@@ -42,6 +42,7 @@ def analyze():
             if abs(day_change - threshold) <= tolerance:
                 next_days = analyzer.data.iloc[idx+1:idx+4]
                 next_changes = next_days['daily_change'].tolist()
+                next_gaps = next_days['gap'].tolist()
                 next_dates = next_days['Date'].tolist()
                 cum_change = sum(next_changes)
                 
@@ -60,15 +61,18 @@ def analyze():
                     'next_days': [
                         {
                             'date': format_date(next_dates[0]),
-                            'change': round(next_changes[0], 2)
+                            'change': round(next_changes[0], 2),
+                            'gap': round(next_gaps[0], 2)
                         },
                         {
                             'date': format_date(next_dates[1]),
-                            'change': round(next_changes[1], 2)
+                            'change': round(next_changes[1], 2),
+                            'gap': round(next_gaps[1], 2)
                         },
                         {
                             'date': format_date(next_dates[2]),
-                            'change': round(next_changes[2], 2)
+                            'change': round(next_changes[2], 2),
+                            'gap': round(next_gaps[2], 2)
                         }
                     ],
                     'cumulative_3d': round(cum_change, 2)

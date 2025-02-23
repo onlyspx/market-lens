@@ -31,6 +31,9 @@ class RangeAnalyzer:
         # Calculate daily point change
         self.data['daily_change'] = self.data['Close'] - self.data['Close'].shift(1)
         
+        # Calculate daily gap (Open - Previous Close)
+        self.data['gap'] = self.data['Open'] - self.data['Close'].shift(1)
+        
         # Calculate rolling metrics
         self.data['avg_range_5d'] = self.data['daily_range'].rolling(window=5).mean()
         self.data['avg_range_20d'] = self.data['daily_range'].rolling(window=20).mean()
