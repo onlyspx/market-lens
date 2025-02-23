@@ -74,6 +74,9 @@ def analyze():
                     'cumulative_3d': round(cum_change, 2)
                 })
         
+        # Sort moves by date in descending order (most recent first)
+        similar_moves.sort(key=lambda x: x['date'], reverse=True)
+        
         # Calculate statistics
         if similar_moves:
             total_moves = len(similar_moves)

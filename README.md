@@ -106,6 +106,23 @@ The analysis provides:
 - Next 3-day price action patterns
 - Interactive charts in HTML format
 
+### Web Interface
+
+1. Launch the Flask web server:
+```bash
+python src/web/app.py
+```
+
+This will:
+- Start a development server on http://127.0.0.1:5000
+- Load initial SPX data for analysis
+- Serve the web interface for interactive analysis
+- Enable real-time analysis of market moves
+
+Access the web interface by opening http://127.0.0.1:5000 in your browser.
+
+Note: This is a development server and should not be used in production.
+
 ### Automated Data Collection
 
 The project uses GitHub Actions to automatically fetch data every weekday at 9:15 AM ET. The workflow:
