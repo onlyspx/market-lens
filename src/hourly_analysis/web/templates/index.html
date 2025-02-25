@@ -69,6 +69,37 @@
                 </div>
             </div>
 
+            <!-- Recent Days Analysis -->
+            <div class="row mb-4">
+                <div class="col">
+                    <div class="card stat-card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Last 5 Trading Days Analysis</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Day</th>
+                                            <th>Avg Range</th>
+                                            <th>Median Range</th>
+                                            <th>Min Range</th>
+                                            <th>Max Range</th>
+                                            <th>VIX Close</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="recentTable">
+                                        <!-- Recent days data will be inserted here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Statistics Cards -->
             <div class="row g-4">
                 <!-- VIX Category Analysis -->
@@ -111,6 +142,8 @@
                                             <th>Day</th>
                                             <th>Avg Range</th>
                                             <th>Median Range</th>
+                                            <th>Min Range</th>
+                                            <th>Max Range</th>
                                             <th>Count</th>
                                         </tr>
                                     </thead>
@@ -134,6 +167,7 @@
             const plotFrame = document.getElementById('plotFrame');
             const vixTable = document.getElementById('vixTable');
             const dowTable = document.getElementById('dowTable');
+            const recentTable = document.getElementById('recentTable');
             
             // Show loading, hide results
             loading.style.display = 'block';
@@ -176,16 +210,35 @@
                         .map(row => {
                             const mean = row.hourly_range_mean_mean;
                             const median = row.hourly_range_mean_median;
+                            const min = row.hourly_range_mean_min;
+                            const max = row.hourly_range_mean_max;
                             const count = row.hourly_range_mean_count;
                             return `
                                 <tr>
                                     <td>${row.day_of_week}</td>
                                     <td>${mean.toFixed(2)}</td>
                                     <td>${median.toFixed(2)}</td>
+                                    <td>${min.toFixed(2)}</td>
+                                    <td>${max.toFixed(2)}</td>
                                     <td>${count}</td>
                                 </tr>
                             `;
                         })
+                        .join('');
+                    
+                    // Update Recent Days table
+                    recentTable.innerHTML = data.recent_days
+                        .map(day => `
+                            <tr>
+                                <td>${day.date}</td>
+                                <td>${day.day_of_week}</td>
+                                <td>${day.hourly_range_mean.toFixed(2)}</td>
+                                <td>${day.hourly_range_median.toFixed(2)}</td>
+                                <td>${day.hourly_range_min.toFixed(2)}</td>
+                                <td>${day.hourly_range_max.toFixed(2)}</td>
+                                <td>${day.vix_close.toFixed(2)}</td>
+                            </tr>
+                        `)
                         .join('');
                     
                     // Show results
