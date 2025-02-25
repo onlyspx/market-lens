@@ -40,14 +40,17 @@ def analyze():
         vix_stats = vix_analysis.reset_index().to_dict('records')
         dow_stats = dow_analysis.reset_index().to_dict('records')
         
-        # Save visualization
-        fig.write_html("data/analysis/hourly/spx_hourly_analysis.html")
+        # Save visualization to static directory
+        static_dir = os.path.join(os.path.dirname(__file__), 'static')
+        os.makedirs(static_dir, exist_ok=True)
+        plot_path = os.path.join(static_dir, 'spx_hourly_analysis.html')
+        fig.write_html(plot_path)
         
         return jsonify({
             'success': True,
             'vix_analysis': vix_stats,
             'dow_analysis': dow_stats,
-            'plot_url': '/data/analysis/hourly/spx_hourly_analysis.html'
+            'plot_url': '/static/spx_hourly_analysis.html'
         })
         
     except Exception as e:
@@ -57,8 +60,9 @@ def analyze():
         })
 
 if __name__ == '__main__':
-    # Create necessary directories
-    os.makedirs('data/analysis/hourly', exist_ok=True)
+    # Create static directory
+    static_dir = os.path.join(os.path.dirname(__file__), 'static')
+    os.makedirs(static_dir, exist_ok=True)
     
     # Initialize data
     print("Fetching initial data...")
