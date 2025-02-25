@@ -14,9 +14,9 @@ from analysis.range_analyzer import RangeAnalyzer
 app = Flask(__name__)
 
 # Initialize analyzers
-hourly_analyzer = HourlyRangeAnalyzer()
-gap_analyzer = GapAnalyzer()
-range_analyzer = RangeAnalyzer()
+hourly_analyzer = HourlyRangeAnalyzer()  # This one is fine as is
+gap_analyzer = GapAnalyzer(ticker="^SPX", data_path="data/historical/SPX.csv")
+range_analyzer = RangeAnalyzer()  # This one is fine as is
 
 @app.route('/')
 def landing():
