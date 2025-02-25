@@ -44,6 +44,7 @@
             <div class="col">
                 <h1 class="text-center">SPX Hourly Range Analysis</h1>
                 <p class="text-center text-muted">Analysis of SPX hourly ranges and their correlation with VIX</p>
+                <p id="dateRange" class="text-center text-muted small"></p>
             </div>
         </div>
 
@@ -143,6 +144,10 @@
                 const data = await response.json();
                 
                 if (data.success) {
+                    // Update date range
+                    document.getElementById('dateRange').textContent = 
+                        `Analysis Period: ${data.date_range.start} to ${data.date_range.end}`;
+                    
                     // Update plot
                     plotFrame.src = data.plot_url;
                     

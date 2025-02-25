@@ -46,11 +46,19 @@ def analyze():
         plot_path = os.path.join(static_dir, 'spx_hourly_analysis.html')
         fig.write_html(plot_path)
         
+        # Get date range
+        start_date = analyzer.spx_data['Date'].min().strftime('%Y-%m-%d')
+        end_date = analyzer.spx_data['Date'].max().strftime('%Y-%m-%d')
+        
         return jsonify({
             'success': True,
             'vix_analysis': vix_stats,
             'dow_analysis': dow_stats,
-            'plot_url': '/static/spx_hourly_analysis.html'
+            'plot_url': '/static/spx_hourly_analysis.html',
+            'date_range': {
+                'start': start_date,
+                'end': end_date
+            }
         })
         
     except Exception as e:
