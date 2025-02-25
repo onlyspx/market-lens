@@ -189,10 +189,10 @@
                     const vixStats = data.vix_analysis;
                     vixTable.innerHTML = data.vix_analysis
                         .map(row => {
-                            const vixMin = row.prev_vix_close_min;
-                            const vixMax = row.prev_vix_close_max;
-                            const mean = row.hourly_range_mean_mean;
-                            const count = row.hourly_range_mean_count;
+                            const vixMin = row.vix_min;
+                            const vixMax = row.vix_max;
+                            const mean = row.mean;
+                            const count = row.count;
                             return `
                                 <tr>
                                     <td>${row.vix_category}</td>
@@ -208,11 +208,11 @@
                     const dowStats = data.dow_analysis;
                     dowTable.innerHTML = data.dow_analysis
                         .map(row => {
-                            const mean = row.hourly_range_mean_mean;
-                            const median = row.hourly_range_mean_median;
-                            const min = row.hourly_range_mean_min;
-                            const max = row.hourly_range_mean_max;
-                            const count = row.hourly_range_mean_count;
+                            const mean = row.mean;
+                            const median = row.median;
+                            const min = row.min;
+                            const max = row.max;
+                            const count = row.count;
                             return `
                                 <tr>
                                     <td>${row.day_of_week}</td>

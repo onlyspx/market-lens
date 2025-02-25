@@ -33,12 +33,30 @@ def analyze():
         fig = analyzer.plot_analysis()
         
         # Convert analyses to JSON-friendly format
-        # Flatten MultiIndex columns
-        vix_analysis.columns = [f"{col[0]}_{col[1]}" for col in vix_analysis.columns]
-        dow_analysis.columns = [f"{col[0]}_{col[1]}" for col in dow_analysis.columns]
+        # Convert day of week analysis to simple format
+        dow_stats = []
+        for day in ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']:
+            stats = {
+                'day_of_week': day,
+                'mean': float(dow_analysis[('hourly_range_mean', 'mean')][day]),
+                'median': float(dow_analysis[('hourly_range_mean', 'median')][day]),
+                'min': float(dow_analysis[('hourly_range_mean', 'min')][day]),
+                'max': float(dow_analysis[('hourly_range_mean', 'max')][day]),
+                'count': int(dow_analysis[('hourly_range_mean', 'count')][day])
+            }
+            dow_stats.append(stats)
         
-        vix_stats = vix_analysis.reset_index().to_dict('records')
-        dow_stats = dow_analysis.reset_index().to_dict('records')
+        # Convert VIX analysis to simple format
+        vix_stats = []
+        for cat in vix_analysis.index:
+            stats = {
+                'vix_category': cat,
+                'vix_min': float(vix_analysis[('prev_vix_close', 'min')][cat]),
+                'vix_max': float(vix_analysis[('prev_vix_close', 'max')][cat]),
+                'mean': float(vix_analysis[('hourly_range_mean', 'mean')][cat]),
+                'count': int(vix_analysis[('hourly_range_mean', 'count')][cat])
+            }
+            vix_stats.append(stats)
         
         # Save visualization to static directory
         static_dir = os.path.join(os.path.dirname(__file__), 'static')
@@ -50,10 +68,14 @@ def analyze():
         start_date = analyzer.spx_data['Date'].min().strftime('%Y-%m-%d')
         end_date = analyzer.spx_data['Date'].max().strftime('%Y-%m-%d')
         
+        # Get recent days analysis
+        recent_days = analyzer.get_recent_days_analysis()
+        
         return jsonify({
             'success': True,
             'vix_analysis': vix_stats,
             'dow_analysis': dow_stats,
+            'recent_days': recent_days,
             'plot_url': '/static/spx_hourly_analysis.html',
             'date_range': {
                 'start': start_date,
