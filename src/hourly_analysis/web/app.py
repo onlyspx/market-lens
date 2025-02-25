@@ -33,8 +33,12 @@ def analyze():
         fig = analyzer.plot_analysis()
         
         # Convert analyses to JSON-friendly format
-        vix_stats = vix_analysis.to_dict()
-        dow_stats = dow_analysis.to_dict()
+        # Flatten MultiIndex columns
+        vix_analysis.columns = [f"{col[0]}_{col[1]}" for col in vix_analysis.columns]
+        dow_analysis.columns = [f"{col[0]}_{col[1]}" for col in dow_analysis.columns]
+        
+        vix_stats = vix_analysis.reset_index().to_dict('records')
+        dow_stats = dow_analysis.reset_index().to_dict('records')
         
         # Save visualization
         fig.write_html("data/analysis/hourly/spx_hourly_analysis.html")

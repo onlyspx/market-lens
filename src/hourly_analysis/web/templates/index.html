@@ -148,14 +148,15 @@
                     
                     // Update VIX analysis table
                     const vixStats = data.vix_analysis;
-                    vixTable.innerHTML = Object.entries(vixStats.hourly_range.mean_range)
-                        .map(([category, mean]) => {
-                            const count = vixStats.hourly_range.count[category];
-                            const vixMin = vixStats.prev_vix_close.min[category];
-                            const vixMax = vixStats.prev_vix_close.max[category];
+                    vixTable.innerHTML = data.vix_analysis
+                        .map(row => {
+                            const vixMin = row.prev_vix_close_min;
+                            const vixMax = row.prev_vix_close_max;
+                            const mean = row.hourly_range_mean_mean;
+                            const count = row.hourly_range_mean_count;
                             return `
                                 <tr>
-                                    <td>${category}</td>
+                                    <td>${row.vix_category}</td>
                                     <td>${vixMin.toFixed(1)} - ${vixMax.toFixed(1)}</td>
                                     <td>${mean.toFixed(2)}</td>
                                     <td>${count}</td>
@@ -166,13 +167,14 @@
                     
                     // Update Day of Week analysis table
                     const dowStats = data.dow_analysis;
-                    dowTable.innerHTML = Object.entries(dowStats.hourly_range.mean_range)
-                        .map(([day, mean]) => {
-                            const median = dowStats.hourly_range.median_range[day];
-                            const count = dowStats.hourly_range.count[day];
+                    dowTable.innerHTML = data.dow_analysis
+                        .map(row => {
+                            const mean = row.hourly_range_mean_mean;
+                            const median = row.hourly_range_mean_median;
+                            const count = row.hourly_range_mean_count;
                             return `
                                 <tr>
-                                    <td>${day}</td>
+                                    <td>${row.day_of_week}</td>
                                     <td>${mean.toFixed(2)}</td>
                                     <td>${median.toFixed(2)}</td>
                                     <td>${count}</td>
