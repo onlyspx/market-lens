@@ -84,12 +84,7 @@ class HourlyRangeAnalyzer:
         
         vix_analysis = self.hourly_stats.groupby('vix_category').agg({
             'prev_vix_close': ['min', 'max', 'mean'],
-            'hourly_range_mean': {
-                'mean_range': 'mean',
-                'median_range': 'median',
-                'std_range': 'std',
-                'count': 'count'
-            }
+            'hourly_range_mean': ['mean', 'median', 'std', 'count']
         }).round(2)
         
         return vix_analysis
@@ -106,12 +101,7 @@ class HourlyRangeAnalyzer:
         dow_analysis = self.hourly_stats[
             self.hourly_stats['day_of_week'].isin(weekday_order)
         ].groupby('day_of_week').agg({
-            'hourly_range_mean': {
-                'mean_range': 'mean',
-                'median_range': 'median',
-                'std_range': 'std',
-                'count': 'count'
-            }
+            'hourly_range_mean': ['mean', 'median', 'std', 'count']
         }).round(2)
         
         # Reorder index based on weekday_order
@@ -158,9 +148,9 @@ class HourlyRangeAnalyzer:
         fig.add_trace(
             go.Bar(
                 x=vix_cats.index,
-                y=vix_cats['hourly_range_mean']['mean_range'],
+                y=vix_cats['hourly_range_mean']['mean'],
                 name='Avg Range by VIX',
-                text=vix_cats['hourly_range_mean']['mean_range'].round(2),
+                text=vix_cats['hourly_range_mean']['mean'].round(2),
                 textposition='auto',
             ),
             row=1, col=2
@@ -171,9 +161,9 @@ class HourlyRangeAnalyzer:
         fig.add_trace(
             go.Bar(
                 x=dow_stats.index,
-                y=dow_stats['hourly_range_mean']['mean_range'],
+                y=dow_stats['hourly_range_mean']['mean'],
                 name='Avg Range by Day',
-                text=dow_stats['hourly_range_mean']['mean_range'].round(2),
+                text=dow_stats['hourly_range_mean']['mean'].round(2),
                 textposition='auto',
             ),
             row=2, col=1
