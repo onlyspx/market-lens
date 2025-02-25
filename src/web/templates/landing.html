@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Lens - SPX Analysis Suite</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .hero {
+            background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%);
+            color: white;
+            padding: 4rem 0;
+        }
+        .feature-card {
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #1a237e;
+        }
+        .methodology {
+            background-color: #f8f9fa;
+            padding: 4rem 0;
+        }
+        .footer {
+            background-color: #1a237e;
+            color: white;
+            padding: 2rem 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="display-4 mb-4">Market Lens</h1>
+                    <p class="lead mb-4">Advanced SPX Analysis Suite for Data-Driven Trading Decisions</p>
+                    <p class="mb-5">Comprehensive analysis tools for gaps, hourly ranges, and market events</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Analysis Tools Section -->
+    <div class="container py-5">
+        <h2 class="text-center mb-5">Analysis Tools</h2>
+        <div class="row g-4">
+            <!-- First Hour Range Analysis -->
+            <div class="col-md-4">
+                <div class="card feature-card">
+                    <div class="card-body text-center">
+                        <div class="card-icon">📊</div>
+                        <h3 class="card-title">First Hour Range Analysis</h3>
+                        <p class="card-text">Analyze SPX first hour trading ranges and their correlation with VIX levels. Understand market volatility patterns at market open.</p>
+                        <ul class="list-unstyled text-start">
+                            <li>✓ First hour range statistics</li>
+                            <li>✓ VIX correlation analysis</li>
+                            <li>✓ Day of week patterns</li>
+                            <li>✓ Real-time updates</li>
+                        </ul>
+                        <a href="/hourly" class="btn btn-primary mt-3">View Analysis</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gap Analysis -->
+            <div class="col-md-4">
+                <div class="card feature-card">
+                    <div class="card-body text-center">
+                        <div class="card-icon">🎯</div>
+                        <h3 class="card-title">Gap Analysis</h3>
+                        <p class="card-text">Comprehensive analysis of SPX price gaps, including gap fill statistics and market behavior around gaps.</p>
+                        <ul class="list-unstyled text-start">
+                            <li>✓ Gap fill probability</li>
+                            <li>✓ Gap size distribution</li>
+                            <li>✓ Fill time analysis</li>
+                            <li>✓ Historical patterns</li>
+                        </ul>
+                        <a href="/gaps" class="btn btn-primary mt-3">View Analysis</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Market Events -->
+            <div class="col-md-4">
+                <div class="card feature-card">
+                    <div class="card-body text-center">
+                        <div class="card-icon">📈</div>
+                        <h3 class="card-title">Market Events Analysis</h3>
+                        <p class="card-text">Analysis of significant market events and their impact on SPX price action and volatility.</p>
+                        <ul class="list-unstyled text-start">
+                            <li>✓ Event classification</li>
+                            <li>✓ Price impact analysis</li>
+                            <li>✓ Volatility patterns</li>
+                            <li>✓ Historical context</li>
+                        </ul>
+                        <a href="/events" class="btn btn-primary mt-3">View Analysis</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Methodology Section -->
+    <div class="methodology">
+        <div class="container">
+            <h2 class="text-center mb-5">Methodology</h2>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <h4>Data Sources</h4>
+                    <ul>
+                        <li>SPX price data at various intervals (1-hour, daily)</li>
+                        <li>VIX data for volatility correlation</li>
+                        <li>Historical market events and significant moves</li>
+                        <li>Real-time updates during market hours</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h4>Analysis Techniques</h4>
+                    <ul>
+                        <li>Statistical analysis of price patterns</li>
+                        <li>Correlation studies with market indicators</li>
+                        <li>Time-series analysis for temporal patterns</li>
+                        <li>Machine learning for pattern recognition</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Usage Guide Section -->
+    <div class="container py-5">
+        <h2 class="text-center mb-5">Usage Guide</h2>
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="accordion" id="usageGuide">
+                    <!-- First Hour Analysis -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#firstHourGuide">
+                                First Hour Range Analysis
+                            </button>
+                        </h2>
+                        <div id="firstHourGuide" class="accordion-collapse collapse show">
+                            <div class="accordion-body">
+                                <p>The First Hour Range Analysis tool provides insights into market behavior during the crucial first hour of trading:</p>
+                                <ul>
+                                    <li><strong>Recent Days Table:</strong> Shows the exact range (high minus low) for the first trading hour of the last 5 trading days</li>
+                                    <li><strong>VIX Correlation:</strong> Analyzes how the VIX level affects first hour ranges</li>
+                                    <li><strong>Day of Week Patterns:</strong> Reveals which days tend to have larger or smaller opening ranges</li>
+                                    <li><strong>Distribution Analysis:</strong> Shows the frequency distribution of first hour ranges</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gap Analysis -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#gapGuide">
+                                Gap Analysis
+                            </button>
+                        </h2>
+                        <div id="gapGuide" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+                                <p>The Gap Analysis tool helps understand market behavior around price gaps:</p>
+                                <ul>
+                                    <li><strong>Gap Statistics:</strong> Probability of gaps filling based on historical data</li>
+                                    <li><strong>Size Analysis:</strong> How gap size affects fill probability</li>
+                                    <li><strong>Time Analysis:</strong> Average time taken for gaps to fill</li>
+                                    <li><strong>Market Context:</strong> Relationship between gaps and market conditions</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Market Events -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#eventsGuide">
+                                Market Events Analysis
+                            </button>
+                        </h2>
+                        <div id="eventsGuide" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+                                <p>The Market Events Analysis tool examines significant market moves and their context:</p>
+                                <ul>
+                                    <li><strong>Event Classification:</strong> Categorization of different types of market events</li>
+                                    <li><strong>Impact Analysis:</strong> How events affect market behavior</li>
+                                    <li><strong>Pattern Recognition:</strong> Common patterns around significant events</li>
+                                    <li><strong>Historical Context:</strong> Similar historical events and their outcomes</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Market Lens</h5>
+                    <p>Advanced market analysis tools for informed trading decisions</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p>Data updates during market hours</p>
+                    <p>© 2025 Market Lens. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
