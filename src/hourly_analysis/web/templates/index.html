@@ -236,7 +236,7 @@
                                 <td>${day.hourly_range_median.toFixed(2)}</td>
                                 <td>${day.hourly_range_min.toFixed(2)}</td>
                                 <td>${day.hourly_range_max.toFixed(2)}</td>
-                                <td>${day.vix_close.toFixed(2)}</td>
+                                <td>${day.vix_close !== null ? day.vix_close.toFixed(2) : 'N/A'}</td>
                             </tr>
                         `)
                         .join('');

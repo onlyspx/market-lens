@@ -127,7 +127,7 @@ class HourlyRangeAnalyzer:
                 'hourly_range_median': float(day['hourly_range_median']),
                 'hourly_range_min': float(day['hourly_range_min']),
                 'hourly_range_max': float(day['hourly_range_max']),
-                'vix_close': float(day['prev_vix_close'])
+                'vix_close': float(day['prev_vix_close']) if pd.notna(day['prev_vix_close']) else None
             })
         
         return recent_analysis
