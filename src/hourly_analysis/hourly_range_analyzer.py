@@ -42,7 +42,7 @@ class HourlyRangeAnalyzer:
         
         # Group by date and calculate daily stats for hourly ranges
         daily_stats = self.spx_data.groupby('Date').agg({
-            'hourly_range': ['mean', 'min', 'max', 'std'],
+            'hourly_range': ['mean', 'median', 'min', 'max', 'std'],
             'Datetime': 'first'  # Keep first datetime for day of week
         })
         
@@ -84,7 +84,7 @@ class HourlyRangeAnalyzer:
         
         vix_analysis = self.hourly_stats.groupby('vix_category').agg({
             'prev_vix_close': ['min', 'max', 'mean'],
-            'hourly_range_mean': ['mean', 'median', 'std', 'count']
+            'hourly_range_mean': ['mean', 'median', 'min', 'max', 'std', 'count']
         }).round(2)
         
         return vix_analysis
@@ -101,13 +101,36 @@ class HourlyRangeAnalyzer:
         dow_analysis = self.hourly_stats[
             self.hourly_stats['day_of_week'].isin(weekday_order)
         ].groupby('day_of_week').agg({
-            'hourly_range_mean': ['mean', 'median', 'std', 'count']
+            'hourly_range_mean': ['mean', 'median', 'min', 'max', 'std', 'count']
         }).round(2)
         
         # Reorder index based on weekday_order
         dow_analysis = dow_analysis.reindex(weekday_order)
         
         return dow_analysis
+    
+    def get_recent_days_analysis(self):
+        """Get analysis for the last 5 trading days."""
+        if self.hourly_stats is None:
+            raise ValueError("No stats available. Call calculate_hourly_metrics() first.")
+        
+        # Get last 5 trading days
+        recent_stats = self.hourly_stats.sort_values('Date', ascending=False).head(5)
+        
+        # Format the analysis
+        recent_analysis = []
+        for _, day in recent_stats.iterrows():
+            recent_analysis.append({
+                'date': day['Date'].strftime('%Y-%m-%d'),
+                'day_of_week': pd.to_datetime(day['Date']).strftime('%A'),
+                'hourly_range_mean': float(day['hourly_range_mean']),
+                'hourly_range_median': float(day['hourly_range_median']),
+                'hourly_range_min': float(day['hourly_range_min']),
+                'hourly_range_max': float(day['hourly_range_max']),
+                'vix_close': float(day['prev_vix_close'])
+            })
+        
+        return recent_analysis
     
     def plot_analysis(self):
         """Create interactive visualization of the analysis."""
