@@ -40,10 +40,15 @@ class HourlyRangeAnalyzer:
         # Calculate hourly ranges
         self.spx_data['hourly_range'] = self.spx_data['High'] - self.spx_data['Low']
         
-        # Group by date and calculate daily stats for hourly ranges
-        daily_stats = self.spx_data.groupby('Date').agg({
-            'hourly_range': ['mean', 'median', 'min', 'max', 'std'],
-            'Datetime': 'first'  # Keep first datetime for day of week
+        # Get first hour of each day
+        first_hours = self.spx_data.sort_values('Datetime').groupby('Date').first()
+        
+        # Create daily stats
+        daily_stats = pd.DataFrame({
+            'first_hour_range': first_hours['hourly_range'],
+            'first_hour_high': first_hours['High'],
+            'first_hour_low': first_hours['Low'],
+            'Datetime': first_hours['Datetime']
         })
         
         # Flatten MultiIndex columns
@@ -123,10 +128,9 @@ class HourlyRangeAnalyzer:
             recent_analysis.append({
                 'date': day['Date'].strftime('%Y-%m-%d'),
                 'day_of_week': pd.to_datetime(day['Date']).strftime('%A'),
-                'hourly_range_mean': float(day['hourly_range_mean']),
-                'hourly_range_median': float(day['hourly_range_median']),
-                'hourly_range_min': float(day['hourly_range_min']),
-                'hourly_range_max': float(day['hourly_range_max']),
+                'first_hour_range': float(day['first_hour_range']),
+                'first_hour_high': float(day['first_hour_high']),
+                'first_hour_low': float(day['first_hour_low']),
                 'vix_close': float(day['prev_vix_close']) if pd.notna(day['prev_vix_close']) else None
             })
         
