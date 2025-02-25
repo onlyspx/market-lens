@@ -44,15 +44,12 @@ class HourlyRangeAnalyzer:
         first_hours = self.spx_data.sort_values('Datetime').groupby('Date').first()
         
         # Create daily stats
-        daily_stats = pd.DataFrame({
-            'first_hour_range': first_hours['hourly_range'],
-            'first_hour_high': first_hours['High'],
-            'first_hour_low': first_hours['Low'],
-            'Datetime': first_hours['Datetime']
-        })
-        
-        # Flatten MultiIndex columns
-        daily_stats.columns = ['_'.join(col).strip() for col in daily_stats.columns.values]
+        # Create daily stats
+        daily_stats = pd.DataFrame()
+        daily_stats['first_hour_range'] = first_hours['hourly_range']
+        daily_stats['first_hour_high'] = first_hours['High']
+        daily_stats['first_hour_low'] = first_hours['Low']
+        daily_stats['Datetime'] = first_hours['Datetime']
         daily_stats = daily_stats.reset_index()
         
         # Add day of week
