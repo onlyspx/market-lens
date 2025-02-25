@@ -44,7 +44,11 @@ class HourlyRangeAnalyzer:
         daily_stats = self.spx_data.groupby('Date').agg({
             'hourly_range': ['mean', 'min', 'max', 'std'],
             'Datetime': 'first'  # Keep first datetime for day of week
-        }).reset_index()
+        })
+        
+        # Flatten MultiIndex columns
+        daily_stats.columns = ['_'.join(col).strip() for col in daily_stats.columns.values]
+        daily_stats = daily_stats.reset_index()
         
         # Add day of week
         daily_stats['day_of_week'] = pd.to_datetime(daily_stats['Date']).dt.day_name()
@@ -80,7 +84,7 @@ class HourlyRangeAnalyzer:
         
         vix_analysis = self.hourly_stats.groupby('vix_category').agg({
             'prev_vix_close': ['min', 'max', 'mean'],
-            'hourly_range': {
+            'hourly_range_mean': {
                 'mean_range': 'mean',
                 'median_range': 'median',
                 'std_range': 'std',
@@ -102,7 +106,7 @@ class HourlyRangeAnalyzer:
         dow_analysis = self.hourly_stats[
             self.hourly_stats['day_of_week'].isin(weekday_order)
         ].groupby('day_of_week').agg({
-            'hourly_range': {
+            'hourly_range_mean': {
                 'mean_range': 'mean',
                 'median_range': 'median',
                 'std_range': 'std',
@@ -137,11 +141,11 @@ class HourlyRangeAnalyzer:
         fig.add_trace(
             go.Scatter(
                 x=self.hourly_stats['prev_vix_close'],
-                y=self.hourly_stats['hourly_range']['mean'],
+                y=self.hourly_stats['hourly_range_mean'],
                 mode='markers',
                 name='VIX vs Range',
                 marker=dict(
-                    color=self.hourly_stats['hourly_range']['mean'],
+                    color=self.hourly_stats['hourly_range_mean'],
                     colorscale='Viridis',
                     showscale=True
                 )
@@ -154,9 +158,9 @@ class HourlyRangeAnalyzer:
         fig.add_trace(
             go.Bar(
                 x=vix_cats.index,
-                y=vix_cats['hourly_range']['mean_range'],
+                y=vix_cats['hourly_range_mean']['mean_range'],
                 name='Avg Range by VIX',
-                text=vix_cats['hourly_range']['mean_range'].round(2),
+                text=vix_cats['hourly_range_mean']['mean_range'].round(2),
                 textposition='auto',
             ),
             row=1, col=2
@@ -167,9 +171,9 @@ class HourlyRangeAnalyzer:
         fig.add_trace(
             go.Bar(
                 x=dow_stats.index,
-                y=dow_stats['hourly_range']['mean_range'],
+                y=dow_stats['hourly_range_mean']['mean_range'],
                 name='Avg Range by Day',
-                text=dow_stats['hourly_range']['mean_range'].round(2),
+                text=dow_stats['hourly_range_mean']['mean_range'].round(2),
                 textposition='auto',
             ),
             row=2, col=1
@@ -178,7 +182,7 @@ class HourlyRangeAnalyzer:
         # Histogram of hourly ranges
         fig.add_trace(
             go.Histogram(
-                x=self.hourly_stats['hourly_range']['mean'],
+                x=self.hourly_stats['hourly_range_mean'],
                 name='Range Distribution',
                 nbinsx=30,
             ),
