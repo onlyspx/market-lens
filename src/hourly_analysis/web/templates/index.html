@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPX Hourly Range Analysis</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .loading {
+            display: none;
+        }
+        #results {
+            display: none;
+        }
+        .stat-card {
+            transition: all 0.3s ease;
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .positive {
+            color: #198754;
+            font-weight: 500;
+        }
+        .negative {
+            color: #dc3545;
+            font-weight: 500;
+        }
+        .info-icon {
+            cursor: help;
+            color: #6c757d;
+        }
+        .plot-container {
+            height: 1000px;
+            width: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="container-fluid py-5">
+        <div class="row mb-4">
+            <div class="col">
+                <h1 class="text-center">SPX Hourly Range Analysis</h1>
+                <p class="text-center text-muted">Analysis of SPX hourly ranges and their correlation with VIX</p>
+            </div>
+        </div>
+
+        <!-- Loading Spinner -->
+        <div class="loading text-center my-5">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <p class="mt-2">Analyzing hourly ranges and VIX correlation...</p>
+        </div>
+
+        <!-- Results Section -->
+        <div id="results">
+            <!-- Interactive Plot -->
+            <div class="row mb-4">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body p-0">
+                            <iframe id="plotFrame" class="plot-container"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistics Cards -->
+            <div class="row g-4">
+                <!-- VIX Category Analysis -->
+                <div class="col-md-6">
+                    <div class="card stat-card h-100">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Analysis by VIX Category</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>VIX Category</th>
+                                            <th>VIX Range</th>
+                                            <th>Avg Range</th>
+                                            <th>Count</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="vixTable">
+                                        <!-- VIX analysis data will be inserted here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Day of Week Analysis -->
+                <div class="col-md-6">
+                    <div class="card stat-card h-100">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Analysis by Day of Week</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>Day</th>
+                                            <th>Avg Range</th>
+                                            <th>Median Range</th>
+                                            <th>Count</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="dowTable">
+                                        <!-- Day of week analysis data will be inserted here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const loading = document.querySelector('.loading');
+            const results = document.getElementById('results');
+            const plotFrame = document.getElementById('plotFrame');
+            const vixTable = document.getElementById('vixTable');
+            const dowTable = document.getElementById('dowTable');
+            
+            // Show loading, hide results
+            loading.style.display = 'block';
+            results.style.display = 'none';
+            
+            try {
+                const response = await fetch('/api/analyze');
+                const data = await response.json();
+                
+                if (data.success) {
+                    // Update plot
+                    plotFrame.src = data.plot_url;
+                    
+                    // Update VIX analysis table
+                    const vixStats = data.vix_analysis;
+                    vixTable.innerHTML = Object.entries(vixStats.hourly_range.mean_range)
+                        .map(([category, mean]) => {
+                            const count = vixStats.hourly_range.count[category];
+                            const vixMin = vixStats.prev_vix_close.min[category];
+                            const vixMax = vixStats.prev_vix_close.max[category];
+                            return `
+                                <tr>
+                                    <td>${category}</td>
+                                    <td>${vixMin.toFixed(1)} - ${vixMax.toFixed(1)}</td>
+                                    <td>${mean.toFixed(2)}</td>
+                                    <td>${count}</td>
+                                </tr>
+                            `;
+                        })
+                        .join('');
+                    
+                    // Update Day of Week analysis table
+                    const dowStats = data.dow_analysis;
+                    dowTable.innerHTML = Object.entries(dowStats.hourly_range.mean_range)
+                        .map(([day, mean]) => {
+                            const median = dowStats.hourly_range.median_range[day];
+                            const count = dowStats.hourly_range.count[day];
+                            return `
+                                <tr>
+                                    <td>${day}</td>
+                                    <td>${mean.toFixed(2)}</td>
+                                    <td>${median.toFixed(2)}</td>
+                                    <td>${count}</td>
+                                </tr>
+                            `;
+                        })
+                        .join('');
+                    
+                    // Show results
+                    results.style.display = 'block';
+                } else {
+                    alert('Error analyzing data: ' + data.error);
+                }
+            } catch (error) {
+                alert('Error: ' + error.message);
+            } finally {
+                loading.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
