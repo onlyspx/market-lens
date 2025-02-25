@@ -38,11 +38,11 @@ def analyze():
         for day in ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']:
             stats = {
                 'day_of_week': day,
-                'mean': float(dow_analysis[('hourly_range_mean', 'mean')][day]),
-                'median': float(dow_analysis[('hourly_range_mean', 'median')][day]),
-                'min': float(dow_analysis[('hourly_range_mean', 'min')][day]),
-                'max': float(dow_analysis[('hourly_range_mean', 'max')][day]),
-                'count': int(dow_analysis[('hourly_range_mean', 'count')][day])
+                'mean': float(dow_analysis[('first_hour_range', 'mean')][day]),
+                'median': float(dow_analysis[('first_hour_range', 'median')][day]),
+                'min': float(dow_analysis[('first_hour_range', 'min')][day]),
+                'max': float(dow_analysis[('first_hour_range', 'max')][day]),
+                'count': int(dow_analysis[('first_hour_range', 'count')][day])
             }
             dow_stats.append(stats)
         
@@ -53,8 +53,8 @@ def analyze():
                 'vix_category': cat,
                 'vix_min': float(vix_analysis[('prev_vix_close', 'min')][cat]),
                 'vix_max': float(vix_analysis[('prev_vix_close', 'max')][cat]),
-                'mean': float(vix_analysis[('hourly_range_mean', 'mean')][cat]),
-                'count': int(vix_analysis[('hourly_range_mean', 'count')][cat])
+                'mean': float(vix_analysis[('first_hour_range', 'mean')][cat]),
+                'count': int(vix_analysis[('first_hour_range', 'count')][cat])
             }
             vix_stats.append(stats)
         
