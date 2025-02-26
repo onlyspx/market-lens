@@ -1,171 +1,114 @@
 # Market Lens
 
-An intelligent market data collection and analysis platform that provides deep insights into stock market movements.
+A tool for analyzing market data patterns and trends, with a focus on SPX hourly analysis.
 
 ## Features
 
-✅ Implemented:
-- Daily data collection for specified tickers
-- Local and automated GitHub Actions data fetching
-- CSV storage format with basic data structure
-- Command-line interface for manual data fetching
-- Basic error handling
-- SPX Range Analysis:
-  - Daily range calculations
-  - Significant move detection (-100 points or more)
-  - Next 3-day pattern analysis
-  - Interactive visualizations
-
-🚧 Planned for Future:
-- Advanced error handling and retries
-- Data validation and integrity checks
-- Email notifications for failures
-- Additional analysis tools
-- Historical data backfilling
-- Performance optimizations
-- Monitoring dashboard
-- Unit tests
+- SPX first hour range analysis
+- VIX correlation insights
+- Day of week patterns
+- Interactive visualizations
+- Static site deployment
 
 ## Project Structure
+
 ```
 market-lens/
-├── config/
-│   └── tickers.json       # List of tickers to track
-├── data/
-│   ├── historical/        # CSV files for each ticker
-│   └── analysis/
-│       └── ranges/        # Range analysis results
 ├── src/
-│   ├── data_fetcher.py   # Main script for fetching data
-│   └── analysis/
-│       ├── gap_analyzer.py    # Gap analysis module
-│       └── range_analyzer.py  # Range analysis module
-├── requirements.txt
-└── .github/
-    └── workflows/
-        └── fetch_stock_data.yml
+│   └── hourly_analysis/
+│       ├── build.py           # Static site generator
+│       ├── hourly_range_analyzer.py
+│       └── templates/
+│           └── index.html     # Static site template
+├── build/                     # Generated static site
+├── docs/                      # Documentation
+└── vercel.json               # Vercel configuration
 ```
 
-## Setup
+## Local Development
 
-1. Clone the repository
+1. Clone the repository:
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/yourusername/market-lens.git
 cd market-lens
 ```
 
-2. Install dependencies
+2. Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
-3. Configure tickers in `config/tickers.json`
-```json
-{
-    "tickers": ["SPY", "QQQ", "SPX", "AAPL", "NVDA", "TSLA"]
-}
-```
-
-## Usage
-
-### Local Data Fetching
-
-1. Fetch all tickers from config:
+3. Generate static site:
 ```bash
-python src/data_fetcher.py
+cd src/hourly_analysis
+python build.py
 ```
 
-2. Fetch specific tickers:
+4. The static site will be generated in the `build` directory. You can serve it locally using Python's built-in server:
 ```bash
-python src/data_fetcher.py --tickers SPY AAPL
+cd ../../build
+python -m http.server 8000
 ```
 
-3. Fetch multiple days of historical data:
+5. Open http://localhost:8000 in your browser
+
+## Deployment
+
+### Vercel Deployment
+
+1. Install Vercel CLI:
 ```bash
-python src/data_fetcher.py --days 5
+npm install -g vercel
 ```
 
-### Range Analysis
-
-1. Run SPX range analysis:
+2. Login to Vercel:
 ```bash
-python src/analysis/range_analyzer.py
+vercel login
 ```
 
-This will:
-- Fetch latest SPX data using yfinance
-- Calculate daily ranges and point changes
-- Identify significant moves (-100 points or more)
-- Analyze next 3-day patterns after big drops
-- Generate interactive visualizations
-- Save results to data/analysis/ranges/
-
-The analysis provides:
-- Daily range statistics
-- Detailed analysis of significant down moves
-- Next 3-day price action patterns
-- Interactive charts in HTML format
-
-### Web Interface
-
-1. Launch the Flask web server:
+3. Deploy:
 ```bash
-python src/web/app.py
+vercel
 ```
 
-This will:
-- Start a development server on http://127.0.0.1:5000
-- Load initial SPX data for analysis
-- Serve the web interface for interactive analysis
-- Enable real-time analysis of market moves
+The site will be automatically built and deployed according to the configuration in `vercel.json`.
 
-Access the web interface by opening http://127.0.0.1:5000 in your browser.
+### Manual Updates
 
-Note: This is a development server and should not be used in production.
+To manually update the analysis:
 
-### Automated Data Collection
-
-The project uses GitHub Actions to automatically fetch data every weekday at 9:15 AM ET. The workflow:
-- Runs on schedule
-- Downloads latest data
-- Commits and pushes to the repository
-- Reports status of the operation
-
-## Data Format
-
-Each ticker's data is stored in a separate CSV file under `data/historical/` with the following format:
-```
-date,open,high,low,close,volume
-2024-02-11,450.32,452.10,449.95,451.20,1234567
+1. Run the build script:
+```bash
+cd src/hourly_analysis
+python build.py
 ```
 
-### Range Analysis Output
+2. Commit and push the changes:
+```bash
+git add build/
+git commit -m "Update analysis data"
+git push
+```
 
-Range analysis results are stored in `data/analysis/ranges/` with:
-- SPX_range_analysis.html: Interactive visualization dashboard
-- Detailed console output showing:
-  - Significant down moves (-100 points or more)
-  - Next 3-day price action
-  - Summary statistics
+Vercel will automatically deploy the updated site.
 
-## GitHub Actions Setup
+## Documentation
 
-1. Enable GitHub Actions in your repository settings
-2. Ensure the repository has permissions to commit changes
-3. The workflow will automatically start running on schedule
+For more detailed documentation, see the [docs](./docs) directory:
 
-## Error Handling
-
-Basic error handling is implemented for:
-- Network failures
-- Invalid ticker symbols
-- Missing data
-- File system operations
+- [Implementation Plan](./docs/implementation_plan.md)
+- [Development Guide](./docs/development.md)
+- [Deployment Guide](./docs/deployment.md)
+- [Architecture Overview](./docs/architecture.md)
 
 ## Contributing
 
-Feel free to submit issues and enhancement requests!
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ## License
 
-MIT License - See LICENSE file for details
+This project is licensed under the MIT License - see the LICENSE file for details.
