@@ -69,11 +69,22 @@
         
         <div class="stats-grid">
             <div class="stats-card">
-                <h2>VIX Category Analysis</h2>
+                <h2>
+                    VIX Category Analysis
+                    <span style="cursor: help; font-size: 0.8em; color: #6c757d;" title="VIX categories are based on percentiles of historical VIX values:
+Very Low: Bottom 20% of VIX values
+Low: 20-40th percentile
+Medium: 40-60th percentile
+High: 60-80th percentile
+Very High: Top 20% of VIX values">ⓘ</span>
+                </h2>
                 <table id="vixTable">
                     <thead>
                         <tr>
-                            <th>Category</th>
+                            <th>
+                                Category
+                                <span style="cursor: help; color: #6c757d;" title="VIX ranges for each category are shown in the table">ⓘ</span>
+                            </th>
                             <th>Range Mean</th>
                             <th>Count</th>
                         </tr>
@@ -129,7 +140,12 @@
                 const vixBody = document.querySelector('#vixTable tbody');
                 vixBody.innerHTML = data.vix_analysis.map(item => `
                     <tr>
-                        <td>${item.category}</td>
+                        <td>
+                            ${item.category}
+                            <span style="color: #6c757d; font-size: 0.8em;">
+                                (${item.vix_min.toFixed(1)}-${item.vix_max.toFixed(1)})
+                            </span>
+                        </td>
                         <td>${item.range_mean.toFixed(2)}</td>
                         <td>${item.count}</td>
                     </tr>
