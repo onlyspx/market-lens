@@ -1,25 +1,28 @@
 {
   "version": 2,
   "buildCommand": "cd src/hourly_analysis && python3 build.py && cd ../.. && python3 -m pip install -r requirements.txt",
-  "outputDirectory": "build",
   "builds": [
     {
       "src": "src/web/wsgi.py",
       "use": "@vercel/python"
     },
     {
-      "src": "build/**",
+      "src": "src/hourly_analysis/build/**",
       "use": "@vercel/static"
     }
   ],
   "routes": [
     {
-      "src": "/hourly/(.*)",
-      "dest": "/build/$1"
+      "src": "/hourly/static/(.*)",
+      "dest": "/src/hourly_analysis/build/static/$1"
+    },
+    {
+      "src": "/hourly/data/(.*)",
+      "dest": "/src/hourly_analysis/build/data/$1"
     },
     {
       "src": "/hourly",
-      "dest": "/build/index.html"
+      "dest": "/src/hourly_analysis/build/index.html"
     },
     {
       "src": "/(.*)",
