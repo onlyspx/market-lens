@@ -26,13 +26,23 @@ def landing():
 
 @app.route('/hourly')
 def hourly():
-    """Render hourly analysis page."""
+    """Redirect to static hourly analysis page."""
     try:
-        print("Loading hourly.html from:", os.path.join(template_dir, 'hourly.html'))
-        return render_template('hourly.html')
+        hourly_dir = os.path.join(root_dir, 'src', 'hourly_analysis', 'build')
+        return send_from_directory(hourly_dir, 'index.html')
     except Exception as e:
-        print(f"Error loading hourly.html: {str(e)}")
+        print(f"Error serving hourly analysis: {str(e)}")
         return f"Error: {str(e)}", 500
+
+@app.route('/hourly/<path:path>')
+def hourly_static(path):
+    """Serve static files for hourly analysis."""
+    try:
+        hourly_dir = os.path.join(root_dir, 'src', 'hourly_analysis', 'build')
+        return send_from_directory(hourly_dir, path)
+    except Exception as e:
+        print(f"Error serving {path}: {str(e)}")
+        return f"Error: {str(e)}", 404
 
 @app.route('/gaps')
 def gaps():
