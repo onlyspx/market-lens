@@ -181,8 +181,8 @@ Very High: Top 20% of VIX values">ⓘ</span>
                     `Last updated: ${lastUpdated.toLocaleString()}`;
                 
                 // Format and display date range
-                const startDate = new Date(data.recent_days[data.recent_days.length - 1].date);
-                const endDate = new Date(data.recent_days[0].date);
+                const startDate = new Date(data.date_range.start);
+                const endDate = new Date(data.date_range.end);
                 document.getElementById('dateRange').textContent = 
                     `${startDate.toLocaleDateString()} to ${endDate.toLocaleDateString()}`;
                 

@@ -45,11 +45,18 @@ class StaticSiteBuilder:
         recent_days = self.analyzer.get_recent_days_analysis()
         
         # Create data files
+        # Get full date range from SPX data
+        date_range = {
+            "start": self.analyzer.spx_data['Date'].min().strftime('%Y-%m-%d'),
+            "end": self.analyzer.spx_data['Date'].max().strftime('%Y-%m-%d')
+        }
+        
         data = {
             "vix_analysis": self._convert_vix_analysis(vix_analysis),
             "dow_analysis": self._convert_dow_analysis(dow_analysis),
             "recent_days": recent_days,
             "last_updated": datetime.now().isoformat(),
+            "date_range": date_range
         }
         
         # Save data
