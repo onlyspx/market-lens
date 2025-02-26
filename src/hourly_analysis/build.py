@@ -10,7 +10,8 @@ from hourly_range_analyzer import HourlyRangeAnalyzer
 class StaticSiteBuilder:
     def __init__(self):
         self.analyzer = HourlyRangeAnalyzer()
-        self.build_dir = Path("build")
+        root_dir = Path(__file__).parent.parent.parent
+        self.build_dir = root_dir / "public" / "hourly"
         self.static_dir = self.build_dir / "static"
         self.data_dir = self.build_dir / "data"
         
@@ -22,9 +23,9 @@ class StaticSiteBuilder:
             shutil.rmtree(self.build_dir)
             
         # Create fresh directories
-        self.build_dir.mkdir(exist_ok=True)
-        self.static_dir.mkdir(exist_ok=True)
-        self.data_dir.mkdir(exist_ok=True)
+        self.build_dir.mkdir(parents=True, exist_ok=True)
+        self.static_dir.mkdir(parents=True, exist_ok=True)
+        self.data_dir.mkdir(parents=True, exist_ok=True)
         
         # Create subdirectories for assets
         (self.static_dir / "css").mkdir(exist_ok=True)

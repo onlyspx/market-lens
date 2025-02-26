@@ -7,22 +7,18 @@
       "use": "@vercel/python"
     },
     {
-      "src": "src/hourly_analysis/build/**",
+      "src": "public/**",
       "use": "@vercel/static"
     }
   ],
   "routes": [
     {
-      "src": "/hourly/static/(.*)",
-      "dest": "/src/hourly_analysis/build/static/$1"
-    },
-    {
-      "src": "/hourly/data/(.*)",
-      "dest": "/src/hourly_analysis/build/data/$1"
+      "src": "/hourly/(.*)",
+      "dest": "/public/hourly/$1"
     },
     {
       "src": "/hourly",
-      "dest": "/src/hourly_analysis/build/index.html"
+      "dest": "/public/hourly/index.html"
     },
     {
       "src": "/(.*)",
