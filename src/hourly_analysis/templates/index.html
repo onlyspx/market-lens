@@ -66,6 +66,9 @@
 <body>
     <div class="container">
         <h1>SPX Hourly Analysis</h1>
+        <div style="text-align: center; margin-bottom: 20px; color: #666;">
+            Analysis Period: <span id="dateRange">Loading...</span>
+        </div>
         
         <div class="stats-grid">
             <div class="stats-card">
@@ -172,9 +175,16 @@ Very High: Top 20% of VIX values">ⓘ</span>
                 `).join('');
                 
                 // Update last updated timestamp
+                // Update date range and last updated
                 const lastUpdated = new Date(data.last_updated);
                 document.getElementById('lastUpdated').textContent = 
                     `Last updated: ${lastUpdated.toLocaleString()}`;
+                
+                // Format and display date range
+                const startDate = new Date(data.recent_days[data.recent_days.length - 1].date);
+                const endDate = new Date(data.recent_days[0].date);
+                document.getElementById('dateRange').textContent = 
+                    `${startDate.toLocaleDateString()} to ${endDate.toLocaleDateString()}`;
                 
             } catch (error) {
                 console.error('Error loading analysis:', error);
