@@ -6,60 +6,128 @@
     <title>SPX Hourly Analysis</title>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <style>
+        /* Base styles */
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
             margin: 0;
-            padding: 20px;
+            padding: 10px;
             background-color: #f5f5f5;
         }
+        
         .container {
             max-width: 1200px;
             margin: 0 auto;
             background-color: white;
-            padding: 20px;
+            padding: 15px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        h1, h2 {
+        
+        h1 {
             color: #333;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+            text-align: center;
         }
+        
+        h2 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
         }
+        
         .stats-card {
             background-color: white;
-            padding: 20px;
+            padding: 15px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
         }
+        
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+            min-width: 250px;
         }
+        
         th, td {
-            padding: 12px;
+            padding: 10px;
             text-align: left;
             border-bottom: 1px solid #ddd;
         }
+        
         th {
             background-color: #f8f9fa;
+            position: sticky;
+            top: 0;
+            z-index: 1;
         }
+        
         .visualization {
-            margin-top: 30px;
+            margin-top: 20px;
             border-radius: 8px;
             overflow: hidden;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
+        
         .last-updated {
             color: #666;
             font-size: 0.9em;
             text-align: right;
-            margin-top: 20px;
+            margin-top: 15px;
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            body {
+                padding: 5px;
+            }
+            
+            .container {
+                padding: 10px;
+                margin: 0;
+            }
+            
+            h1 {
+                font-size: 1.5em;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-card {
+                padding: 10px;
+            }
+            
+            table {
+                font-size: 0.9em;
+            }
+            
+            th, td {
+                padding: 8px;
+            }
+            
+            .visualization iframe {
+                height: 400px !important;
+            }
+            
+            /* Improve touch targets */
+            th, td, button, a {
+                min-height: 44px;
+                min-width: 44px;
+            }
         }
     </style>
 </head>
@@ -181,8 +249,8 @@ Very High: Top 20% of VIX values">ⓘ</span>
                     `Last updated: ${lastUpdated.toLocaleString()}`;
                 
                 // Format and display date range
-                const startDate = new Date(data.recent_days[data.recent_days.length - 1].date);
-                const endDate = new Date(data.recent_days[0].date);
+                const startDate = new Date(data.date_range.start);
+                const endDate = new Date(data.date_range.end);
                 document.getElementById('dateRange').textContent = 
                     `${startDate.toLocaleDateString()} to ${endDate.toLocaleDateString()}`;
                 
