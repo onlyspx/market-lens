@@ -5,3 +5,8 @@ click==8.1.7
 itsdangerous==2.1.2
 blinker==1.7.0
 pandas==2.2.0
+
+# Database dependencies
+psycopg2-binary==2.9.9
+sqlalchemy==2.0.0
+yfinance==0.2.36
