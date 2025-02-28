@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPX Intraday Range Table</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        /* Base styles */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 10px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+            text-align: center;
+        }
+        
+        h2 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            gap: 20px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #0066cc;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+        
+        .nav-links a:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .nav-links a.active {
+            font-weight: bold;
+            background-color: #e6f0ff;
+        }
+        
+        .table-container {
+            margin-top: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .insights {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .insights ul {
+            padding-left: 20px;
+        }
+        
+        .insights li {
+            margin-bottom: 8px;
+        }
+        
+        .last-updated {
+            color: #666;
+            font-size: 0.9em;
+            text-align: right;
+            margin-top: 15px;
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            body {
+                padding: 5px;
+            }
+            
+            .container {
+                padding: 10px;
+                margin: 0;
+            }
+            
+            h1 {
+                font-size: 1.5em;
+            }
+            
+            .table-container iframe {
+                height: 500px !important;
+            }
+            
+            /* Improve touch targets */
+            button, a {
+                min-height: 44px;
+                min-width: 44px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SPX Intraday Range Table</h1>
+        
+        <div class="nav-links">
+            <a href="index.html">Hourly Analysis</a>
+            <a href="intraday_table.html" class="active">Intraday Table</a>
+        </div>
+        
+        <div style="text-align: center; margin-bottom: 20px; color: #666;">
+            Hourly price ranges across trading days
+        </div>
+
+        <div class="table-container">
+            <iframe id="tableFrame" style="width:100%; height:800px; border:none;" src="static/intraday_table.html"></iframe>
+        </div>
+
+        <div class="insights">
+            <h2>Understanding the Table</h2>
+            <p>
+                This table displays the hourly price ranges of SPX for each trading day over the past year. 
+                Darker blue cells indicate larger price ranges within that hour. The rightmost column shows the total 
+                points gained (green) or lost (red) for each trading day.
+            </p>
+            
+            <h2>Key Insights</h2>
+            <ul>
+                <li><strong>Volatility Patterns</strong> - Identify which hours of the trading day consistently show higher volatility</li>
+                <li><strong>Day Comparison</strong> - Compare volatility patterns across different days of the week</li>
+                <li><strong>Opening vs. Closing Hours</strong> - Analyze differences between market open, midday, and close</li>
+                <li><strong>Correlation with Results</strong> - See how early day volatility correlates with end-of-day results</li>
+            </ul>
+        </div>
+
+        <div class="last-updated" id="lastUpdated"></div>
+    </div>
+
+    <script>
+        // Fetch and display last updated timestamp
+        async function loadData() {
+            try {
+                const response = await fetch('data/intraday_table.json');
+                const data = await response.json();
+                
+                // Update last updated timestamp
+                const lastUpdated = new Date(data.last_updated);
+                document.getElementById('lastUpdated').textContent = 
+                    `Last updated: ${lastUpdated.toLocaleString()}`;
+                
+            } catch (error) {
+                console.error('Error loading data:', error);
+            }
+        }
+
+        // Load data when page loads
+        document.addEventListener('DOMContentLoaded', loadData);
+    </script>
+</body>
+</html>
