@@ -11,25 +11,40 @@ class StaticSiteBuilder:
     def __init__(self):
         self.analyzer = HourlyRangeAnalyzer()
         root_dir = Path(__file__).parent.parent.parent
-        self.build_dir = root_dir / "public" / "hourly"
-        self.static_dir = self.build_dir / "static"
-        self.data_dir = self.build_dir / "data"
+        self.first_hour_dir = root_dir / "public" / "first-hour"
+        self.intraday_dir = root_dir / "public" / "intraday"
+        
+        # First hour directories
+        self.first_hour_static_dir = self.first_hour_dir / "static"
+        self.first_hour_data_dir = self.first_hour_dir / "data"
+        
+        # Intraday directories
+        self.intraday_static_dir = self.intraday_dir / "static"
+        self.intraday_data_dir = self.intraday_dir / "data"
         
     def setup_directories(self):
         """Create necessary build directories."""
         print("Setting up build directories...")
-        # Remove existing build directory if it exists
-        if self.build_dir.exists():
-            shutil.rmtree(self.build_dir)
-            
-        # Create fresh directories
-        self.build_dir.mkdir(parents=True, exist_ok=True)
-        self.static_dir.mkdir(parents=True, exist_ok=True)
-        self.data_dir.mkdir(parents=True, exist_ok=True)
         
-        # Create subdirectories for assets
-        (self.static_dir / "css").mkdir(exist_ok=True)
-        (self.static_dir / "js").mkdir(exist_ok=True)
+        # Remove existing directories if they exist
+        if self.first_hour_dir.exists():
+            shutil.rmtree(self.first_hour_dir)
+        if self.intraday_dir.exists():
+            shutil.rmtree(self.intraday_dir)
+            
+        # Create fresh directories for first hour analysis
+        self.first_hour_dir.mkdir(parents=True, exist_ok=True)
+        self.first_hour_static_dir.mkdir(parents=True, exist_ok=True)
+        self.first_hour_data_dir.mkdir(parents=True, exist_ok=True)
+        (self.first_hour_static_dir / "css").mkdir(exist_ok=True)
+        (self.first_hour_static_dir / "js").mkdir(exist_ok=True)
+        
+        # Create fresh directories for intraday table
+        self.intraday_dir.mkdir(parents=True, exist_ok=True)
+        self.intraday_static_dir.mkdir(parents=True, exist_ok=True)
+        self.intraday_data_dir.mkdir(parents=True, exist_ok=True)
+        (self.intraday_static_dir / "css").mkdir(exist_ok=True)
+        (self.intraday_static_dir / "js").mkdir(exist_ok=True)
         
     def generate_intraday_table(self):
         """Generate intraday table visualization."""
@@ -54,11 +69,11 @@ class StaticSiteBuilder:
             "last_updated": datetime.now().isoformat()
         }
         
-        with open(self.data_dir / "intraday_table.json", "w") as f:
+        with open(self.intraday_data_dir / "intraday_table.json", "w") as f:
             json.dump(table_data, f, indent=2)
         
         # Create the full HTML page
-        with open(self.static_dir / "intraday_table.html", "w") as f:
+        with open(self.intraday_static_dir / "intraday_table.html", "w") as f:
             f.write(f"""
             <!DOCTYPE html>
             <html>
@@ -131,9 +146,9 @@ class StaticSiteBuilder:
             </html>
             """)
     
-    def generate_data(self):
-        """Generate static JSON data files."""
-        print("Generating analysis data...")
+    def generate_first_hour_data(self):
+        """Generate static JSON data files for first hour analysis."""
+        print("Generating first hour analysis data...")
         
         # Fetch and analyze data
         self.analyzer.fetch_data(period="1y")
@@ -160,12 +175,12 @@ class StaticSiteBuilder:
         }
         
         # Save data
-        with open(self.data_dir / "analysis.json", "w") as f:
+        with open(self.first_hour_data_dir / "analysis.json", "w") as f:
             json.dump(data, f, indent=2)
             
         # Generate and save visualization
         fig = self.analyzer.plot_analysis()
-        fig.write_html(self.static_dir / "visualization.html")
+        fig.write_html(self.first_hour_static_dir / "visualization.html")
         
     def _convert_vix_analysis(self, vix_analysis):
         """Convert VIX analysis to JSON-friendly format."""
@@ -194,18 +209,23 @@ class StaticSiteBuilder:
         return result
     
     def copy_static_assets(self):
-        """Copy static assets to build directory."""
+        """Copy static assets to build directories."""
         print("Copying static assets...")
         
         # Copy template files
         templates_dir = Path(__file__).parent / "templates"
         if templates_dir.exists():
-            for template in templates_dir.glob("**/*"):
-                if template.is_file():
-                    rel_path = template.relative_to(templates_dir)
-                    dest_path = self.build_dir / rel_path
-                    dest_path.parent.mkdir(exist_ok=True)
-                    shutil.copy2(template, dest_path)
+            # Copy first hour templates
+            for template in templates_dir.glob("index.html"):
+                dest_path = self.first_hour_dir / template.name
+                dest_path.parent.mkdir(exist_ok=True)
+                shutil.copy2(template, dest_path)
+            
+            # Copy intraday table template
+            for template in templates_dir.glob("intraday_table.html"):
+                dest_path = self.intraday_dir / "index.html"  # Rename to index.html for the root path
+                dest_path.parent.mkdir(exist_ok=True)
+                shutil.copy2(template, dest_path)
     
     def build(self):
         """Run the complete build process."""
@@ -215,15 +235,17 @@ class StaticSiteBuilder:
         self.setup_directories()
         
         # Generate data and assets
-        self.generate_data()
+        self.generate_first_hour_data()
         self.generate_intraday_table()
         self.copy_static_assets()
         
-        print(f"\nBuild complete! Output directory: {self.build_dir.absolute()}")
-        print("To deploy:")
-        print("1. Commit the build directory")
+        print(f"\nBuild complete!")
+        print(f"First Hour Analysis: {self.first_hour_dir.absolute()}")
+        print(f"Intraday Table: {self.intraday_dir.absolute()}")
+        print("\nTo deploy:")
+        print("1. Commit the build directories")
         print("2. Push to your repository")
-        print("3. Configure Vercel to deploy from the build directory")
+        print("3. Configure Vercel to deploy from the build directories")
 
 def main():
     builder = StaticSiteBuilder()

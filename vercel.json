@@ -13,12 +13,20 @@
   ],
   "routes": [
     {
-      "src": "/hourly/(.*)",
-      "dest": "/public/hourly/$1"
+      "src": "/first-hour/(.*)",
+      "dest": "/public/first-hour/$1"
     },
     {
-      "src": "/hourly",
-      "dest": "/public/hourly/index.html"
+      "src": "/first-hour",
+      "dest": "/public/first-hour/index.html"
+    },
+    {
+      "src": "/intraday/(.*)",
+      "dest": "/public/intraday/$1"
+    },
+    {
+      "src": "/intraday",
+      "dest": "/public/intraday/index.html"
     },
     {
       "src": "/(.*)",
