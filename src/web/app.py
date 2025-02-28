@@ -24,25 +24,56 @@ def landing():
     """Render landing page."""
     return render_template('landing.html')
 
-@app.route('/hourly')
-def hourly():
-    """Redirect to static hourly analysis page."""
+@app.route('/first-hour')
+def first_hour():
+    """Redirect to static first hour analysis page."""
     try:
-        hourly_dir = os.path.join(root_dir, 'src', 'hourly_analysis', 'build')
-        return send_from_directory(hourly_dir, 'index.html')
+        first_hour_dir = os.path.join(root_dir, 'public', 'first-hour')
+        return send_from_directory(first_hour_dir, 'index.html')
     except Exception as e:
-        print(f"Error serving hourly analysis: {str(e)}")
+        print(f"Error serving first hour analysis: {str(e)}")
         return f"Error: {str(e)}", 500
 
-@app.route('/hourly/<path:path>')
-def hourly_static(path):
-    """Serve static files for hourly analysis."""
+@app.route('/first-hour/<path:path>')
+def first_hour_static(path):
+    """Serve static files for first hour analysis."""
     try:
-        hourly_dir = os.path.join(root_dir, 'src', 'hourly_analysis', 'build')
-        return send_from_directory(hourly_dir, path)
+        first_hour_dir = os.path.join(root_dir, 'public', 'first-hour')
+        return send_from_directory(first_hour_dir, path)
     except Exception as e:
         print(f"Error serving {path}: {str(e)}")
         return f"Error: {str(e)}", 404
+
+@app.route('/intraday')
+def intraday():
+    """Redirect to static intraday table page."""
+    try:
+        intraday_dir = os.path.join(root_dir, 'public', 'intraday')
+        return send_from_directory(intraday_dir, 'index.html')
+    except Exception as e:
+        print(f"Error serving intraday table: {str(e)}")
+        return f"Error: {str(e)}", 500
+
+@app.route('/intraday/<path:path>')
+def intraday_static(path):
+    """Serve static files for intraday table."""
+    try:
+        intraday_dir = os.path.join(root_dir, 'public', 'intraday')
+        return send_from_directory(intraday_dir, path)
+    except Exception as e:
+        print(f"Error serving {path}: {str(e)}")
+        return f"Error: {str(e)}", 404
+        
+# Keep the old hourly route for backward compatibility
+@app.route('/hourly')
+def hourly():
+    """Redirect to first hour analysis page."""
+    return first_hour()
+
+@app.route('/hourly/<path:path>')
+def hourly_static(path):
+    """Redirect to first hour static files."""
+    return first_hour_static(path)
 
 @app.route('/gaps')
 def gaps():
