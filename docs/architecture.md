@@ -37,6 +37,8 @@ classDiagram
         +calculate_hourly_metrics()
         +analyze_by_vix_category()
         +analyze_by_day_of_week()
+        +calculate_daily_hourly_ranges()
+        +generate_intraday_table_html()
         +plot_analysis()
     }
 ```
@@ -57,6 +59,7 @@ classDiagram
         +data_dir: Path
         +setup_directories()
         +generate_data()
+        +generate_intraday_table()
         +copy_static_assets()
         +build()
     }
@@ -101,11 +104,19 @@ market-lens/
 │       ├── build.py                # Static site generator
 │       ├── hourly_range_analyzer.py # Analysis engine
 │       └── templates/              # Frontend templates
-├── build/                         # Build output
-│   ├── data/                     # Generated data
-│   ├── static/                   # Static assets
-│   └── index.html               # Entry point
-└── docs/                        # Documentation
+│           ├── index.html          # Main analysis page
+│           └── intraday_table.html # Hourly range table page
+├── public/                        # Build output
+│   └── hourly/
+│       ├── index.html             # Main entry point
+│       ├── intraday_table.html    # Intraday table page
+│       ├── data/                  # Generated JSON data
+│       │   ├── analysis.json
+│       │   └── intraday_table.json
+│       └── static/                # Static assets
+│           ├── visualization.html
+│           └── intraday_table.html
+└── docs/                         # Documentation
 ```
 
 ## Key Design Decisions
@@ -172,6 +183,8 @@ market-lens/
 2. **Features**
    - Additional analyses
    - More visualizations
+   - Sortable intraday table
+   - Data filtering options
    - API integration
 
 3. **Maintenance**

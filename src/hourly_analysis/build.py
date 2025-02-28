@@ -31,6 +31,106 @@ class StaticSiteBuilder:
         (self.static_dir / "css").mkdir(exist_ok=True)
         (self.static_dir / "js").mkdir(exist_ok=True)
         
+    def generate_intraday_table(self):
+        """Generate intraday table visualization."""
+        print("Generating intraday table...")
+        
+        # Calculate daily hourly ranges
+        daily_hourly_ranges = self.analyzer.calculate_daily_hourly_ranges()
+        
+        # Generate HTML table
+        table_html = self.analyzer.generate_intraday_table_html(daily_hourly_ranges)
+        
+        # Convert date objects to strings for JSON serialization
+        serializable_data = {}
+        for date, data in daily_hourly_ranges.items():
+            date_str = date.strftime('%Y-%m-%d')
+            serializable_data[date_str] = data
+        
+        # Save data as JSON for potential client-side rendering
+        table_data = {
+            "dates": [date.strftime('%Y-%m-%d') for date in sorted(daily_hourly_ranges.keys(), reverse=True)],
+            "hourly_data": serializable_data,
+            "last_updated": datetime.now().isoformat()
+        }
+        
+        with open(self.data_dir / "intraday_table.json", "w") as f:
+            json.dump(table_data, f, indent=2)
+        
+        # Create the full HTML page
+        with open(self.static_dir / "intraday_table.html", "w") as f:
+            f.write(f"""
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <title>SPX Intraday Range Table</title>
+                <style>
+                    body {{
+                        font-family: Arial, sans-serif;
+                        margin: 0;
+                        padding: 20px;
+                    }}
+                    h1 {{
+                        text-align: center;
+                        margin-bottom: 20px;
+                    }}
+                    .intraday-table {{
+                        border-collapse: collapse;
+                        width: 100%;
+                        font-family: Arial, sans-serif;
+                    }}
+                    .intraday-table th, .intraday-table td {{
+                        border: 1px solid #ddd;
+                        padding: 8px;
+                        text-align: right;
+                    }}
+                    .intraday-table th {{
+                        background-color: #f2f2f2;
+                        position: sticky;
+                        top: 0;
+                        z-index: 10;
+                    }}
+                    .intraday-table tr:nth-child(even) {{
+                        background-color: #f9f9f9;
+                    }}
+                    .intraday-table tr:hover {{
+                        background-color: #f1f1f1;
+                    }}
+                    .intraday-table td:first-child {{
+                        position: sticky;
+                        left: 0;
+                        background-color: #f2f2f2;
+                        text-align: left;
+                        z-index: 5;
+                    }}
+                    .intraday-table tr:nth-child(even) td:first-child {{
+                        background-color: #e9e9e9;
+                    }}
+                    .table-container {{
+                        max-height: 800px;
+                        overflow-y: auto;
+                        overflow-x: auto;
+                    }}
+                    .last-updated {{
+                        text-align: right;
+                        font-size: 0.9em;
+                        color: #666;
+                        margin-top: 10px;
+                    }}
+                </style>
+            </head>
+            <body>
+                <h1>SPX Intraday Range Table</h1>
+                <div class="table-container">
+                    {table_html}
+                </div>
+                <div class="last-updated">
+                    Last updated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
+                </div>
+            </body>
+            </html>
+            """)
+    
     def generate_data(self):
         """Generate static JSON data files."""
         print("Generating analysis data...")
@@ -116,6 +216,7 @@ class StaticSiteBuilder:
         
         # Generate data and assets
         self.generate_data()
+        self.generate_intraday_table()
         self.copy_static_assets()
         
         print(f"\nBuild complete! Output directory: {self.build_dir.absolute()}")

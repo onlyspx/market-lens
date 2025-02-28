@@ -134,6 +134,12 @@
 <body>
     <div class="container">
         <h1>SPX Hourly Analysis</h1>
+        
+        <div class="nav-links" style="display: flex; justify-content: center; margin-bottom: 20px; gap: 20px;">
+            <a href="index.html" style="text-decoration: none; color: #0066cc; padding: 5px 10px; border-radius: 4px; font-weight: bold; background-color: #e6f0ff;">Hourly Analysis</a>
+            <a href="intraday_table.html" style="text-decoration: none; color: #0066cc; padding: 5px 10px; border-radius: 4px;">Intraday Table</a>
+        </div>
+        
         <div style="text-align: center; margin-bottom: 20px; color: #666;">
             Analysis Period: <span id="dateRange">Loading...</span>
         </div>
@@ -194,7 +200,7 @@ Very High: Top 20% of VIX values">ⓘ</span>
         </div>
 
         <div class="visualization">
-            <iframe id="plotFrame" style="width:100%; height:800px; border:none;" src="/hourly/static/visualization.html"></iframe>
+            <iframe id="plotFrame" style="width:100%; height:800px; border:none;" src="static/visualization.html"></iframe>
         </div>
 
         <div class="last-updated" id="lastUpdated"></div>
@@ -204,7 +210,7 @@ Very High: Top 20% of VIX values">ⓘ</span>
         // Fetch and display analysis data
         async function loadAnalysis() {
             try {
-                const response = await fetch('/hourly/data/analysis.json');
+                const response = await fetch('data/analysis.json');
                 const data = await response.json();
                 
                 // Update VIX analysis table

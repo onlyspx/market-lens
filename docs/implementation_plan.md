@@ -27,6 +27,13 @@ This document outlines the plan for converting the hourly analysis module into a
 - Modify index.html for static data
 - Add client-side rendering
 - Implement data loading from JSON
+- Create intraday table visualization
+
+### 2.2 Intraday Range Table
+- Implement hourly range calculation
+- Generate color-coded HTML table
+- Create dedicated page for table view
+- Add navigation between analysis views
 
 ### 2.2 Asset Management
 - Create CSS structure

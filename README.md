@@ -7,6 +7,7 @@ A tool for analyzing market data patterns and trends, with a focus on SPX hourly
 - SPX first hour range analysis
 - VIX correlation insights
 - Day of week patterns
+- Intraday range table with color-coded cells
 - Interactive visualizations
 - Static site deployment
 
@@ -19,8 +20,14 @@ market-lens/
 │       ├── build.py           # Static site generator
 │       ├── hourly_range_analyzer.py
 │       └── templates/
-│           └── index.html     # Static site template
-├── build/                     # Generated static site
+│           ├── index.html     # Main analysis page
+│           └── intraday_table.html # Hourly range table page
+├── public/                    # Generated static site
+│   └── hourly/
+│       ├── index.html
+│       ├── intraday_table.html
+│       ├── data/              # JSON data files
+│       └── static/            # Visualizations and assets
 ├── docs/                      # Documentation
 └── vercel.json               # Vercel configuration
 ```
@@ -44,9 +51,9 @@ cd src/hourly_analysis
 python build.py
 ```
 
-4. The static site will be generated in the `build` directory. You can serve it locally using Python's built-in server:
+4. The static site will be generated in the `public/hourly` directory. You can serve it locally using Python's built-in server:
 ```bash
-cd ../../build
+cd ../../public/hourly
 python -m http.server 8000
 ```
 

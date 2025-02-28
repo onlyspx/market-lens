@@ -133,6 +133,185 @@ class HourlyRangeAnalyzer:
         
         return recent_analysis
     
+    def calculate_daily_hourly_ranges(self):
+        """Calculate hourly ranges for each trading day over the past year."""
+        if self.spx_data is None:
+            raise ValueError("No data available. Call fetch_data() first.")
+        
+        # Group data by date
+        daily_data = self.spx_data.groupby('Date')
+        
+        # For each day, calculate hourly ranges and store in structured format
+        daily_hourly_ranges = {}
+        
+        for date, day_data in daily_data:
+            # Sort by hour
+            day_data = day_data.sort_values('Datetime')
+            
+            # Calculate hourly ranges
+            hourly_ranges = []
+            for _, hour_data in day_data.iterrows():
+                hourly_ranges.append({
+                    'hour': hour_data['Datetime'].strftime('%H:%M'),
+                    'range': float(hour_data['High'] - hour_data['Low']),
+                    'change': float(hour_data['Close'] - hour_data['Open'])
+                })
+            
+            # Calculate daily total
+            if len(day_data) > 0:
+                daily_change = float(day_data['Close'].iloc[-1] - day_data['Open'].iloc[0])
+                
+                daily_hourly_ranges[date] = {
+                    'hourly_ranges': hourly_ranges,
+                    'daily_change': daily_change
+                }
+        
+        return daily_hourly_ranges
+    
+    def generate_intraday_table_html(self, daily_hourly_ranges):
+        """Generate HTML for the intraday range table."""
+        # Extract dates and sort (most recent first)
+        dates = sorted(daily_hourly_ranges.keys(), reverse=True)
+        
+        # Get all unique hours
+        all_hours = set()
+        for date in dates:
+            for hour_data in daily_hourly_ranges[date]['hourly_ranges']:
+                all_hours.add(hour_data['hour'])
+        all_hours = sorted(list(all_hours))
+        
+        # Start building HTML table
+        html = """
+        <table class="intraday-table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+        """
+        
+        # Add hour columns
+        for hour in all_hours:
+            html += f"<th>{hour}</th>"
+        
+        # Add total column
+        html += "<th>Total +/-</th></tr></thead><tbody>"
+        
+        # Add data rows
+        for date in dates:
+            day_data = daily_hourly_ranges[date]
+            date_str = date.strftime('%Y-%m-%d')
+            
+            html += f"<tr><td>{date_str}</td>"
+            
+            # Map of hour to range value for this day
+            hour_to_range = {}
+            for hour_data in day_data['hourly_ranges']:
+                hour_to_range[hour_data['hour']] = hour_data['range']
+            
+            # Add cells for each hour
+            max_range = max([data['range'] for data in day_data['hourly_ranges']], default=0)
+            for hour in all_hours:
+                range_val = hour_to_range.get(hour, 0)
+                # Calculate color intensity based on range value
+                intensity = int(255 * (1 - (range_val / max_range))) if max_range > 0 else 255
+                bg_color = f"rgb({intensity}, {intensity}, 255)"
+                
+                html += f'<td style="background-color: {bg_color}">{range_val:.2f}</td>'
+            
+            # Add total column with color based on positive/negative
+            daily_change = day_data['daily_change']
+            bg_color = "rgb(200, 255, 200)" if daily_change > 0 else "rgb(255, 200, 200)"
+            html += f'<td style="background-color: {bg_color}">{daily_change:+.2f}</td></tr>'
+        
+        html += "</tbody></table>"
+        return html
+        
+    def create_hourly_heatmap(self, daily_hourly_ranges):
+        """Create a heatmap visualization of hourly ranges."""
+        # Extract dates and sort (most recent first)
+        dates = sorted(daily_hourly_ranges.keys(), reverse=True)
+        
+        # Get all unique hours
+        all_hours = set()
+        for date in dates:
+            for hour_data in daily_hourly_ranges[date]['hourly_ranges']:
+                all_hours.add(hour_data['hour'])
+        all_hours = sorted(list(all_hours))
+        
+        # Create data matrix for heatmap
+        z_ranges = []
+        z_changes = []
+        daily_changes = []
+        
+        for date in dates:
+            day_data = daily_hourly_ranges[date]
+            
+            # Initialize arrays for this day
+            day_ranges = [0] * len(all_hours)
+            day_changes = [0] * len(all_hours)
+            
+            # Fill in data where available
+            for hour_data in day_data['hourly_ranges']:
+                if hour_data['hour'] in all_hours:
+                    idx = all_hours.index(hour_data['hour'])
+                    day_ranges[idx] = hour_data['range']
+                    day_changes[idx] = hour_data['change']
+            
+            z_ranges.append(day_ranges)
+            z_changes.append(day_changes)
+            daily_changes.append(day_data['daily_change'])
+        
+        # Create heatmap figure
+        fig = make_subplots(
+            rows=1, cols=2,
+            column_widths=[0.9, 0.1],
+            subplot_titles=("Hourly Ranges", "Daily Change"),
+            horizontal_spacing=0.01
+        )
+        
+        # Add hourly ranges heatmap
+        fig.add_trace(
+            go.Heatmap(
+                z=z_ranges,
+                x=all_hours,
+                y=[d.strftime('%Y-%m-%d') for d in dates],
+                colorscale='Viridis',
+                colorbar=dict(title='Range'),
+                hovertemplate='Date: %{y}<br>Hour: %{x}<br>Range: %{z:.2f}<extra></extra>'
+            ),
+            row=1, col=1
+        )
+        
+        # Add daily change bar chart
+        fig.add_trace(
+            go.Bar(
+                y=[d.strftime('%Y-%m-%d') for d in dates],
+                x=daily_changes,
+                orientation='h',
+                marker=dict(
+                    color=[
+                        'green' if x > 0 else 'red' for x in daily_changes
+                    ]
+                ),
+                hovertemplate='Date: %{y}<br>Change: %{x:.2f}<extra></extra>'
+            ),
+            row=1, col=2
+        )
+        
+        # Update layout
+        fig.update_layout(
+            title='SPX Intraday Range Heatmap (Past Year)',
+            height=1200,
+            yaxis=dict(
+                title='Trading Day',
+                autorange='reversed'  # Most recent at top
+            ),
+            xaxis=dict(title='Trading Hour'),
+            xaxis2=dict(title='Points +/-'),
+            template='plotly_white'
+        )
+        
+        return fig
+        
     def plot_analysis(self):
         """Create interactive visualization of the analysis."""
         if self.hourly_stats is None:
