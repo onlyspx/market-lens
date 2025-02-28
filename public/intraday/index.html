@@ -133,7 +133,7 @@
         </div>
 
         <div class="table-container">
-            <iframe id="tableFrame" style="width:100%; height:800px; border:none;" src="static/intraday_table.html"></iframe>
+            <iframe id="tableFrame" style="width:100%; height:800px; border:none;" src="/intraday/static/intraday_table.html"></iframe>
         </div>
 
         <div class="insights">
@@ -160,7 +160,7 @@
         // Fetch and display last updated timestamp
         async function loadData() {
             try {
-                const response = await fetch('data/intraday_table.json');
+                const response = await fetch('/intraday/data/intraday_table.json');
                 const data = await response.json();
                 
                 // Update last updated timestamp
