@@ -3,6 +3,7 @@
 import pandas as pd
 import numpy as np
 import yfinance as yf
+import math
 from datetime import datetime, timedelta
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
@@ -169,7 +170,7 @@ class HourlyRangeAnalyzer:
         return daily_hourly_ranges
     
     def generate_intraday_table_html(self, daily_hourly_ranges):
-        """Generate HTML for the intraday range table."""
+        """Generate HTML for the intraday range table with improved red color scale."""
         # Extract dates and sort (most recent first)
         dates = sorted(daily_hourly_ranges.keys(), reverse=True)
         
@@ -179,6 +180,12 @@ class HourlyRangeAnalyzer:
             for hour_data in daily_hourly_ranges[date]['hourly_ranges']:
                 all_hours.add(hour_data['hour'])
         all_hours = sorted(list(all_hours))
+        
+        # Find the global maximum range for better color scaling
+        global_max_range = 0
+        for date in dates:
+            for hour_data in daily_hourly_ranges[date]['hourly_ranges']:
+                global_max_range = max(global_max_range, hour_data['range'])
         
         # Start building HTML table
         html = """
@@ -207,13 +214,19 @@ class HourlyRangeAnalyzer:
             for hour_data in day_data['hourly_ranges']:
                 hour_to_range[hour_data['hour']] = hour_data['range']
             
-            # Add cells for each hour
-            max_range = max([data['range'] for data in day_data['hourly_ranges']], default=0)
+            # Add cells for each hour with improved color scaling
             for hour in all_hours:
                 range_val = hour_to_range.get(hour, 0)
-                # Calculate color intensity based on range value
-                intensity = int(255 * (1 - (range_val / max_range))) if max_range > 0 else 255
-                bg_color = f"rgb({intensity}, {intensity}, 255)"
+                
+                # Use square root scaling for better visual differentiation
+                # This makes smaller differences more noticeable
+                if global_max_range > 0:
+                    intensity = int(255 * (1 - math.sqrt(range_val / global_max_range)))
+                else:
+                    intensity = 255
+                    
+                # Use red shades instead of blue
+                bg_color = f"rgb(255, {intensity}, {intensity})"
                 
                 html += f'<td style="background-color: {bg_color}">{range_val:.2f}</td>'
             
