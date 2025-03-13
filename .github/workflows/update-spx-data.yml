@@ -1,0 +1,35 @@
+name: Update SPX Intraday Range Data
+
+on:
+  schedule:
+    # Run daily at 5:00 PM UTC (adjust as needed)
+    - cron: '0 17 * * 1-5'  # Monday-Friday at 5 PM UTC
+  workflow_dispatch:  # Allows manual triggering
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          
+      - name: Run update script
+        run: |
+          python src/hourly_analysis/build.py
+          
+      - name: Commit and push if changes
+        run: |
+          git config --global user.name 'GitHub Actions Bot'
+          git config --global user.email 'actions@github.com'
+          git add public/intraday/data/intraday_table.json public/intraday/static/intraday_table.html public/first-hour/data/analysis.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update SPX intraday data [skip ci]" && git push)
