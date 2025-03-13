@@ -5,3 +5,6 @@ click==8.1.7
 itsdangerous==2.1.2
 blinker==1.7.0
 pandas==2.2.0
+yfinance==0.2.54
+numpy>=1.16.5
+plotly>=5.0.0
