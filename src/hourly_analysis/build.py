@@ -23,28 +23,22 @@ class StaticSiteBuilder:
         self.intraday_data_dir = self.intraday_dir / "data"
         
     def setup_directories(self):
-        """Create necessary build directories."""
+        """Create necessary build directories without removing existing index.html files."""
         print("Setting up build directories...")
         
-        # Remove existing directories if they exist
-        if self.first_hour_dir.exists():
-            shutil.rmtree(self.first_hour_dir)
-        if self.intraday_dir.exists():
-            shutil.rmtree(self.intraday_dir)
-            
-        # Create fresh directories for first hour analysis
+        # Create directories for first hour analysis (without removing existing files)
         self.first_hour_dir.mkdir(parents=True, exist_ok=True)
         self.first_hour_static_dir.mkdir(parents=True, exist_ok=True)
         self.first_hour_data_dir.mkdir(parents=True, exist_ok=True)
-        (self.first_hour_static_dir / "css").mkdir(exist_ok=True)
-        (self.first_hour_static_dir / "js").mkdir(exist_ok=True)
+        (self.first_hour_static_dir / "css").mkdir(parents=True, exist_ok=True)
+        (self.first_hour_static_dir / "js").mkdir(parents=True, exist_ok=True)
         
-        # Create fresh directories for intraday table
+        # Create directories for intraday table (without removing existing files)
         self.intraday_dir.mkdir(parents=True, exist_ok=True)
         self.intraday_static_dir.mkdir(parents=True, exist_ok=True)
         self.intraday_data_dir.mkdir(parents=True, exist_ok=True)
-        (self.intraday_static_dir / "css").mkdir(exist_ok=True)
-        (self.intraday_static_dir / "js").mkdir(exist_ok=True)
+        (self.intraday_static_dir / "css").mkdir(parents=True, exist_ok=True)
+        (self.intraday_static_dir / "js").mkdir(parents=True, exist_ok=True)
         
     def generate_intraday_table(self):
         """Generate intraday table visualization."""
@@ -209,23 +203,31 @@ class StaticSiteBuilder:
         return result
     
     def copy_static_assets(self):
-        """Copy static assets to build directories."""
-        print("Copying static assets...")
+        """Copy static assets to build directories, but preserve existing index.html files."""
+        print("Checking for static assets...")
         
-        # Copy template files
+        # Copy template files only if they don't exist
         templates_dir = Path(__file__).parent / "templates"
         if templates_dir.exists():
-            # Copy first hour templates
-            for template in templates_dir.glob("index.html"):
-                dest_path = self.first_hour_dir / template.name
-                dest_path.parent.mkdir(exist_ok=True)
-                shutil.copy2(template, dest_path)
+            # Check first hour index.html
+            first_hour_index = self.first_hour_dir / "index.html"
+            if not first_hour_index.exists():
+                print("Creating new first-hour/index.html (file didn't exist)")
+                for template in templates_dir.glob("index.html"):
+                    first_hour_index.parent.mkdir(exist_ok=True)
+                    shutil.copy2(template, first_hour_index)
+            else:
+                print("Preserving existing first-hour/index.html")
             
-            # Copy intraday table template
-            for template in templates_dir.glob("intraday_table.html"):
-                dest_path = self.intraday_dir / "index.html"  # Rename to index.html for the root path
-                dest_path.parent.mkdir(exist_ok=True)
-                shutil.copy2(template, dest_path)
+            # Check intraday index.html
+            intraday_index = self.intraday_dir / "index.html"
+            if not intraday_index.exists():
+                print("Creating new intraday/index.html (file didn't exist)")
+                for template in templates_dir.glob("intraday_table.html"):
+                    intraday_index.parent.mkdir(exist_ok=True)
+                    shutil.copy2(template, intraday_index)
+            else:
+                print("Preserving existing intraday/index.html")
     
     def build(self):
         """Run the complete build process."""
