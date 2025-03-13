@@ -172,9 +172,14 @@ class StaticSiteBuilder:
         with open(self.first_hour_data_dir / "analysis.json", "w") as f:
             json.dump(data, f, indent=2)
             
-        # Generate and save visualization
+        # Generate and save visualization with CDN to reduce file size
         fig = self.analyzer.plot_analysis()
-        fig.write_html(self.first_hour_static_dir / "visualization.html")
+        fig.write_html(
+            self.first_hour_static_dir / "visualization.html",
+            include_plotlyjs='cdn',  # Use CDN instead of embedding the full library
+            full_html=True,          # Keep as a standalone HTML file
+            config={'responsive': True}  # Make it responsive
+        )
         
     def _convert_vix_analysis(self, vix_analysis):
         """Convert VIX analysis to JSON-friendly format."""
