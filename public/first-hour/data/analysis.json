@@ -11,34 +11,34 @@
     {
       "category": "Low",
       "vix_min": 13.42,
-      "vix_max": 15.1,
-      "range_mean": 21.24,
+      "vix_max": 15.19,
+      "range_mean": 21.09,
       "range_median": 18.2,
       "count": 38
     },
     {
       "category": "Medium",
-      "vix_min": 15.19,
-      "vix_max": 16.36,
-      "range_mean": 27.04,
-      "range_median": 24.21,
+      "vix_min": 15.2,
+      "vix_max": 16.41,
+      "range_mean": 26.61,
+      "range_median": 23.09,
       "count": 38
     },
     {
       "category": "High",
-      "vix_min": 16.41,
-      "vix_max": 19.1,
-      "range_mean": 35.71,
+      "vix_min": 16.56,
+      "vix_max": 19.11,
+      "range_mean": 35.72,
       "range_median": 28.85,
       "count": 38
     },
     {
       "category": "Very High",
-      "vix_min": 19.11,
+      "vix_min": 19.19,
       "vix_max": 38.57,
-      "range_mean": 39.59,
-      "range_median": 40.33,
-      "count": 39
+      "range_mean": 40.17,
+      "range_median": 40.57,
+      "count": 38
     }
   ],
   "dow_analysis": [
@@ -115,7 +115,7 @@
       "vix_close": 24.8700008392334
     }
   ],
-  "last_updated": "2025-03-13T14:58:56.849265",
+  "last_updated": "2025-03-14T06:14:42.576519",
   "date_range": {
     "start": "2024-03-14",
     "end": "2025-03-13"
