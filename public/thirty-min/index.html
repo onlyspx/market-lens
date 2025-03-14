@@ -183,6 +183,19 @@
                 
             } catch (error) {
                 console.error('Error loading data:', error);
+                console.log('Attempting fallback to relative path...');
+                try {
+                    const fallbackResponse = await fetch('data/thirty_min_table.json');
+                    const fallbackData = await fallbackResponse.json();
+                    
+                    const fallbackLastUpdated = new Date(fallbackData.last_updated);
+                    document.getElementById('lastUpdated').textContent = 
+                        `Last updated: ${fallbackLastUpdated.toLocaleString()}`;
+                } catch (fallbackError) {
+                    console.error('Fallback also failed:', fallbackError);
+                    document.getElementById('lastUpdated').textContent = 
+                        'Error loading update timestamp';
+                }
             }
         }
 
