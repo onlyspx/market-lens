@@ -29,6 +29,14 @@
       "dest": "/public/intraday/index.html"
     },
     {
+      "src": "/thirty-min/(.*)",
+      "dest": "/public/thirty-min/$1"
+    },
+    {
+      "src": "/thirty-min",
+      "dest": "/public/thirty-min/index.html"
+    },
+    {
       "src": "/(.*)",
       "dest": "/src/web/wsgi.py"
     }

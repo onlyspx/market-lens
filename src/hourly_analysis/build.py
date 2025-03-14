@@ -6,13 +6,16 @@ import shutil
 from pathlib import Path
 from datetime import datetime
 from hourly_range_analyzer import HourlyRangeAnalyzer
+from thirty_min_analyzer import ThirtyMinRangeAnalyzer
 
 class StaticSiteBuilder:
     def __init__(self):
-        self.analyzer = HourlyRangeAnalyzer()
+        self.hourly_analyzer = HourlyRangeAnalyzer()
+        self.thirty_min_analyzer = ThirtyMinRangeAnalyzer()
         root_dir = Path(__file__).parent.parent.parent
         self.first_hour_dir = root_dir / "public" / "first-hour"
         self.intraday_dir = root_dir / "public" / "intraday"
+        self.thirty_min_dir = root_dir / "public" / "thirty-min"
         
         # First hour directories
         self.first_hour_static_dir = self.first_hour_dir / "static"
@@ -21,6 +24,10 @@ class StaticSiteBuilder:
         # Intraday directories
         self.intraday_static_dir = self.intraday_dir / "static"
         self.intraday_data_dir = self.intraday_dir / "data"
+        
+        # Thirty-minute directories
+        self.thirty_min_static_dir = self.thirty_min_dir / "static"
+        self.thirty_min_data_dir = self.thirty_min_dir / "data"
         
     def setup_directories(self):
         """Create necessary build directories without removing existing index.html files."""
@@ -40,15 +47,22 @@ class StaticSiteBuilder:
         (self.intraday_static_dir / "css").mkdir(parents=True, exist_ok=True)
         (self.intraday_static_dir / "js").mkdir(parents=True, exist_ok=True)
         
+        # Create directories for thirty-minute market profile (without removing existing files)
+        self.thirty_min_dir.mkdir(parents=True, exist_ok=True)
+        self.thirty_min_static_dir.mkdir(parents=True, exist_ok=True)
+        self.thirty_min_data_dir.mkdir(parents=True, exist_ok=True)
+        (self.thirty_min_static_dir / "css").mkdir(parents=True, exist_ok=True)
+        (self.thirty_min_static_dir / "js").mkdir(parents=True, exist_ok=True)
+        
     def generate_intraday_table(self):
         """Generate intraday table visualization."""
         print("Generating intraday table...")
         
         # Calculate daily hourly ranges
-        daily_hourly_ranges = self.analyzer.calculate_daily_hourly_ranges()
+        daily_hourly_ranges = self.hourly_analyzer.calculate_daily_hourly_ranges()
         
         # Generate HTML table
-        table_html = self.analyzer.generate_intraday_table_html(daily_hourly_ranges)
+        table_html = self.hourly_analyzer.generate_intraday_table_html(daily_hourly_ranges)
         
         # Convert date objects to strings for JSON serialization
         serializable_data = {}
@@ -140,24 +154,146 @@ class StaticSiteBuilder:
             </html>
             """)
     
+    def generate_thirty_min_table(self):
+        """Generate thirty-minute market profile table visualization."""
+        print("Generating thirty-minute market profile table...")
+        
+        # Fetch data if not already fetched
+        if self.thirty_min_analyzer.spx_data is None:
+            # Yahoo Finance limits 30-minute data to the last 60 days
+            self.thirty_min_analyzer.fetch_data(period="60d")
+        
+        # Calculate thirty-minute ranges with market profile letters
+        daily_thirty_min_ranges = self.thirty_min_analyzer.calculate_thirty_min_ranges()
+        
+        # Generate HTML table
+        table_html = self.thirty_min_analyzer.generate_thirty_min_table_html(daily_thirty_min_ranges)
+        
+        # Convert date objects to strings for JSON serialization
+        serializable_data = {}
+        for date, data in daily_thirty_min_ranges.items():
+            date_str = date.strftime('%Y-%m-%d')
+            # Convert period data to serializable format
+            periods = []
+            for period in data['periods']:
+                periods.append({
+                    'period': period['period'],
+                    'time': period['time'],
+                    'range': float(period['range']),
+                    'change': float(period['change'])
+                })
+            
+            serializable_data[date_str] = {
+                'periods': periods,
+                'daily_change': float(data['daily_change'])
+            }
+        
+        # Save data as JSON for potential client-side rendering
+        table_data = {
+            "dates": [date.strftime('%Y-%m-%d') for date in sorted(daily_thirty_min_ranges.keys(), reverse=True)],
+            "thirty_min_data": serializable_data,
+            "last_updated": datetime.now().isoformat()
+        }
+        
+        with open(self.thirty_min_data_dir / "thirty_min_table.json", "w") as f:
+            json.dump(table_data, f, indent=2)
+        
+        # Create the full HTML page
+        with open(self.thirty_min_static_dir / "thirty_min_table.html", "w") as f:
+            f.write(f"""
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <title>SPX 30-Minute Market Profile</title>
+                <style>
+                    body {{
+                        font-family: Arial, sans-serif;
+                        margin: 0;
+                        padding: 20px;
+                    }}
+                    h1 {{
+                        text-align: center;
+                        margin-bottom: 20px;
+                    }}
+                    .thirty-min-table {{
+                        border-collapse: collapse;
+                        width: 100%;
+                        font-family: Arial, sans-serif;
+                    }}
+                    .thirty-min-table th, .thirty-min-table td {{
+                        border: 1px solid #ddd;
+                        padding: 8px;
+                        text-align: right;
+                    }}
+                    .thirty-min-table th {{
+                        background-color: #f2f2f2;
+                        position: sticky;
+                        top: 0;
+                        z-index: 10;
+                    }}
+                    .thirty-min-table tr:nth-child(even) {{
+                        background-color: #f9f9f9;
+                    }}
+                    .thirty-min-table tr:hover {{
+                        background-color: #f1f1f1;
+                    }}
+                    .thirty-min-table td:first-child {{
+                        position: sticky;
+                        left: 0;
+                        background-color: #f2f2f2;
+                        text-align: left;
+                        z-index: 5;
+                    }}
+                    .thirty-min-table tr:nth-child(even) td:first-child {{
+                        background-color: #e9e9e9;
+                    }}
+                    .time-range {{
+                        font-size: 0.8em;
+                        color: #666;
+                    }}
+                    .table-container {{
+                        max-height: 800px;
+                        overflow-y: auto;
+                        overflow-x: auto;
+                    }}
+                    .last-updated {{
+                        text-align: right;
+                        font-size: 0.9em;
+                        color: #666;
+                        margin-top: 10px;
+                    }}
+                </style>
+            </head>
+            <body>
+                <h1>SPX 30-Minute Market Profile</h1>
+                <div class="table-container">
+                    {table_html}
+                </div>
+                <div class="last-updated">
+                    Last updated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
+                </div>
+            </body>
+            </html>
+            """)
+
     def generate_first_hour_data(self):
         """Generate static JSON data files for first hour analysis."""
         print("Generating first hour analysis data...")
         
         # Fetch and analyze data
-        self.analyzer.fetch_data(period="1y")
-        self.analyzer.calculate_hourly_metrics()
+        self.hourly_analyzer.fetch_data(period="1y")
+        self.hourly_analyzer.calculate_hourly_metrics()
         
         # Generate analyses
-        vix_analysis = self.analyzer.analyze_by_vix_category()
-        dow_analysis = self.analyzer.analyze_by_day_of_week()
-        recent_days = self.analyzer.get_recent_days_analysis()
+        vix_analysis = self.hourly_analyzer.analyze_by_vix_category()
+        dow_analysis = self.hourly_analyzer.analyze_by_day_of_week()
+        recent_days = self.hourly_analyzer.get_recent_days_analysis()
         
         # Create data files
         # Get full date range from SPX data
         date_range = {
-            "start": self.analyzer.spx_data['Date'].min().strftime('%Y-%m-%d'),
-            "end": self.analyzer.spx_data['Date'].max().strftime('%Y-%m-%d')
+            "start": self.hourly_analyzer.spx_data['Date'].min().strftime('%Y-%m-%d'),
+            "end": self.hourly_analyzer.spx_data['Date'].max().strftime('%Y-%m-%d')
         }
         
         data = {
@@ -173,7 +309,7 @@ class StaticSiteBuilder:
             json.dump(data, f, indent=2)
             
         # Generate and save visualization with CDN to reduce file size
-        fig = self.analyzer.plot_analysis()
+        fig = self.hourly_analyzer.plot_analysis()
         fig.write_html(
             self.first_hour_static_dir / "visualization.html",
             include_plotlyjs='cdn',  # Use CDN instead of embedding the full library
@@ -233,6 +369,16 @@ class StaticSiteBuilder:
                     shutil.copy2(template, intraday_index)
             else:
                 print("Preserving existing intraday/index.html")
+                
+            # Check thirty-min index.html
+            thirty_min_index = self.thirty_min_dir / "index.html"
+            if not thirty_min_index.exists():
+                print("Creating new thirty-min/index.html (file didn't exist)")
+                for template in templates_dir.glob("thirty_min_table.html"):
+                    thirty_min_index.parent.mkdir(exist_ok=True)
+                    shutil.copy2(template, thirty_min_index)
+            else:
+                print("Preserving existing thirty-min/index.html")
     
     def build(self):
         """Run the complete build process."""
@@ -244,11 +390,13 @@ class StaticSiteBuilder:
         # Generate data and assets
         self.generate_first_hour_data()
         self.generate_intraday_table()
+        self.generate_thirty_min_table()
         self.copy_static_assets()
         
         print(f"\nBuild complete!")
         print(f"First Hour Analysis: {self.first_hour_dir.absolute()}")
         print(f"Intraday Table: {self.intraday_dir.absolute()}")
+        print(f"30-Min Market Profile: {self.thirty_min_dir.absolute()}")
         print("\nTo deploy:")
         print("1. Commit the build directories")
         print("2. Push to your repository")
