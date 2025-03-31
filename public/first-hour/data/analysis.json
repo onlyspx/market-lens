@@ -44,9 +44,9 @@
   "dow_analysis": [
     {
       "day": "Monday",
-      "range_mean": 28.31,
-      "range_median": 21.96,
-      "count": 48
+      "range_mean": 28.7,
+      "range_median": 21.98,
+      "count": 49
     },
     {
       "day": "Tuesday",
@@ -62,9 +62,9 @@
     },
     {
       "day": "Thursday",
-      "range_mean": 30.74,
-      "range_median": 29.29,
-      "count": 50
+      "range_mean": 31.27,
+      "range_median": 29.3,
+      "count": 49
     },
     {
       "day": "Friday",
@@ -74,6 +74,14 @@
     }
   ],
   "recent_days": [
+    {
+      "date": "2025-03-31",
+      "day_of_week": "Monday",
+      "first_hour_range": 47.7900390625,
+      "first_hour_high": 5536.52001953125,
+      "first_hour_low": 5488.72998046875,
+      "vix_close": null
+    },
     {
       "date": "2025-03-28",
       "day_of_week": "Friday",
@@ -105,19 +113,11 @@
       "first_hour_high": 5781.35009765625,
       "first_hour_low": 5763.0498046875,
       "vix_close": 17.479999542236328
-    },
-    {
-      "date": "2025-03-24",
-      "day_of_week": "Monday",
-      "first_hour_range": 37.85986328125,
-      "first_hour_high": 5755.93994140625,
-      "first_hour_low": 5718.080078125,
-      "vix_close": null
     }
   ],
-  "last_updated": "2025-03-28T17:10:57.916547",
+  "last_updated": "2025-03-31T17:10:36.763246",
   "date_range": {
-    "start": "2024-03-28",
-    "end": "2025-03-28"
+    "start": "2024-04-01",
+    "end": "2025-03-31"
   }
 }
