@@ -1,4 +1,4 @@
-name: Update SPX Intraday Range Data
+name: Update SPX Market Data
 
 on:
   schedule:
@@ -31,5 +31,5 @@ jobs:
         run: |
           git config --global user.name 'GitHub Actions Bot'
           git config --global user.email 'actions@github.com'
-          git add public/intraday/data/intraday_table.json public/intraday/static/intraday_table.html public/first-hour/data/analysis.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update SPX intraday data [skip ci]" && git push)
+          git add public/intraday/data/intraday_table.json public/intraday/static/intraday_table.html public/first-hour/data/analysis.json public/thirty-min/data/thirty_min_table.json public/thirty-min/static/thirty_min_table.html
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update SPX market data [skip ci]" && git push)
