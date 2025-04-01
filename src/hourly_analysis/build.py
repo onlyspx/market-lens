@@ -159,9 +159,8 @@ class StaticSiteBuilder:
         print("Generating thirty-minute market profile table...")
         
         # Fetch data if not already fetched
-        if self.thirty_min_analyzer.spx_data is None:
-            # Yahoo Finance limits 30-minute data to the last 60 days
-            self.thirty_min_analyzer.fetch_data(period="60d")
+        # Yahoo Finance limits 30-minute data to the last 60 days
+        self.thirty_min_analyzer.fetch_data(period="60d")
         
         # Calculate thirty-minute ranges with market profile letters
         daily_thirty_min_ranges = self.thirty_min_analyzer.calculate_thirty_min_ranges()
