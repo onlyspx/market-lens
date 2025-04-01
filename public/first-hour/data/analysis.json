@@ -44,9 +44,9 @@
   "dow_analysis": [
     {
       "day": "Monday",
-      "range_mean": 28.61,
-      "range_median": 21.98,
-      "count": 49
+      "range_mean": 28.97,
+      "range_median": 22.35,
+      "count": 48
     },
     {
       "day": "Tuesday",
@@ -115,9 +115,9 @@
       "vix_close": 17.149999618530273
     }
   ],
-  "last_updated": "2025-04-01T17:10:59.982337",
+  "last_updated": "2025-04-01T22:01:13.148074",
   "date_range": {
-    "start": "2024-04-01",
+    "start": "2024-04-02",
     "end": "2025-04-01"
   }
 }
