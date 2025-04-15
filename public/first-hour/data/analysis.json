@@ -19,40 +19,40 @@
     {
       "category": "Medium",
       "vix_min": 15.66,
-      "vix_max": 17.55,
-      "range_mean": 29.67,
-      "range_median": 28.16,
-      "count": 38
+      "vix_max": 17.61,
+      "range_mean": 29.31,
+      "range_median": 27.96,
+      "count": 39
     },
     {
       "category": "High",
-      "vix_min": 17.61,
+      "vix_min": 17.69,
       "vix_max": 19.9,
-      "range_mean": 37.98,
-      "range_median": 32.44,
-      "count": 39
+      "range_mean": 38.56,
+      "range_median": 32.53,
+      "count": 38
     },
     {
       "category": "Very High",
       "vix_min": 20.35,
       "vix_max": 52.33,
-      "range_mean": 49.79,
-      "range_median": 46.23,
-      "count": 38
+      "range_mean": 49.77,
+      "range_median": 46.38,
+      "count": 39
     }
   ],
   "dow_analysis": [
     {
       "day": "Monday",
-      "range_mean": 37.44,
+      "range_mean": 37.61,
       "range_median": 25.24,
       "count": 49
     },
     {
       "day": "Tuesday",
-      "range_mean": 29.96,
-      "range_median": 22.2,
-      "count": 52
+      "range_mean": 30.32,
+      "range_median": 22.29,
+      "count": 53
     },
     {
       "day": "Wednesday",
@@ -74,6 +74,14 @@
     }
   ],
   "recent_days": [
+    {
+      "date": "2025-04-15",
+      "day_of_week": "Tuesday",
+      "first_hour_range": 48.84033203125,
+      "first_hour_high": 5450.41015625,
+      "first_hour_low": 5401.56982421875,
+      "vix_close": 30.889999389648438
+    },
     {
       "date": "2025-04-14",
       "day_of_week": "Monday",
@@ -105,19 +113,11 @@
       "first_hour_high": 5052.009765625,
       "first_hour_low": 4956.0,
       "vix_close": 52.33000183105469
-    },
-    {
-      "date": "2025-04-08",
-      "day_of_week": "Tuesday",
-      "first_hour_range": 73.900390625,
-      "first_hour_high": 5267.47021484375,
-      "first_hour_low": 5193.56982421875,
-      "vix_close": 46.97999954223633
     }
   ],
-  "last_updated": "2025-04-14T17:11:03.793395",
+  "last_updated": "2025-04-15T17:10:56.853112",
   "date_range": {
     "start": "2024-04-15",
-    "end": "2025-04-14"
+    "end": "2025-04-15"
   }
 }
