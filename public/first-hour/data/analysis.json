@@ -27,16 +27,16 @@
     {
       "category": "High",
       "vix_min": 17.69,
-      "vix_max": 19.9,
-      "range_mean": 38.56,
-      "range_median": 32.53,
+      "vix_max": 20.35,
+      "range_mean": 39.03,
+      "range_median": 32.83,
       "count": 38
     },
     {
       "category": "Very High",
-      "vix_min": 20.35,
+      "vix_min": 20.49,
       "vix_max": 52.33,
-      "range_mean": 49.77,
+      "range_mean": 49.78,
       "range_median": 46.38,
       "count": 39
     }
@@ -44,21 +44,21 @@
   "dow_analysis": [
     {
       "day": "Monday",
-      "range_mean": 37.61,
-      "range_median": 25.24,
-      "count": 49
+      "range_mean": 37.55,
+      "range_median": 23.98,
+      "count": 48
     },
     {
       "day": "Tuesday",
-      "range_mean": 30.32,
-      "range_median": 22.29,
+      "range_mean": 30.13,
+      "range_median": 22.1,
       "count": 53
     },
     {
       "day": "Wednesday",
-      "range_mean": 28.39,
-      "range_median": 23.92,
-      "count": 49
+      "range_mean": 28.63,
+      "range_median": 24.83,
+      "count": 50
     },
     {
       "day": "Thursday",
@@ -74,6 +74,14 @@
     }
   ],
   "recent_days": [
+    {
+      "date": "2025-04-16",
+      "day_of_week": "Wednesday",
+      "first_hour_range": 40.68994140625,
+      "first_hour_high": 5355.18994140625,
+      "first_hour_low": 5314.5,
+      "vix_close": 30.1200008392334
+    },
     {
       "date": "2025-04-15",
       "day_of_week": "Tuesday",
@@ -105,19 +113,11 @@
       "first_hour_high": 5353.14990234375,
       "first_hour_low": 5282.72021484375,
       "vix_close": 33.619998931884766
-    },
-    {
-      "date": "2025-04-09",
-      "day_of_week": "Wednesday",
-      "first_hour_range": 96.009765625,
-      "first_hour_high": 5052.009765625,
-      "first_hour_low": 4956.0,
-      "vix_close": 52.33000183105469
     }
   ],
-  "last_updated": "2025-04-15T17:10:56.853112",
+  "last_updated": "2025-04-16T17:10:42.159535",
   "date_range": {
-    "start": "2024-04-15",
-    "end": "2025-04-15"
+    "start": "2024-04-16",
+    "end": "2025-04-16"
   }
 }
