@@ -19,16 +19,16 @@
     {
       "category": "Medium",
       "vix_min": 15.66,
-      "vix_max": 17.61,
-      "range_mean": 29.31,
-      "range_median": 27.96,
-      "count": 39
+      "vix_max": 17.55,
+      "range_mean": 29.67,
+      "range_median": 28.16,
+      "count": 38
     },
     {
       "category": "High",
-      "vix_min": 17.69,
+      "vix_min": 17.61,
       "vix_max": 20.49,
-      "range_mean": 39.46,
+      "range_mean": 39.22,
       "range_median": 33.79,
       "count": 39
     },
@@ -56,9 +56,9 @@
     },
     {
       "day": "Wednesday",
-      "range_mean": 28.6,
-      "range_median": 24.79,
-      "count": 50
+      "range_mean": 28.66,
+      "range_median": 23.92,
+      "count": 49
     },
     {
       "day": "Thursday",
@@ -115,9 +115,9 @@
       "vix_close": 40.720001220703125
     }
   ],
-  "last_updated": "2025-04-17T17:10:44.079273",
+  "last_updated": "2025-04-18T17:10:35.109298",
   "date_range": {
-    "start": "2024-04-17",
+    "start": "2024-04-18",
     "end": "2025-04-17"
   }
 }
