@@ -20,7 +20,7 @@
       "category": "Medium",
       "vix_min": 15.66,
       "vix_max": 17.55,
-      "range_mean": 29.67,
+      "range_mean": 29.78,
       "range_median": 28.16,
       "count": 38
     },
@@ -28,9 +28,9 @@
       "category": "High",
       "vix_min": 17.61,
       "vix_max": 20.49,
-      "range_mean": 39.22,
-      "range_median": 33.79,
-      "count": 39
+      "range_mean": 39.56,
+      "range_median": 34.72,
+      "count": 38
     },
     {
       "category": "Very High",
@@ -44,9 +44,9 @@
   "dow_analysis": [
     {
       "day": "Monday",
-      "range_mean": 37.55,
-      "range_median": 23.98,
-      "count": 48
+      "range_mean": 38.1,
+      "range_median": 25.24,
+      "count": 49
     },
     {
       "day": "Tuesday",
@@ -56,24 +56,32 @@
     },
     {
       "day": "Wednesday",
-      "range_mean": 28.66,
-      "range_median": 23.92,
+      "range_mean": 28.71,
+      "range_median": 24.08,
       "count": 49
     },
     {
       "day": "Thursday",
-      "range_mean": 33.12,
-      "range_median": 29.75,
-      "count": 50
+      "range_mean": 33.35,
+      "range_median": 30.18,
+      "count": 49
     },
     {
       "day": "Friday",
-      "range_mean": 35.62,
-      "range_median": 29.25,
-      "count": 52
+      "range_mean": 35.77,
+      "range_median": 29.37,
+      "count": 51
     }
   ],
   "recent_days": [
+    {
+      "date": "2025-04-21",
+      "day_of_week": "Monday",
+      "first_hour_range": 64.169921875,
+      "first_hour_high": 5232.93994140625,
+      "first_hour_low": 5168.77001953125,
+      "vix_close": null
+    },
     {
       "date": "2025-04-17",
       "day_of_week": "Thursday",
@@ -105,19 +113,11 @@
       "first_hour_high": 5459.4599609375,
       "first_hour_low": 5411.60986328125,
       "vix_close": null
-    },
-    {
-      "date": "2025-04-11",
-      "day_of_week": "Friday",
-      "first_hour_range": 83.33984375,
-      "first_hour_high": 5304.93994140625,
-      "first_hour_low": 5221.60009765625,
-      "vix_close": 40.720001220703125
     }
   ],
-  "last_updated": "2025-04-18T17:10:35.109298",
+  "last_updated": "2025-04-21T17:10:22.592394",
   "date_range": {
-    "start": "2024-04-18",
-    "end": "2025-04-17"
+    "start": "2024-04-22",
+    "end": "2025-04-21"
   }
 }
