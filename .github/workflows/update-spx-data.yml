@@ -2,8 +2,7 @@ name: Update SPX Market Data
 
 on:
   schedule:
-    # Run daily at 5:00 PM UTC (adjust as needed)
-    - cron: '0 17 * * 1-5'  # Monday-Friday at 5 PM UTC
+    - cron: '0 21 * * 1-5'  # Monday-Friday at 9 PM UTC OR 2 PM PST
   workflow_dispatch:  # Allows manual triggering
 
 jobs:
