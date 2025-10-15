@@ -4,7 +4,7 @@
       "category": "Very Low",
       "vix_min": 13.3,
       "vix_max": 15.39,
-      "range_mean": 21.49,
+      "range_mean": 21.44,
       "range_median": 17.74,
       "count": 39
     },
@@ -20,23 +20,23 @@
       "category": "Medium",
       "vix_min": 16.59,
       "vix_max": 17.93,
-      "range_mean": 29.66,
+      "range_mean": 29.59,
       "range_median": 25.83,
       "count": 39
     },
     {
       "category": "High",
       "vix_min": 18.02,
-      "vix_max": 20.87,
-      "range_mean": 34.98,
-      "range_median": 32.72,
+      "vix_max": 20.81,
+      "range_mean": 36.14,
+      "range_median": 33.26,
       "count": 38
     },
     {
       "category": "Very High",
-      "vix_min": 20.93,
+      "vix_min": 20.87,
       "vix_max": 52.33,
-      "range_mean": 53.01,
+      "range_mean": 52.84,
       "range_median": 48.18,
       "count": 39
     }
@@ -44,36 +44,60 @@
   "dow_analysis": [
     {
       "day": "Monday",
-      "range_mean": 38.78,
-      "range_median": 30.13,
+      "range_mean": 38.97,
+      "range_median": 31.76,
       "count": 48
     },
     {
       "day": "Tuesday",
-      "range_mean": 30.75,
-      "range_median": 23.17,
+      "range_mean": 31.64,
+      "range_median": 25.41,
       "count": 52
     },
     {
       "day": "Wednesday",
-      "range_mean": 30.94,
-      "range_median": 24.71,
-      "count": 50
+      "range_mean": 31.1,
+      "range_median": 24.74,
+      "count": 51
     },
     {
       "day": "Thursday",
-      "range_mean": 34.72,
+      "range_mean": 34.69,
       "range_median": 31.28,
       "count": 49
     },
     {
       "day": "Friday",
-      "range_mean": 37.67,
-      "range_median": 32.73,
-      "count": 51
+      "range_mean": 37.37,
+      "range_median": 32.72,
+      "count": 50
     }
   ],
   "recent_days": [
+    {
+      "date": "2025-10-15",
+      "day_of_week": "Wednesday",
+      "first_hour_range": 40.169921875,
+      "first_hour_high": 6724.1201171875,
+      "first_hour_low": 6683.9501953125,
+      "vix_close": 20.809999465942383
+    },
+    {
+      "date": "2025-10-14",
+      "day_of_week": "Tuesday",
+      "first_hour_range": 66.6201171875,
+      "first_hour_high": 6621.68994140625,
+      "first_hour_low": 6555.06982421875,
+      "vix_close": 19.030000686645508
+    },
+    {
+      "date": "2025-10-13",
+      "day_of_week": "Monday",
+      "first_hour_range": 34.169921875,
+      "first_hour_high": 6654.8798828125,
+      "first_hour_low": 6620.7099609375,
+      "vix_close": null
+    },
     {
       "date": "2025-10-10",
       "day_of_week": "Friday",
@@ -89,35 +113,11 @@
       "first_hour_high": 6764.580078125,
       "first_hour_low": 6735.18017578125,
       "vix_close": 16.299999237060547
-    },
-    {
-      "date": "2025-10-08",
-      "day_of_week": "Wednesday",
-      "first_hour_range": 24.68017578125,
-      "first_hour_high": 6742.77001953125,
-      "first_hour_low": 6718.08984375,
-      "vix_close": 17.239999771118164
-    },
-    {
-      "date": "2025-10-07",
-      "day_of_week": "Tuesday",
-      "first_hour_range": 18.0302734375,
-      "first_hour_high": 6754.490234375,
-      "first_hour_low": 6736.4599609375,
-      "vix_close": 16.3700008392334
-    },
-    {
-      "date": "2025-10-06",
-      "day_of_week": "Monday",
-      "first_hour_range": 20.97021484375,
-      "first_hour_high": 6738.75,
-      "first_hour_low": 6717.77978515625,
-      "vix_close": null
     }
   ],
-  "last_updated": "2025-10-10T21:07:45.783874",
+  "last_updated": "2025-10-15T21:08:16.094526",
   "date_range": {
-    "start": "2024-10-11",
-    "end": "2025-10-10"
+    "start": "2024-10-16",
+    "end": "2025-10-15"
   }
 }
