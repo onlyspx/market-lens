@@ -4,8 +4,8 @@
       "category": "Very Low",
       "vix_min": 14.0,
       "vix_max": 15.79,
-      "range_mean": 26.86,
-      "range_median": 23.02,
+      "range_mean": 25.94,
+      "range_median": 22.84,
       "count": 39
     },
     {
@@ -44,15 +44,15 @@
   "dow_analysis": [
     {
       "day": "Monday",
-      "range_mean": 42.12,
-      "range_median": 34.3,
+      "range_mean": 41.55,
+      "range_median": 33.52,
       "count": 48
     },
     {
       "day": "Tuesday",
-      "range_mean": 34.1,
-      "range_median": 28.64,
-      "count": 52
+      "range_mean": 33.79,
+      "range_median": 27.58,
+      "count": 53
     },
     {
       "day": "Wednesday",
@@ -68,12 +68,28 @@
     },
     {
       "day": "Friday",
-      "range_mean": 38.94,
-      "range_median": 35.05,
-      "count": 51
+      "range_mean": 38.64,
+      "range_median": 34.96,
+      "count": 50
     }
   ],
   "recent_days": [
+    {
+      "date": "2025-12-30",
+      "day_of_week": "Tuesday",
+      "first_hour_range": 17.64013671875,
+      "first_hour_high": 6913.25,
+      "first_hour_low": 6895.60986328125,
+      "vix_close": 14.199999809265137
+    },
+    {
+      "date": "2025-12-29",
+      "day_of_week": "Monday",
+      "first_hour_range": 24.02978515625,
+      "first_hour_high": 6920.2099609375,
+      "first_hour_low": 6896.18017578125,
+      "vix_close": null
+    },
     {
       "date": "2025-12-26",
       "day_of_week": "Friday",
@@ -97,27 +113,11 @@
       "first_hour_high": 6891.830078125,
       "first_hour_low": 6868.81005859375,
       "vix_close": 14.079999923706055
-    },
-    {
-      "date": "2025-12-22",
-      "day_of_week": "Monday",
-      "first_hour_range": 15.6201171875,
-      "first_hour_high": 6873.89013671875,
-      "first_hour_low": 6858.27001953125,
-      "vix_close": null
-    },
-    {
-      "date": "2025-12-19",
-      "day_of_week": "Friday",
-      "first_hour_range": 41.19970703125,
-      "first_hour_high": 6833.81982421875,
-      "first_hour_low": 6792.6201171875,
-      "vix_close": 16.8700008392334
     }
   ],
-  "last_updated": "2025-12-26T21:09:00.676565",
+  "last_updated": "2025-12-30T21:09:48.298561",
   "date_range": {
-    "start": "2024-12-27",
-    "end": "2025-12-26"
+    "start": "2024-12-31",
+    "end": "2025-12-30"
   }
 }
