@@ -19,40 +19,40 @@
     {
       "category": "Medium",
       "vix_min": 16.83,
-      "vix_max": 18.01,
-      "range_mean": 31.54,
-      "range_median": 27.24,
-      "count": 38
+      "vix_max": 18.02,
+      "range_mean": 31.64,
+      "range_median": 27.58,
+      "count": 39
     },
     {
       "category": "High",
-      "vix_min": 18.02,
-      "vix_max": 21.01,
-      "range_mean": 40.19,
-      "range_median": 36.39,
+      "vix_min": 18.09,
+      "vix_max": 21.15,
+      "range_mean": 40.6,
+      "range_median": 37.62,
       "count": 39
     },
     {
       "category": "Very High",
-      "vix_min": 21.15,
+      "vix_min": 21.44,
       "vix_max": 52.33,
-      "range_mean": 54.56,
-      "range_median": 48.84,
+      "range_mean": 54.05,
+      "range_median": 48.81,
       "count": 39
     }
   ],
   "dow_analysis": [
     {
       "day": "Monday",
-      "range_mean": 40.88,
-      "range_median": 34.17,
-      "count": 49
+      "range_mean": 40.93,
+      "range_median": 33.15,
+      "count": 48
     },
     {
       "day": "Tuesday",
-      "range_mean": 34.18,
-      "range_median": 29.43,
-      "count": 52
+      "range_mean": 34.14,
+      "range_median": 29.86,
+      "count": 53
     },
     {
       "day": "Wednesday",
@@ -74,6 +74,14 @@
     }
   ],
   "recent_days": [
+    {
+      "date": "2026-03-17",
+      "day_of_week": "Tuesday",
+      "first_hour_range": 31.94970703125,
+      "first_hour_high": 6754.2998046875,
+      "first_hour_low": 6722.35009765625,
+      "vix_close": 23.510000228881836
+    },
     {
       "date": "2026-03-16",
       "day_of_week": "Monday",
@@ -105,19 +113,11 @@
       "first_hour_high": 6811.14990234375,
       "first_hour_low": 6763.89013671875,
       "vix_close": 24.93000030517578
-    },
-    {
-      "date": "2026-03-10",
-      "day_of_week": "Tuesday",
-      "first_hour_range": 39.2197265625,
-      "first_hour_high": 6798.9599609375,
-      "first_hour_low": 6759.740234375,
-      "vix_close": 25.5
     }
   ],
-  "last_updated": "2026-03-16T21:27:10.277163",
+  "last_updated": "2026-03-17T21:25:05.948813",
   "date_range": {
-    "start": "2025-03-17",
-    "end": "2026-03-16"
+    "start": "2025-03-18",
+    "end": "2026-03-17"
   }
 }
