@@ -19,61 +19,93 @@
     {
       "category": "Medium",
       "vix_min": 16.83,
-      "vix_max": 18.02,
-      "range_mean": 31.65,
-      "range_median": 27.58,
-      "count": 39
+      "vix_max": 18.09,
+      "range_mean": 31.68,
+      "range_median": 27.24,
+      "count": 38
     },
     {
       "category": "High",
-      "vix_min": 18.09,
-      "vix_max": 21.6,
-      "range_mean": 41.81,
-      "range_median": 37.62,
+      "vix_min": 18.14,
+      "vix_max": 22.28,
+      "range_mean": 42.76,
+      "range_median": 38.6,
       "count": 39
     },
     {
       "category": "Very High",
-      "vix_min": 21.77,
+      "vix_min": 22.37,
       "vix_max": 52.33,
-      "range_mean": 53.05,
-      "range_median": 48.39,
+      "range_mean": 51.92,
+      "range_median": 44.9,
       "count": 39
     }
   ],
   "dow_analysis": [
     {
       "day": "Monday",
-      "range_mean": 42.92,
-      "range_median": 34.3,
-      "count": 48
+      "range_mean": 43.19,
+      "range_median": 34.43,
+      "count": 49
     },
     {
       "day": "Tuesday",
-      "range_mean": 33.94,
-      "range_median": 29.86,
-      "count": 53
+      "range_mean": 34.24,
+      "range_median": 30.28,
+      "count": 52
     },
     {
       "day": "Wednesday",
-      "range_mean": 33.9,
+      "range_mean": 34.17,
       "range_median": 26.07,
       "count": 52
     },
     {
       "day": "Thursday",
-      "range_mean": 37.89,
+      "range_mean": 37.75,
       "range_median": 33.9,
       "count": 48
     },
     {
       "day": "Friday",
-      "range_mean": 41.95,
+      "range_mean": 41.43,
       "range_median": 37.61,
       "count": 50
     }
   ],
   "recent_days": [
+    {
+      "date": "2026-03-30",
+      "day_of_week": "Monday",
+      "first_hour_range": 56.43017578125,
+      "first_hour_high": 6427.31005859375,
+      "first_hour_low": 6370.8798828125,
+      "vix_close": null
+    },
+    {
+      "date": "2026-03-27",
+      "day_of_week": "Friday",
+      "first_hour_range": 43.26025390625,
+      "first_hour_high": 6453.89013671875,
+      "first_hour_low": 6410.6298828125,
+      "vix_close": 27.440000534057617
+    },
+    {
+      "date": "2026-03-26",
+      "day_of_week": "Thursday",
+      "first_hour_range": 40.1103515625,
+      "first_hour_high": 6573.22021484375,
+      "first_hour_low": 6533.10986328125,
+      "vix_close": 25.329999923706055
+    },
+    {
+      "date": "2026-03-25",
+      "day_of_week": "Wednesday",
+      "first_hour_range": 50.85986328125,
+      "first_hour_high": 6633.93994140625,
+      "first_hour_low": 6583.080078125,
+      "vix_close": 26.950000762939453
+    },
     {
       "date": "2026-03-24",
       "day_of_week": "Tuesday",
@@ -81,43 +113,11 @@
       "first_hour_high": 6560.9501953125,
       "first_hour_low": 6525.10986328125,
       "vix_close": 26.149999618530273
-    },
-    {
-      "date": "2026-03-23",
-      "day_of_week": "Monday",
-      "first_hour_range": 73.31982421875,
-      "first_hour_high": 6648.27978515625,
-      "first_hour_low": 6574.9599609375,
-      "vix_close": null
-    },
-    {
-      "date": "2026-03-20",
-      "day_of_week": "Friday",
-      "first_hour_range": 53.84033203125,
-      "first_hour_high": 6594.66015625,
-      "first_hour_low": 6540.81982421875,
-      "vix_close": 24.059999465942383
-    },
-    {
-      "date": "2026-03-19",
-      "day_of_week": "Thursday",
-      "first_hour_range": 44.900390625,
-      "first_hour_high": 6602.72021484375,
-      "first_hour_low": 6557.81982421875,
-      "vix_close": 25.09000015258789
-    },
-    {
-      "date": "2026-03-18",
-      "day_of_week": "Wednesday",
-      "first_hour_range": 37.8603515625,
-      "first_hour_high": 6705.18017578125,
-      "first_hour_low": 6667.31982421875,
-      "vix_close": 22.3700008392334
     }
   ],
-  "last_updated": "2026-03-24T21:26:36.696944",
+  "last_updated": "2026-03-30T21:31:13.466390",
   "date_range": {
-    "start": "2025-03-25",
-    "end": "2026-03-24"
+    "start": "2025-03-31",
+    "end": "2026-03-30"
   }
 }
