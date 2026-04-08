@@ -19,105 +19,105 @@
     {
       "category": "Medium",
       "vix_min": 16.83,
-      "vix_max": 18.14,
-      "range_mean": 31.27,
-      "range_median": 26.89,
-      "count": 39
+      "vix_max": 18.09,
+      "range_mean": 31.68,
+      "range_median": 27.24,
+      "count": 38
     },
     {
       "category": "High",
-      "vix_min": 18.22,
-      "vix_max": 22.37,
-      "range_mean": 43.33,
-      "range_median": 38.6,
+      "vix_min": 18.14,
+      "vix_max": 22.48,
+      "range_mean": 42.18,
+      "range_median": 37.62,
       "count": 39
     },
     {
       "category": "Very High",
-      "vix_min": 22.38,
+      "vix_min": 23.51,
       "vix_max": 52.33,
-      "range_mean": 52.44,
-      "range_median": 47.26,
+      "range_mean": 49.67,
+      "range_median": 44.9,
       "count": 39
     }
   ],
   "dow_analysis": [
     {
       "day": "Monday",
-      "range_mean": 43.1,
+      "range_mean": 35.32,
       "range_median": 34.3,
       "count": 48
     },
     {
       "day": "Tuesday",
-      "range_mean": 34.69,
-      "range_median": 30.7,
-      "count": 53
-    },
-    {
-      "day": "Wednesday",
-      "range_mean": 34.17,
-      "range_median": 26.07,
+      "range_mean": 34.12,
+      "range_median": 30.28,
       "count": 52
     },
     {
+      "day": "Wednesday",
+      "range_mean": 33.74,
+      "range_median": 26.32,
+      "count": 53
+    },
+    {
       "day": "Thursday",
-      "range_mean": 37.75,
+      "range_mean": 37.67,
       "range_median": 33.9,
       "count": 48
     },
     {
       "day": "Friday",
-      "range_mean": 41.43,
-      "range_median": 37.61,
-      "count": 50
+      "range_mean": 40.0,
+      "range_median": 37.13,
+      "count": 49
     }
   ],
   "recent_days": [
     {
-      "date": "2026-03-31",
-      "day_of_week": "Tuesday",
-      "first_hour_range": 57.85009765625,
-      "first_hour_high": 6453.72998046875,
-      "first_hour_low": 6395.8798828125,
-      "vix_close": 30.610000610351562
+      "date": "2026-04-08",
+      "day_of_week": "Wednesday",
+      "first_hour_range": 39.14013671875,
+      "first_hour_high": 6793.5,
+      "first_hour_low": 6754.35986328125,
+      "vix_close": 25.780000686645508
     },
     {
-      "date": "2026-03-30",
+      "date": "2026-04-07",
+      "day_of_week": "Tuesday",
+      "first_hour_range": 58.77001953125,
+      "first_hour_high": 6601.93017578125,
+      "first_hour_low": 6543.16015625,
+      "vix_close": 24.170000076293945
+    },
+    {
+      "date": "2026-04-06",
       "day_of_week": "Monday",
-      "first_hour_range": 56.43017578125,
-      "first_hour_high": 6427.31005859375,
-      "first_hour_low": 6370.8798828125,
+      "first_hour_range": 38.1796875,
+      "first_hour_high": 6618.1298828125,
+      "first_hour_low": 6579.9501953125,
       "vix_close": null
     },
     {
-      "date": "2026-03-27",
-      "day_of_week": "Friday",
-      "first_hour_range": 43.26025390625,
-      "first_hour_high": 6453.89013671875,
-      "first_hour_low": 6410.6298828125,
-      "vix_close": 27.440000534057617
-    },
-    {
-      "date": "2026-03-26",
+      "date": "2026-04-02",
       "day_of_week": "Thursday",
-      "first_hour_range": 40.1103515625,
-      "first_hour_high": 6573.22021484375,
-      "first_hour_low": 6533.10986328125,
-      "vix_close": 25.329999923706055
+      "first_hour_range": 59.01025390625,
+      "first_hour_high": 6533.9501953125,
+      "first_hour_low": 6474.93994140625,
+      "vix_close": 24.540000915527344
     },
     {
-      "date": "2026-03-25",
+      "date": "2026-04-01",
       "day_of_week": "Wednesday",
-      "first_hour_range": 50.85986328125,
-      "first_hour_high": 6633.93994140625,
-      "first_hour_low": 6583.080078125,
-      "vix_close": 26.950000762939453
+      "first_hour_range": 30.89013671875,
+      "first_hour_high": 6585.18017578125,
+      "first_hour_low": 6554.2900390625,
+      "vix_close": 25.25
     }
   ],
-  "last_updated": "2026-03-31T21:27:02.981615",
+  "last_updated": "2026-04-08T21:32:28.416852",
   "date_range": {
-    "start": "2025-04-01",
-    "end": "2026-03-31"
+    "start": "2025-04-09",
+    "end": "2026-04-08"
   }
 }
