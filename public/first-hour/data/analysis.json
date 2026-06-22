@@ -27,26 +27,26 @@
     {
       "category": "High",
       "vix_min": 17.79,
-      "vix_max": 19.87,
-      "range_mean": 38.39,
+      "vix_max": 19.83,
+      "range_mean": 37.7,
       "range_median": 31.51,
       "count": 39
     },
     {
       "category": "Very High",
-      "vix_min": 20.0,
+      "vix_min": 19.87,
       "vix_max": 30.61,
-      "range_mean": 50.35,
-      "range_median": 50.98,
+      "range_mean": 51.18,
+      "range_median": 51.81,
       "count": 39
     }
   ],
   "dow_analysis": [
     {
       "day": "Monday",
-      "range_mean": 31.97,
-      "range_median": 30.14,
-      "count": 48
+      "range_mean": 32.04,
+      "range_median": 30.8,
+      "count": 49
     },
     {
       "day": "Tuesday",
@@ -56,24 +56,40 @@
     },
     {
       "day": "Wednesday",
-      "range_mean": 32.21,
-      "range_median": 26.34,
-      "count": 53
+      "range_mean": 32.14,
+      "range_median": 26.08,
+      "count": 52
     },
     {
       "day": "Thursday",
-      "range_mean": 35.99,
-      "range_median": 32.25,
-      "count": 48
+      "range_mean": 36.09,
+      "range_median": 32.41,
+      "count": 49
     },
     {
       "day": "Friday",
-      "range_mean": 39.59,
-      "range_median": 39.31,
-      "count": 50
+      "range_mean": 39.56,
+      "range_median": 38.85,
+      "count": 49
     }
   ],
   "recent_days": [
+    {
+      "date": "2026-06-22",
+      "day_of_week": "Monday",
+      "first_hour_range": 35.07958984375,
+      "first_hour_high": 7530.009765625,
+      "first_hour_low": 7494.93017578125,
+      "vix_close": null
+    },
+    {
+      "date": "2026-06-18",
+      "day_of_week": "Thursday",
+      "first_hour_range": 41.1201171875,
+      "first_hour_high": 7509.43994140625,
+      "first_hour_low": 7468.31982421875,
+      "vix_close": 18.440000534057617
+    },
     {
       "date": "2026-06-17",
       "day_of_week": "Wednesday",
@@ -97,27 +113,11 @@
       "first_hour_high": 7552.669921875,
       "first_hour_low": 7516.75,
       "vix_close": null
-    },
-    {
-      "date": "2026-06-12",
-      "day_of_week": "Friday",
-      "first_hour_range": 59.66015625,
-      "first_hour_high": 7422.669921875,
-      "first_hour_low": 7363.009765625,
-      "vix_close": 19.440000534057617
-    },
-    {
-      "date": "2026-06-11",
-      "day_of_week": "Thursday",
-      "first_hour_range": 50.97998046875,
-      "first_hour_high": 7327.89990234375,
-      "first_hour_low": 7276.919921875,
-      "vix_close": 22.219999313354492
     }
   ],
-  "last_updated": "2026-06-17T22:27:38.281652",
+  "last_updated": "2026-06-22T22:29:01.855679",
   "date_range": {
-    "start": "2025-06-18",
-    "end": "2026-06-17"
+    "start": "2025-06-23",
+    "end": "2026-06-22"
   }
 }
