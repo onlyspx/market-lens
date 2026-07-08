@@ -3,34 +3,34 @@
     {
       "category": "Very Low",
       "vix_min": 14.0,
-      "vix_max": 15.79,
-      "range_mean": 28.31,
-      "range_median": 25.57,
+      "vix_max": 15.78,
+      "range_mean": 28.94,
+      "range_median": 26.09,
       "count": 40
     },
     {
       "category": "Low",
-      "vix_min": 15.84,
-      "vix_max": 16.65,
-      "range_mean": 29.88,
-      "range_median": 26.34,
+      "vix_min": 15.79,
+      "vix_max": 16.63,
+      "range_mean": 30.21,
+      "range_median": 24.84,
       "count": 39
     },
     {
       "category": "Medium",
-      "vix_min": 16.66,
-      "vix_max": 17.79,
-      "range_mean": 33.7,
-      "range_median": 32.25,
-      "count": 40
+      "vix_min": 16.64,
+      "vix_max": 17.65,
+      "range_mean": 32.79,
+      "range_median": 32.09,
+      "count": 39
     },
     {
       "category": "High",
-      "vix_min": 17.82,
+      "vix_min": 17.79,
       "vix_max": 19.55,
-      "range_mean": 40.02,
-      "range_median": 32.95,
-      "count": 38
+      "range_mean": 41.08,
+      "range_median": 34.04,
+      "count": 39
     },
     {
       "category": "Very High",
@@ -44,26 +44,26 @@
   "dow_analysis": [
     {
       "day": "Monday",
-      "range_mean": 33.1,
+      "range_mean": 33.37,
       "range_median": 31.47,
       "count": 48
     },
     {
       "day": "Tuesday",
-      "range_mean": 35.57,
-      "range_median": 29.36,
+      "range_mean": 36.14,
+      "range_median": 29.79,
       "count": 52
     },
     {
       "day": "Wednesday",
-      "range_mean": 32.91,
+      "range_mean": 32.95,
       "range_median": 26.42,
       "count": 53
     },
     {
       "day": "Thursday",
-      "range_mean": 37.71,
-      "range_median": 33.14,
+      "range_mean": 38.1,
+      "range_median": 34.28,
       "count": 49
     },
     {
@@ -75,49 +75,49 @@
   ],
   "recent_days": [
     {
+      "date": "2026-07-08",
+      "day_of_week": "Wednesday",
+      "first_hour_range": 23.93994140625,
+      "first_hour_high": 7476.5400390625,
+      "first_hour_low": 7452.60009765625,
+      "vix_close": 16.1299991607666
+    },
+    {
+      "date": "2026-07-07",
+      "day_of_week": "Tuesday",
+      "first_hour_range": 49.35009765625,
+      "first_hour_high": 7536.06005859375,
+      "first_hour_low": 7486.7099609375,
+      "vix_close": 15.569999694824219
+    },
+    {
+      "date": "2026-07-06",
+      "day_of_week": "Monday",
+      "first_hour_range": 26.5,
+      "first_hour_high": 7527.47021484375,
+      "first_hour_low": 7500.97021484375,
+      "vix_close": null
+    },
+    {
+      "date": "2026-07-02",
+      "day_of_week": "Thursday",
+      "first_hour_range": 45.60986328125,
+      "first_hour_high": 7540.75,
+      "first_hour_low": 7495.14013671875,
+      "vix_close": 16.59000015258789
+    },
+    {
       "date": "2026-07-01",
       "day_of_week": "Wednesday",
       "first_hour_range": 48.580078125,
       "first_hour_high": 7498.2099609375,
       "first_hour_low": 7449.6298828125,
       "vix_close": 16.450000762939453
-    },
-    {
-      "date": "2026-06-30",
-      "day_of_week": "Tuesday",
-      "first_hour_range": 35.3701171875,
-      "first_hour_high": 7473.41015625,
-      "first_hour_low": 7438.0400390625,
-      "vix_close": 17.649999618530273
-    },
-    {
-      "date": "2026-06-29",
-      "day_of_week": "Monday",
-      "first_hour_range": 78.919921875,
-      "first_hour_high": 7427.7998046875,
-      "first_hour_low": 7348.8798828125,
-      "vix_close": null
-    },
-    {
-      "date": "2026-06-26",
-      "day_of_week": "Friday",
-      "first_hour_range": 75.72998046875,
-      "first_hour_high": 7369.91015625,
-      "first_hour_low": 7294.18017578125,
-      "vix_close": 18.889999389648438
-    },
-    {
-      "date": "2026-06-25",
-      "day_of_week": "Thursday",
-      "first_hour_range": 95.580078125,
-      "first_hour_high": 7419.080078125,
-      "first_hour_low": 7323.5,
-      "vix_close": 18.6299991607666
     }
   ],
-  "last_updated": "2026-07-01T22:10:35.391958",
+  "last_updated": "2026-07-08T21:55:42.152477",
   "date_range": {
-    "start": "2025-07-02",
-    "end": "2026-07-01"
+    "start": "2025-07-09",
+    "end": "2026-07-08"
   }
 }
