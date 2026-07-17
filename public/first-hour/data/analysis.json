@@ -4,24 +4,24 @@
       "category": "Very Low",
       "vix_min": 14.0,
       "vix_max": 15.78,
-      "range_mean": 28.94,
+      "range_mean": 29.25,
       "range_median": 26.09,
       "count": 40
     },
     {
       "category": "Low",
       "vix_min": 15.79,
-      "vix_max": 16.63,
-      "range_mean": 30.21,
+      "vix_max": 16.6,
+      "range_mean": 30.37,
       "range_median": 24.84,
       "count": 39
     },
     {
       "category": "Medium",
-      "vix_min": 16.64,
+      "vix_min": 16.63,
       "vix_max": 17.65,
-      "range_mean": 32.79,
-      "range_median": 32.09,
+      "range_mean": 34.25,
+      "range_median": 33.14,
       "count": 39
     },
     {
@@ -44,80 +44,80 @@
   "dow_analysis": [
     {
       "day": "Monday",
-      "range_mean": 33.37,
-      "range_median": 31.47,
+      "range_mean": 33.71,
+      "range_median": 32.63,
       "count": 48
     },
     {
       "day": "Tuesday",
-      "range_mean": 36.14,
-      "range_median": 29.79,
+      "range_mean": 36.21,
+      "range_median": 30.28,
       "count": 52
     },
     {
       "day": "Wednesday",
-      "range_mean": 32.95,
+      "range_mean": 33.11,
       "range_median": 26.42,
-      "count": 53
+      "count": 52
     },
     {
       "day": "Thursday",
-      "range_mean": 38.1,
-      "range_median": 34.28,
+      "range_mean": 38.9,
+      "range_median": 36.3,
       "count": 49
     },
     {
       "day": "Friday",
-      "range_mean": 40.53,
-      "range_median": 39.77,
-      "count": 49
+      "range_mean": 40.87,
+      "range_median": 40.0,
+      "count": 50
     }
   ],
   "recent_days": [
     {
-      "date": "2026-07-08",
-      "day_of_week": "Wednesday",
-      "first_hour_range": 23.93994140625,
-      "first_hour_high": 7476.5400390625,
-      "first_hour_low": 7452.60009765625,
-      "vix_close": 16.1299991607666
+      "date": "2026-07-17",
+      "day_of_week": "Friday",
+      "first_hour_range": 67.17041015625,
+      "first_hour_high": 7498.43017578125,
+      "first_hour_low": 7431.259765625,
+      "vix_close": 16.729999542236328
     },
     {
-      "date": "2026-07-07",
-      "day_of_week": "Tuesday",
-      "first_hour_range": 49.35009765625,
-      "first_hour_high": 7536.06005859375,
-      "first_hour_low": 7486.7099609375,
-      "vix_close": 15.569999694824219
-    },
-    {
-      "date": "2026-07-06",
-      "day_of_week": "Monday",
-      "first_hour_range": 26.5,
-      "first_hour_high": 7527.47021484375,
-      "first_hour_low": 7500.97021484375,
-      "vix_close": null
-    },
-    {
-      "date": "2026-07-02",
+      "date": "2026-07-16",
       "day_of_week": "Thursday",
-      "first_hour_range": 45.60986328125,
-      "first_hour_high": 7540.75,
-      "first_hour_low": 7495.14013671875,
-      "vix_close": 16.59000015258789
+      "first_hour_range": 38.6396484375,
+      "first_hour_high": 7570.35986328125,
+      "first_hour_low": 7531.72021484375,
+      "vix_close": 15.670000076293945
     },
     {
-      "date": "2026-07-01",
+      "date": "2026-07-15",
       "day_of_week": "Wednesday",
-      "first_hour_range": 48.580078125,
-      "first_hour_high": 7498.2099609375,
-      "first_hour_low": 7449.6298828125,
-      "vix_close": 16.450000762939453
+      "first_hour_range": 24.16015625,
+      "first_hour_high": 7581.5,
+      "first_hour_low": 7557.33984375,
+      "vix_close": 16.5
+    },
+    {
+      "date": "2026-07-14",
+      "day_of_week": "Tuesday",
+      "first_hour_range": 31.22021484375,
+      "first_hour_high": 7544.4501953125,
+      "first_hour_low": 7513.22998046875,
+      "vix_close": 17.15999984741211
+    },
+    {
+      "date": "2026-07-13",
+      "day_of_week": "Monday",
+      "first_hour_range": 36.0400390625,
+      "first_hour_high": 7565.3701171875,
+      "first_hour_low": 7529.330078125,
+      "vix_close": null
     }
   ],
-  "last_updated": "2026-07-08T21:55:42.152477",
+  "last_updated": "2026-07-17T21:38:48.539762",
   "date_range": {
-    "start": "2025-07-09",
-    "end": "2026-07-08"
+    "start": "2025-07-18",
+    "end": "2026-07-17"
   }
 }
