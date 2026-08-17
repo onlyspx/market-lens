@@ -3,25 +3,25 @@
     {
       "category": "Very Low",
       "vix_min": 14.0,
-      "vix_max": 15.78,
-      "range_mean": 30.94,
-      "range_median": 26.29,
-      "count": 39
+      "vix_max": 15.81,
+      "range_mean": 30.74,
+      "range_median": 26.28,
+      "count": 40
     },
     {
       "category": "Low",
-      "vix_min": 15.79,
-      "vix_max": 16.64,
-      "range_mean": 31.08,
+      "vix_min": 15.84,
+      "vix_max": 16.66,
+      "range_mean": 31.34,
       "range_median": 24.84,
       "count": 39
     },
     {
       "category": "Medium",
-      "vix_min": 16.66,
+      "vix_min": 16.73,
       "vix_max": 17.87,
-      "range_mean": 36.26,
-      "range_median": 33.14,
+      "range_mean": 36.58,
+      "range_median": 33.37,
       "count": 39
     },
     {
@@ -44,9 +44,9 @@
   "dow_analysis": [
     {
       "day": "Monday",
-      "range_mean": 36.08,
-      "range_median": 33.87,
-      "count": 48
+      "range_mean": 35.75,
+      "range_median": 33.58,
+      "count": 49
     },
     {
       "day": "Tuesday",
@@ -68,12 +68,20 @@
     },
     {
       "day": "Friday",
-      "range_mean": 41.56,
-      "range_median": 40.0,
-      "count": 50
+      "range_mean": 41.8,
+      "range_median": 40.24,
+      "count": 49
     }
   ],
   "recent_days": [
+    {
+      "date": "2026-08-17",
+      "day_of_week": "Monday",
+      "first_hour_range": 19.67041015625,
+      "first_hour_high": 7790.68017578125,
+      "first_hour_low": 7771.009765625,
+      "vix_close": null
+    },
     {
       "date": "2026-08-14",
       "day_of_week": "Friday",
@@ -105,19 +113,11 @@
       "first_hour_high": 7767.509765625,
       "first_hour_low": 7748.83984375,
       "vix_close": 15.460000038146973
-    },
-    {
-      "date": "2026-08-10",
-      "day_of_week": "Monday",
-      "first_hour_range": 19.7900390625,
-      "first_hour_high": 7768.2099609375,
-      "first_hour_low": 7748.419921875,
-      "vix_close": null
     }
   ],
-  "last_updated": "2026-08-14T21:12:56.394549",
+  "last_updated": "2026-08-17T21:13:36.270706",
   "date_range": {
-    "start": "2025-08-15",
-    "end": "2026-08-14"
+    "start": "2025-08-18",
+    "end": "2026-08-17"
   }
 }
